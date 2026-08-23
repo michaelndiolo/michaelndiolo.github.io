@@ -126,7 +126,7 @@ section { padding: 84px 0; }
   transform: scale(.5); transform-origin: 50% 44%;
 }
 .mo-plant {
-  inset: auto; left: 14.5%; top: 12.6%; width: 71.2%; height: 75.7%; object-fit: fill;
+  inset: auto; left: 14%; top: 12.1%; width: 72.1%; height: 85.8%; object-fit: fill;
   clip-path: inset(100% 0 0 0);
 }
 .mark-stage[data-step="0"] .mo-arms { opacity: 1; clip-path: inset(0 0 0 0); }
