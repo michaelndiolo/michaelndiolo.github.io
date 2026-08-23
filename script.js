@@ -31,7 +31,7 @@
   var markStage = document.getElementById('markStage');
   var markSteps = document.querySelectorAll('.mrail-step');
   var markCaptions = document.querySelectorAll('.mc');
-  var CYCLE_MS = 3200;
+  var CYCLE_MS = 6500;
   if (markStage && markSteps.length) {
     var markGhost = markStage.querySelector('.mark-ghost');
 
