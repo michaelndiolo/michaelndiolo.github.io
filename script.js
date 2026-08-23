@@ -29,24 +29,38 @@
   counters.forEach(function(el){ cio.observe(el); });
 
   var markStage = document.getElementById('markStage');
-  var markImg = document.getElementById('markImg');
-  var markTabs = document.querySelectorAll('.mark-tab');
-  if (markStage && markTabs.length) {
-    markTabs.forEach(function(tab){
-      tab.querySelector('.mt-row').addEventListener('click', function(){
-        markTabs.forEach(function(t){ t.classList.remove('active'); });
-        tab.classList.add('active');
-        markStage.setAttribute('data-active', tab.getAttribute('data-tab'));
-      });
+  var markSteps = document.querySelectorAll('.mstep');
+  var markCaptions = document.querySelectorAll('.mc');
+  if (markStage && markSteps.length) {
+    var markGhost = markStage.querySelector('.mark-ghost');
+    var markOverlays = markStage.querySelectorAll('.mark-overlay');
+
+    function goToStep(step, userInitiated){
+      markSteps.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-step') === step); });
+      markCaptions.forEach(function(c){ c.classList.toggle('active', c.getAttribute('data-step') === step); });
+      markStage.setAttribute('data-step', step);
+      if (userInitiated) { autoplay = false; clearInterval(cycle); }
+    }
+    markSteps.forEach(function(btn){
+      btn.addEventListener('click', function(){ goToStep(btn.getAttribute('data-step'), true); });
     });
+
+    var autoplay = true;
+    var idx = 0;
+    var cycle = setInterval(function(){
+      if (!autoplay) return;
+      idx = (idx + 1) % markSteps.length;
+      goToStep(String(idx), false);
+    }, 3200);
+
     markStage.addEventListener('mousemove', function(e){
       var r = markStage.getBoundingClientRect();
       var x = (e.clientX - r.left) / r.width - 0.5;
       var y = (e.clientY - r.top) / r.height - 0.5;
-      markImg.style.transform = 'perspective(900px) rotateY(' + (x * 16) + 'deg) rotateX(' + (-y * 16) + 'deg) scale(1.05)';
+      markGhost.style.transform = 'perspective(1000px) rotateX(' + (-y * 10) + 'deg) rotateY(' + (x * 10) + 'deg)';
     });
     markStage.addEventListener('mouseleave', function(){
-      markImg.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg) scale(1)';
+      markGhost.style.transform = '';
     });
   }
 
