@@ -29,16 +29,40 @@
   counters.forEach(function(el){ cio.observe(el); });
 
   var markStage = document.getElementById('markStage');
-  var markSteps = document.querySelectorAll('.mstep');
+  var markSteps = document.querySelectorAll('.mrail-step');
   var markCaptions = document.querySelectorAll('.mc');
+  var CYCLE_MS = 3200;
   if (markStage && markSteps.length) {
     var markGhost = markStage.querySelector('.mark-ghost');
-    var markOverlays = markStage.querySelectorAll('.mark-overlay');
+
+    function setFill(el, mode){
+      var fill = el.querySelector('.mrail-fill');
+      fill.style.transition = 'none';
+      if (mode === 'done') {
+        fill.style.width = '100%';
+      } else if (mode === 'empty') {
+        fill.style.width = '0%';
+      } else if (mode === 'run') {
+        fill.style.width = '0%';
+        void fill.offsetWidth;
+        fill.style.transition = 'width ' + CYCLE_MS + 'ms linear';
+        fill.style.width = '100%';
+      }
+    }
 
     function goToStep(step, userInitiated){
-      markSteps.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-step') === step); });
+      var target = parseInt(step, 10);
+      markSteps.forEach(function(b){
+        var s = parseInt(b.getAttribute('data-step'), 10);
+        b.classList.toggle('active', s === target);
+        b.classList.toggle('past', s < target);
+        if (s === target) { setFill(b, (userInitiated || !autoplay) ? 'done' : 'run'); }
+        else if (s < target) { setFill(b, 'done'); }
+        else { setFill(b, 'empty'); }
+      });
       markCaptions.forEach(function(c){ c.classList.toggle('active', c.getAttribute('data-step') === step); });
       markStage.setAttribute('data-step', step);
+      idx = target;
       if (userInitiated) { autoplay = false; clearInterval(cycle); }
     }
     markSteps.forEach(function(btn){
@@ -51,7 +75,8 @@
       if (!autoplay) return;
       idx = (idx + 1) % markSteps.length;
       goToStep(String(idx), false);
-    }, 3200);
+    }, CYCLE_MS);
+    goToStep('0', false);
 
     markStage.addEventListener('mousemove', function(e){
       var r = markStage.getBoundingClientRect();
