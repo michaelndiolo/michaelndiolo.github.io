@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Interactive dashboard for all ten OlivAir platform extensions — adjust inputs and see CO₂ removal and economics update live.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OlivAir Platform Dashboard">
+<meta property="og:description" content="Interactive dashboard for all ten OlivAir platform extensions — adjust inputs and see CO₂ removal and economics update live.">
+<meta property="og:image" content="assets/olivair-logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OlivAir Platform Dashboard">
+<meta name="twitter:description" content="Interactive dashboard for all ten OlivAir platform extensions — adjust inputs and see CO₂ removal and economics update live.">
+<meta name="twitter:image" content="assets/olivair-logo.png">
+<title>OlivAir Platform Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* Palette matches the portfolio site exactly (Portfolio Website/index.html :root) */
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #f4f6fa;
+    --text: #12161c;
+    --text-dim: #5b6472;
+    --text-faint: #98a0ac;
+    --border: #e3e7ee;
+    --accent: #2f5fa3;
+    --accent-bg: #e8eff8;
+    --accent-dark: #17324f;
+    --hi: #a9cdf2;
+    --warn: #b0503f;
+    --warn-bg: #fbeeec;
+    --warn-line: #ecccc4;
+    --sidebar-w: 232px;
+  }
+  * { box-sizing: border-box; }
+  a { color: inherit; text-decoration: none; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    font-variant-numeric: tabular-nums;
+    background: var(--bg);
+    color: var(--text); margin: 0; padding: 0; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1240px; margin: 0 auto; }
+
+  .sidebar {
+    position: fixed; top: 0; left: 0; width: var(--sidebar-w); height: 100vh;
+    border-right: 1px solid var(--border); padding: 36px 28px; display: flex; flex-direction: column;
+    z-index: 30; background: var(--bg);
+  }
+  .sidebar .name { font-weight: 800; font-size: 15px; letter-spacing: 0.01em; margin-bottom: 48px; }
+  .sidebar .name a { display:block; color: var(--text); }
+  .sidebar nav { display: flex; flex-direction: column; gap: 20px; animation: none; opacity: 1; }
+  .sidebar nav a { font-size: 14px; font-weight: 600; color: var(--text-dim); position: relative; width: fit-content; transition: color 0.3s ease; }
+  .sidebar nav a::before {
+    content: ''; position: absolute; left: -16px; top: 50%; transform: translateY(-50%) scale(0);
+    width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
+    transition: transform 0.3s cubic-bezier(.16,.84,.44,1);
+  }
+  .sidebar nav a:hover { color: var(--text); }
+  .sidebar nav a.active { color: var(--text); }
+  .sidebar nav a.active::before { transform: translateY(-50%) scale(1); }
+  .sidebar-bottom { margin-top: auto; }
+  .site-status-pill {
+    display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600;
+    background: var(--accent-bg); color: var(--accent-dark); padding: 6px 12px; border-radius: 20px; margin-bottom: 16px;
+  }
+  .site-status-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2.2s ease-in-out infinite; }
+  .sidebar-link { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; border-bottom: 1px solid var(--text); width: fit-content; padding-bottom: 1px; transition: border-color 0.3s ease, color 0.3s ease; }
+  .sidebar-link:hover { color: var(--accent-dark); border-color: var(--accent); }
+  .sidebar-cta { font-size: 12px; color: var(--text-dim); margin-top: 18px; }
+  .sidebar-cta strong { display: block; color: var(--text); font-size: 13px; margin-top: 2px; }
+  .social { margin-top: 22px; width: 30px; height: 30px; border: 1px solid var(--border); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; text-decoration:none; color:var(--text); transition: border-color 0.3s ease, transform 0.3s ease; }
+  .social:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  .main { margin-left: var(--sidebar-w); padding: 28px 28px 84px; }
+  .top-row { display: flex; justify-content: space-between; align-items: center; padding: 0 20px 24px; font-size: 12px; letter-spacing: 0.05em; color: var(--text-dim); text-transform: uppercase; font-weight: 600; }
+  .top-row .status { display: flex; align-items: center; gap: 7px; color: var(--accent-dark); }
+  .top-row .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+  @media (max-width: 860px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+  }
+
+  header {
+    margin-bottom: 28px; padding-bottom: 22px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 18px; position: relative;
+  }
+  .header-text { flex: 1; min-width: 0; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em;
+    color: var(--accent-dark); background: var(--accent-bg); padding: 5px 11px; border-radius: 20px;
+    margin-bottom: 10px; opacity: 0; animation: fadeUp 0.7s cubic-bezier(.16,.84,.44,1) 0.05s forwards;
+  }
+  .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+  h1 {
+    font-family: 'Manrope', sans-serif; font-size: 1.7rem; font-weight: 800; margin: 0 0 6px;
+    color: var(--text); letter-spacing: -0.015em; opacity: 0; animation: fadeUp 0.7s cubic-bezier(.16,.84,.44,1) 0.1s forwards;
+  }
+  .subtitle {
+    color: var(--text-dim); font-size: 0.9rem; max-width: 700px; line-height: 1.55;
+    opacity: 0; animation: fadeUp 0.7s cubic-bezier(.16,.84,.44,1) 0.16s forwards;
+  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+  .layout { display: flex; flex-direction: column; gap: 20px; }
+
+  #navList {
+    display: flex; flex-direction: row; gap: 6px; overflow-x: auto; padding: 2px 2px 10px;
+    border-bottom: 1px solid var(--border);
+    opacity: 0; animation: fadeUp 0.6s cubic-bezier(.16,.84,.44,1) 0.2s forwards;
+    scrollbar-width: thin;
+  }
+  .nav-item {
+    text-align: left; padding: 8px 13px; border-radius: 20px; border: none; background: var(--bg-alt);
+    font-size: 0.78rem; font-weight: 600; color: var(--text-dim); cursor: pointer; flex-shrink: 0; white-space: nowrap;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s cubic-bezier(.16,.84,.44,1);
+    display: flex; align-items: center; gap: 8px; font-family: inherit;
+  }
+  .nav-item .num {
+    width: 16px; height: 16px; border-radius: 5px; background: rgba(23,50,79,0.08); color: var(--text-faint);
+    font-size: 0.62rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .nav-item:hover { background: var(--accent-bg); color: var(--accent-dark); transform: translateY(-1px); }
+  .nav-item.active { background: var(--accent-dark); color: #fff; }
+  .nav-item.active .num { background: rgba(255,255,255,0.2); color: #fff; }
+
+  .panel {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px 30px; box-shadow: 0 1px 2px rgba(23,50,79,0.03); min-height: 480px;
+    animation: fadeUp 0.5s cubic-bezier(.16,.84,.44,1) both;
+  }
+  .panel-header { margin-bottom: 24px; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
+  .panel-title { font-family: 'Manrope', sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--text); margin: 0 0 8px; letter-spacing: -0.01em; }
+  .panel-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.55; max-width: 680px; }
+
+  .content-grid { display: grid; grid-template-columns: 268px 1fr; gap: 30px; }
+  @media (max-width: 720px) { .content-grid { grid-template-columns: 1fr; } }
+
+  h2.section {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-dark);
+    margin: 0 0 14px; font-weight: 700; display: flex; align-items: center; gap: 10px;
+  }
+  h2.section::before { content: ''; width: 14px; height: 1px; background: var(--accent); }
+  h2.section:not(:first-child) { margin-top: 26px; }
+
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+  .tab {
+    padding: 6px 13px; border-radius: 20px; border: 1px solid var(--border); background: var(--bg);
+    font-size: 0.74rem; font-weight: 600; color: var(--text-dim); cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .tab:hover { border-color: var(--accent); color: var(--accent-dark); background: var(--accent-bg); transform: translateY(-1px); }
+  .tab.active { background: var(--accent-dark); border-color: var(--accent-dark); color: #fff; }
+
+  .toggle-2 {
+    display: inline-flex; border: 1px solid var(--border); border-radius: 20px; padding: 3px; background: var(--bg-alt);
+  }
+  .toggle-opt {
+    border: none; background: transparent; padding: 6px 14px; border-radius: 17px;
+    font-size: 0.74rem; font-weight: 600; color: var(--text-dim); cursor: pointer;
+    font-family: inherit; transition: all 0.3s ease;
+  }
+  .toggle-opt.active { background: var(--accent-dark); color: #fff; }
+  .toggle-opt:not(.active):hover { color: var(--accent-dark); }
+
+  .control { margin-bottom: 20px; }
+  .control label {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+    font-size: 0.82rem; font-weight: 700; margin-bottom: 9px; color: var(--text);
+  }
+  .control label .label-text { flex: 1; min-width: 0; }
+  .control label .val {
+    flex-shrink: 0;
+    color: var(--accent-dark); font-variant-numeric: tabular-nums;
+    font-size: 0.76rem; font-weight: 700; background: var(--accent-bg); padding: 2px 8px; border-radius: 20px;
+    transition: background 0.3s ease;
+  }
+  .control input[type=range] {
+    width: 100%; height: 4px; border-radius: 3px; appearance: none;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent) var(--fill, 30%), var(--border) var(--fill, 30%), var(--border) 100%);
+    outline: none; cursor: pointer;
+  }
+  .control input[type=range]::-webkit-slider-thumb {
+    appearance: none; width: 15px; height: 15px; border-radius: 50%; background: var(--accent-dark);
+    border: 2.5px solid #fff; box-shadow: 0 1px 4px rgba(23,50,79,0.35); cursor: pointer;
+    transition: transform 0.3s cubic-bezier(.16,.84,.44,1);
+  }
+  .control input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.25); }
+  .control .hint { font-size: 0.72rem; color: var(--text-faint); margin-top: 6px; line-height: 1.5; }
+
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(138px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 24px; }
+  .kpi {
+    background: var(--bg); padding: 16px 17px;
+    transition: background 0.3s ease, transform 0.3s cubic-bezier(.16,.84,.44,1);
+  }
+  .kpi:hover { background: var(--accent-bg); transform: translateY(-2px); }
+  .kpi .label { font-size: 0.66rem; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; font-weight: 700; }
+  .kpi .value {
+    font-size: 1.2rem; font-weight: 800; color: var(--accent-dark);
+    font-variant-numeric: tabular-nums;
+  }
+  .kpi .value .unit { font-size: 0.58rem; font-weight: 600; color: var(--text-faint); margin-left: 3px; }
+  .kpi.warn .value { color: var(--warn); }
+
+  .value.pulse { animation: pulseVal 0.45s cubic-bezier(.16,.84,.44,1); }
+  @keyframes pulseVal {
+    0% { opacity: 0.3; transform: translateY(4px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .chart-area { position: relative; height: 260px; margin-bottom: 6px; }
+  .chart-area svg text { font-family: 'Manrope', sans-serif; }
+
+  .note {
+    font-size: 0.76rem; color: var(--text-dim); margin-top: 18px; line-height: 1.6;
+    border-top: 1px solid var(--border); padding-top: 15px;
+  }
+  .note strong { color: var(--text); }
+  .note code { background: var(--bg-alt); padding: 1px 6px; border-radius: 4px; font-size: 0.92em; }
+  .note.flag {
+    background: var(--warn-bg); border: 1px solid var(--warn-line); border-radius: 10px; padding: 12px 14px;
+    margin-top: 14px; color: #7a3a2c; border-top: 1px solid var(--warn-line);
+  }
+  .note.flag code { background: rgba(176,80,63,0.1); }
+
+  footer { margin-top: 28px; font-size: 0.72rem; color: var(--text-faint); text-align: center; opacity: 0; animation: fadeUp 0.6s cubic-bezier(.16,.84,.44,1) 0.35s forwards; }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="name"><a href="index.html">Michael Ndiolo</a></div>
+  <nav id="sidenav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="olivair.html">OlivAir</a>
+    <a href="engineering.html">Engineering</a>
+    <a class="active" href="dashboard.html">Dashboard</a>
+    <a href="figures.html">Figures</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="site-status-pill"><span class="dot"></span>Open to research collaboration</div>
+    <a class="sidebar-link" href="olivair.html">View OlivAir &rarr;</a>
+    <a class="sidebar-link" href="assets/michael-ndiolo-resume.pdf" target="_blank" rel="noopener">Download resume &rarr;</a>
+    <div class="sidebar-cta">Have a project in mind?<strong>Let's talk</strong></div>
+    <a class="social" href="https://www.linkedin.com/in/michael-ndiolo-245876327" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+  </div>
+</aside>
+
+<div class="main">
+  <div class="top-row">
+    <span>Chemistry &middot; Hamilton College</span>
+    <span class="status"><span class="dot"></span>Available for research work</span>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <div class="header-text">
+        <div class="eyebrow"><span class="dot"></span>OlivAir</div>
+        <h1>Platform Dashboard</h1>
+        <div class="subtitle">An interactive look at all ten OlivAir extensions &mdash; adjust the inputs on each panel to see how substrate choice, throughput, and reactor efficiency change CO&#8322; removal and economics.</div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <nav id="navList"></nav>
+      <div id="panelHost"></div>
+    </div>
+
+    <footer>OlivAir &middot; reactor platform for industrial carbon mineralization</footer>
+  </div>
+</div>
+
+<script>
+function fmt(x, digits = 0) {
+  if (!isFinite(x)) return "&ndash;";
+  return Number(x).toLocaleString('en-US', { maximumFractionDigits: digits, minimumFractionDigits: digits });
+}
+function fmtMoney(x) {
+  if (!isFinite(x)) return "&ndash;";
+  const sign = x < 0 ? "-" : "";
+  return sign + "$" + fmt(Math.abs(x));
+}
+function updateSliderFill(el) {
+  const min = parseFloat(el.min), max = parseFloat(el.max), val = parseFloat(el.value);
+  el.style.setProperty('--fill', (((val - min) / (max - min)) * 100) + '%');
+}
+// Sets a KPI value with a brief pulse animation instead of a hard snap.
+function setKpi(id, html) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = html;
+  el.classList.remove('pulse');
+  void el.offsetWidth; // force reflow so the animation replays
+  el.classList.add('pulse');
+}
+const CHECK_ICON = '<svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+// ===========================================================================
+// EXTENSION DEFINITIONS -- each id maps to {name, desc, badge, render(host)}
+// ===========================================================================
+const EXTENSIONS = [];
+
+// ---- Extension I: Slag ----
+EXTENSIONS.push({
+  id: "I-slag", name: "I &mdash; Slag", short: "Industrial Alkaline Wastes (Slag)",
+  desc: "Free-CaO slag class: BOF, EAF, ladle, and blast furnace slag. ANC-driven mineralization at the platform's reference proton load.",
+  badge: "21/21 checks (all of Ext I)",
+  render(host) {
+    const SLAGS = {
+      bof: { name: "BOF slag", anc: [3.8, 4.0], cap: [0.24, 0.36] },
+      eaf: { name: "EAF slag", anc: [3.0, 4.5], cap: [0.20, 0.22] },
+      ladle: { name: "Ladle furnace slag", anc: [4.5, 5.5], cap: [0.20, 0.22] },
+      bf: { name: "Blast furnace slag", anc: [2.0, 3.5], cap: [0.15, 0.20] },
+    };
+    let current = "bof";
+    host.innerHTML = `
+      <div class="content-grid">
+        <div>
+          <h2 class="section">Slag type</h2>
+          <div class="tabs" id="slagTabs">
+            <div class="tab active" data-k="bof">BOF</div><div class="tab" data-k="eaf">EAF</div>
+            <div class="tab" data-k="ladle">Ladle</div><div class="tab" data-k="bf">BF</div>
+          </div>
+          <h2 class="section">Proton load</h2>
+          <div class="control"><label><span class="label-text">Reference P (mol H&#8314;/yr)</span> <span class="val" id="pLoad">3.2e7</span></label>
+            <input type="range" id="pSlider" min="22000000" max="42000000" step="1000000" value="32000000">
+            <div class="hint">Platform reference range: 2.2&times;10&#8311;&ndash;4.2&times;10&#8311; mol H&#8314;/yr</div>
+          </div>
+        </div>
+        <div>
+          <h2 class="section">Output</h2>
+          <div class="kpis">
+            <div class="kpi"><div class="label">Slag demand</div><div class="value" id="kDemand">&ndash;<span class="unit">t/yr</span></div></div>
+            <div class="kpi"><div class="label">CO&#8322; mineralized</div><div class="value" id="kCO2">&ndash;<span class="unit">t/yr</span></div></div>
+          </div>
+          <div class="note"><strong>Note:</strong> BOF's ANC (3.8&ndash;4.0) and EAF's capacity (0.20&ndash;0.22) use the paper's own narrower working ranges from its results tables &mdash; not its broader characterization ranges, which don't reproduce the paper's published figures.</div>
+        </div>
+      </div>`;
+    function update() {
+      const s = SLAGS[current];
+      const p = parseFloat(document.getElementById('pSlider').value);
+      document.getElementById('pLoad').textContent = p.toExponential(1);
+      updateSliderFill(document.getElementById('pSlider'));
+      const mLo = (p/4)/s.anc[1]/1000, mHi = (p/4)/s.anc[0]/1000;
+      setKpi('kDemand', fmt(mLo) + "&ndash;" + fmt(mHi) + '<span class="unit">t/yr</span>');
+      const co2Lo = mLo*s.cap[0]*0.40, co2Hi = mHi*s.cap[1]*0.65;
+      setKpi('kCO2', fmt(co2Lo) + "&ndash;" + fmt(co2Hi) + '<span class="unit">t/yr</span>');
+    }
+    document.getElementById('slagTabs').addEventListener('click', e => {
+      const t = e.target.closest('.tab'); if (!t) return;
+      document.querySelectorAll('#slagTabs .tab').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active'); current = t.dataset.k; update();
+    });
+    document.getElementById('pSlider').addEventListener('input', update);
+    update();
+  }
+});
+
+// ---- Extension I: Carbonate ----
+EXTENSIONS.push({
+  id: "I-carb", name: "I &mdash; Carbonate", short: "Industrial Alkaline Wastes (Carbonate)",
+  desc: "Lime mud, green liquor dregs, lime slaker grits, sugar refinery lime. CO&#8322; is released on dissolution, not directly mineralized.",
+  badge: "21/21 checks &mdash; part of Extension I",
+  render(host) {
+    const SUBS = {
+      limemud: { name: "Lime mud", r: [1.0, 1.0] },
+      gld: { name: "Green liquor dregs", r: [1.0, 1.0] },
+      grits: { name: "Lime slaker grits", r: [0.80, 0.92] },
+      sugarlime: { name: "Sugar refinery lime", r: [1.0, 1.0] },
+    };
+    let current = "limemud";
+    host.innerHTML = `
+      <div class="content-grid">
+        <div>
+          <h2 class="section">Substrate</h2>
+          <div class="tabs" id="carbTabs">
+            <div class="tab active" data-k="limemud">Lime mud</div><div class="tab" data-k="gld">GLD</div>
+            <div class="tab" data-k="grits">Grits</div><div class="tab" data-k="sugarlime">Sugar lime</div>
+          </div>
+          <h2 class="section">Gross proton load</h2>
+          <div class="control"><label><span class="label-text">P<sub>gross</sub></span> <span class="val" id="pgLabel">1.3e8</span></label>
+            <input type="range" id="pgSlider" min="87000000" max="170000000" step="1000000" value="130000000">
+            <div class="hint">Uses GROSS P (not P<sub>net</sub>) &mdash; headspace CO&#8322; release happens across all acid contact including recirculated flow.</div>
+          </div>
+        </div>
+        <div>
+          <h2 class="section">Output</h2>
+          <div class="kpis">
+            <div class="kpi"><div class="label">CO&#8322; released</div><div class="value" id="kRel">&ndash;<span class="unit">t/yr</span></div></div>
+          </div>
+          <div class="note flag">This is CO&#8322; <strong>released</strong> on dissolution, not net-new removal &mdash; it's carbon-neutral baseline unless captured via the Mg-carbonation pathway (gated by AMD-derived Mg&sup2;&#8314;, not modeled here since the paper gives no worked numeric example for it).</div>
+        </div>
+      </div>`;
+    function update() {
+      const s = SUBS[current];
+      const pg = parseFloat(document.getElementById('pgSlider').value);
+      document.getElementById('pgLabel').textContent = pg.toExponential(1);
+      updateSliderFill(document.getElementById('pgSlider'));
+      const molLo = s.r[0]*pg/2, molHi = s.r[1]*pg/2;
+      const tLo = molLo*44.01/1e6, tHi = molHi*44.01/1e6;
+      setKpi('kRel', fmt(tLo) + "&ndash;" + fmt(tHi) + '<span class="unit">t/yr</span>');
+    }
+    document.getElementById('carbTabs').addEventListener('click', e => {
+      const t = e.target.closest('.tab'); if (!t) return;
+      document.querySelectorAll('#carbTabs .tab').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active'); current = t.dataset.k; update();
+    });
+    document.getElementById('pgSlider').addEventListener('input', update);
+    update();
+  }
+});
+
+// ---- Extension I: Phosphogypsum ----
+EXTENSIONS.push({
+  id: "I-pg", name: "I &mdash; Phosphogypsum", short: "Industrial Alkaline Wastes (Phosphogypsum)",
+  desc: "No CO&#8322; mineralization pathway. Economics rest on CaF&#8322; and REE byproduct recovery instead.",
+  badge: "21/21 checks &mdash; part of Extension I",
+  render(host) {
+    host.innerHTML = `
+      <div class="content-grid">
+        <div>
+          <h2 class="section">PG throughput</h2>
+          <div class="control"><label><span class="label-text">PG fed</span> <span class="val" id="pgTVal">100,000 t/yr</span></label>
+            <input type="range" id="pgT" min="10000" max="500000" step="10000" value="100000">
+          </div>
+          <h2 class="section">Fluoride</h2>
+          <div class="control"><label><span class="label-text">F content</span> <span class="val" id="fVal">1.3%</span></label>
+            <input type="range" id="fSlider" min="0.1" max="2.5" step="0.1" value="1.3">
+          </div>
+          <div class="control"><label><span class="label-text">&#966;<sub>diss</sub> (dissolution fraction)</span> <span class="val" id="phiVal">0.60</span></label>
+            <input type="range" id="phiSlider" min="0.4" max="0.8" step="0.05" value="0.60">
+          </div>
+          <h2 class="section">REE</h2>
+          <div class="control"><label><span class="label-text">REE content</span> <span class="val" id="reeVal">0.50%</span></label>
+            <input type="range" id="reeSlider" min="0.04" max="1.0" step="0.02" value="0.50">
+          </div>
+        </div>
+        <div>
+          <h2 class="section">Output (per tonne PG fed)</h2>
+          <div class="kpis">
+            <div class="kpi"><div class="label">CaF&#8322; recovered</div><div class="value" id="kCaF2">&ndash;<span class="unit">kg/t PG</span></div></div>
+            <div class="kpi"><div class="label">CaF&#8322; gross value</div><div class="value" id="kCaF2Val">&ndash;<span class="unit">$/yr</span></div></div>
+            <div class="kpi"><div class="label">REE recovered</div><div class="value" id="kREE">&ndash;<span class="unit">kg/t PG</span></div></div>
+          </div>
+          <div class="note flag">REE capture efficiency (&eta;<sub>REE</sub> = 0.3&ndash;0.6, used here as fixed 0.45 midpoint) is explicitly flagged "illustrative, unvalidated" in the source paper pending Experiment PG-4.</div>
+        </div>
+      </div>`;
+    function update() {
+      const pgT = parseFloat(document.getElementById('pgT').value);
+      const f = parseFloat(document.getElementById('fSlider').value);
+      const phi = parseFloat(document.getElementById('phiSlider').value);
+      const ree = parseFloat(document.getElementById('reeSlider').value);
+      document.getElementById('pgTVal').textContent = fmt(pgT) + " t/yr";
+      document.getElementById('fVal').textContent = f.toFixed(1) + "%";
+      document.getElementById('phiVal').textContent = phi.toFixed(2);
+      document.getElementById('reeVal').textContent = ree.toFixed(2) + "%";
+      [document.getElementById('pgT'), document.getElementById('fSlider'), document.getElementById('phiSlider'), document.getElementById('reeSlider')].forEach(updateSliderFill);
+
+      const fRecKg = (f/100)*1000*phi;
+      const caf2PerT = fRecKg * (78.08/(2*19.00));
+      setKpi('kCaF2', fmt(caf2PerT, 1) + '<span class="unit">kg/t PG</span>');
+      const caf2ValPerYr = (caf2PerT/1000) * 485 * pgT;
+      setKpi('kCaF2Val', fmtMoney(caf2ValPerYr) + '<span class="unit">/yr</span>');
+      const reeContained = (ree/100)*1000;
+      const reeRecovered = reeContained * phi * 0.45;
+      setKpi('kREE', fmt(reeRecovered, 2) + '<span class="unit">kg/t PG</span>');
+    }
+    ["pgT","fSlider","phiSlider","reeSlider"].forEach(id => document.getElementById(id).addEventListener('input', update));
+    update();
+  }
+});
+
+// ---- Extension II ----
+EXTENSIONS.push({
+  id: "II", name: "II &mdash; CKD / RCA", short: "Free-CaO Process Waste",
+  desc: "Cement kiln dust and demolition concrete (RCA). ANC-driven mineralization, same pattern as slag but using the platform's gross P directly.",
+  badge: "11/11 checks",
+  render(host) {
+    const SUBS = {
+      ckd: { name: "Cement kiln dust", anc: [8, 20], f: [0.14, 0.29] },
+      rca: { name: "Demolition concrete (RCA)", anc: [3, 6], f: [0.047, 0.047] },
+    };
+    let current = "ckd";
+    host.innerHTML = `
+      <div class="content-grid">
+        <div>
+          <h2 class="section">Substrate</h2>
+          <div class="tabs" id="iiTabs"><div class="tab active" data-k="ckd">CKD</div><div class="tab" data-k="rca">RCA</div></div>
+          <h2 class="section">Proton load</h2>
+          <div class="control"><label><span class="label-text">P (mol H&#8314;/yr)</span> <span class="val" id="iiP">1.3e8</span></label>
+            <input type="range" id="iiPSlider" min="87000000" max="170000000" step="1000000" value="130000000">
+          </div>
+        </div>
+        <div>
+          <h2 class="section">Output</h2>
+          <div class="kpis">
+            <div class="kpi"><div class="label">Demand</div><div class="value" id="iiDemand">&ndash;<span class="unit">t/yr</span></div></div>
+            <div class="kpi"><div class="label">CO&#8322; removed</div><div class="value" id="iiCO2">&ndash;<span class="unit">t/yr</span></div></div>
+          </div>
+          <div class="note">RCA's reactive fraction is a single point estimate (4.7%, not a range) &mdash; roughly half of RCA's total CaO is already carbonated cement paste and carbon-neutral.</div>
+        </div>
+      </div>`;
+    function update() {
+      const s = SUBS[current];
+      const p = parseFloat(document.getElementById('iiPSlider').value);
+      document.getElementById('iiP').textContent = p.toExponential(1);
+      updateSliderFill(document.getElementById('iiPSlider'));
+      const mLo = p/s.anc[1], mHi = p/s.anc[0];
+      const mLoT = mLo/1000, mHiT = mHi/1000;
+      setKpi('iiDemand', fmt(mLoT) + "&ndash;" + fmt(mHiT) + '<span class="unit">t/yr</span>');
+      const capLo = s.f[0]*0.79, capHi = s.f[1]*0.79;
+      const co2Lo = mLoT*capLo*0.40, co2Hi = mHiT*capHi*0.65;
+      setKpi('iiCO2', fmt(co2Lo) + "&ndash;" + fmt(co2Hi) + '<span class="unit">t/yr</span>');
+    }
+    document.getElementById('iiTabs').addEventListener('click', e => {
+      const t = e.target.closest('.tab'); if (!t) return;
+      document.querySelectorAll('#iiTabs .tab').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active'); current = t.dataset.k; update();
+    });
+    document.getElementById('iiPSlider').addEventListener('input', update);
+    update();
+  }
+});
+
+// ---- Extension III ----
+EXTENSIONS.push({
+  id: "III", name: "III &mdash; Combustion Residuals", short: "Coal Ash, Biomass Ash, MSWI Ash, SSA",
+  desc: "Eight combustion residual substrates. Ash pond remediation liability avoidance is the dominant economic driver, independent of CO&#8322;.",
+  badge: "16/16 checks",
+  render(host) {
+    const SUBS = {
+      fa_f: { name: "Coal fly ash, Class F", anc: [0.7, 1.8], cap: [0.008, 0.040] },
+      ba_f: { name: "Bottom ash, Class F", anc: [0.4, 2.1], cap: [0.008, 0.047] },
+      ba_c: { name: "Bottom ash, Class C", anc: [5.4, 12.5], cap: [0.119, 0.277] },
+      biomass: { name: "Biomass fly ash", anc: [4.8, 9.2], cap: [0.103, 0.206] },
+      gasif: { name: "Gasification slag", anc: [1.8, 5.4], cap: [0.040, 0.119] },
+      mswi: { name: "MSWI ash", anc: [2.0, 5.4], cap: [0.118, 0.118] },
+      ssa: { name: "Sewage sludge ash", anc: [1.8, 3.6], cap: [0.079, 0.079] },
+    };
+    let current = "fa_f";
+    host.innerHTML = `
+      <div class="content-grid">
+        <div>
+          <h2 class="section">Substrate</h2>
+          <div class="tabs" id="iiiTabs">
+            <div class="tab active" data-k="fa_f">Fly ash F</div><div class="tab" data-k="ba_f">Bottom F</div>
+            <div class="tab" data-k="ba_c">Bottom C</div><div class="tab" data-k="biomass">Biomass</div>
+            <div class="tab" data-k="gasif">Gasif. slag</div><div class="tab" data-k="mswi">MSWI</div><div class="tab" data-k="ssa">SSA</div>
+          </div>
+          <h2 class="section">Proton load</h2>
+          <div class="control"><label><span class="label-text">P<sub>net</sub></span> <span class="val" id="iiiP">3.2e7</span></label>
+            <input type="range" id="iiiPSlider" min="22000000" max="42000000" step="1000000" value="32000000">
+          </div>
+          <h2 class="section">Ash pond cost</h2>
+          <div class="control"><label><span class="label-text">Remediation rate</span> <span class="val" id="iiiCostVal">$100/t</span></label>
+            <input type="range" id="iiiCost" min="80" max="120" step="5" value="100">
+          </div>
+        </div>
+        <div>
+          <h2 class="section">Output</h2>
+          <div class="kpis">
+            <div class="kpi"><div class="label">Demand</div><div class="value" id="iiiDemand">&ndash;<span class="unit">t/yr</span></div></div>
+            <div class="kpi"><div class="label">CO&#8322; removed</div><div class="value" id="iiiCO2">&ndash;<span class="unit">t/yr</span></div></div>
+            <div class="kpi"><div class="label">Liability avoided</div><div class="value" id="iiiLiab">&ndash;<span class="unit">$/yr</span></div></div>
+          </div>
+          <div class="note flag">Coal fly ash Class C is omitted from tab selection &mdash; its stated CO&#8322; figure in the source paper is inconsistent with the paper's own demand table for that same substrate.</div>
+        </div>
+      </div>`;
+    function update() {
+      const s = SUBS[current];
+      const p = parseFloat(document.getElementById('iiiPSlider').value);
+      const cost = parseFloat(document.getElementById('iiiCost').value);
+      document.getElementById('iiiP').textContent = p.toExponential(1);
+      document.getElementById('iiiCostVal').textContent = "$" + cost + "/t";
+      [document.getElementById('iiiPSlider'), document.getElementById('iiiCost')].forEach(updateSliderFill);
+      const mLo = p/s.anc[1]/1000, mHi = p/s.anc[0]/1000;
+      setKpi('iiiDemand', fmt(mLo) + "&ndash;" + fmt(mHi) + '<span class="unit">t/yr</span>');
+      const co2Lo = mLo*s.cap[0]*0.40, co2Hi = mHi*s.cap[1]*0.65;
+      setKpi('iiiCO2', fmt(co2Lo) + "&ndash;" + fmt(co2Hi) + '<span class="unit">t/yr</span>');
+      const liabLo = mLo*cost, liabHi = mHi*cost;
+      setKpi('iiiLiab', fmtMoney(liabLo) + "&ndash;" + fmtMoney(liabHi) + '<span class="unit">/yr</span>');
+    }
+    document.getElementById('iiiTabs').addEventListener('click', e => {
+      const t = e.target.closest('.tab'); if (!t) return;
+      document.querySelectorAll('#iiiTabs .tab').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active'); current = t.dataset.k; update();
+    });
+    document.getElementById('iiiPSlider').addEventListener('input', update);
+    document.getElementById('iiiCost').addEventListener('input', update);
+    update();
+  }
+});
+
+// ---- Extension IV ----
+EXTENSIONS.push({
+  id: "IV", name: "IV &mdash; Mine Tailings", short: "Copper, Nickel, Ultramafic, Kimberlite, Phosphate, PGM, REE",
+  desc: "Seven mining tailings substrates. Only copper and REE are independently verified against paper-stated numbers.",
+  badge: "3/3 checks (deliberately scoped)",
+  render(host) {
+    const SUBS = {
+      copper: { name: "Copper tailings", anc: [0.3, 14.0], cao: [0.40, 31.76], mgo: [0.84, 5.37], verified: true },
+      nickel: { name: "Nickel laterite", anc: [0.9, 8.2], cao: [0.9, 5.8], mgo: [10.0, 20.0], verified: false },
+      ultramafic: { name: "Ultramafic tailings", anc: [4.3, 14.6], cao: [0,0], mgo: [12.0, 41.0], verified: false },
+      phosphate: { name: "Phosphate tailings", anc: [13.2, 15.8], cao: [34.0, 44.0], mgo: [0,0], verified: false },
+      pgm: { name: "PGM tailings", anc: [4.3, 4.3], cao: [2.0, 2.0], mgo: [12.0, 12.0], verified: false },
+      ree: { name: "REE tailings", anc: [12.7, 20.7], cao: [0,0], mgo: [0,0], verified: true },
+    };
+    let current = "copper";
+    host.innerHTML = `
+      <div class="content-grid">
+        <div>
+          <h2 class="section">Substrate</h2>
+          <div class="tabs" id="ivTabs">
+            <div class="tab active" data-k="copper">Copper</div><div class="tab" data-k="nickel">Nickel</div>
+            <div class="tab" data-k="ultramafic">Ultramafic</div><div class="tab" data-k="phosphate">Phosphate</div>
+            <div class="tab" data-k="pgm">PGM</div><div class="tab" data-k="ree">REE</div>
+          </div>
+          <h2 class="section">Proton load</h2>
+          <div class="control"><label><span class="label-text">P<sub>net</sub></span> <span class="val" id="ivP">3.2e7</span></label>
+            <input type="range" id="ivPSlider" min="22000000" max="42000000" step="1000000" value="32000000">
+          </div>
+        </div>
+        <div>
+          <h2 class="section">Output</h2>
+          <div class="kpis">
+            <div class="kpi"><div class="label">Demand</div><div class="value" id="ivDemand">&ndash;<span class="unit">t/yr</span></div></div>
+            <div class="kpi"><div class="label">CO&#8322; removed</div><div class="value" id="ivCO2">&ndash;<span class="unit">t/yr</span></div></div>
+          </div>
+          <div class="note flag" id="ivFlag">This substrate's figures are <strong>not independently verified</strong> against the paper's own stated numbers &mdash; only copper and REE were checked. Treat as reference data pending spot-check against Table 5/8.</div>
+        </div>
+      </div>`;
+    function update() {
+      const s = SUBS[current];
+      const p = parseFloat(document.getElementById('ivPSlider').value);
+      document.getElementById('ivP').textContent = p.toExponential(1);
+      updateSliderFill(document.getElementById('ivPSlider'));
+      const mLo = p/s.anc[1]/1000, mHi = p/s.anc[0]/1000;
+      setKpi('ivDemand', fmt(mLo) + "&ndash;" + fmt(mHi) + '<span class="unit">t/yr</span>');
+      const capLo = 0.79*(s.cao[0]/100)+1.09*(s.mgo[0]/100), capHi = 0.79*(s.cao[1]/100)+1.09*(s.mgo[1]/100);
+      const co2Lo = mLo*capLo*0.40, co2Hi = mHi*capHi*0.65;
+      setKpi('ivCO2', (capLo===0&&capHi===0) ? "n/a" : (fmt(co2Lo) + "&ndash;" + fmt(co2Hi) + '<span class="unit">t/yr</span>'));
+      document.getElementById('ivFlag').style.display = s.verified ? 'none' : 'block';
+    }
+    document.getElementById('ivTabs').addEventListener('click', e => {
+      const t = e.target.closest('.tab'); if (!t) return;
+      document.querySelectorAll('#ivTabs .tab').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active'); current = t.dataset.k; update();
+    });
+    document.getElementById('ivPSlider').addEventListener('input', update);
+    update();
+  }
+});
+
+// ---- Extension V ----
+EXTENSIONS.push({
+  id: "V", name: "V &mdash; Red Mud", short: "Bauxite Residue",
+  desc: "No ANC/proton framework &mdash; carbonation capacity CC replaces it. Scandium recovery dominates economics at high-Sc deposits.",
+  badge: "12/12 checks",
+  render(host) {
+    host.innerHTML = `
+      <div class="content-grid">
+        <div>
+          <h2 class="section">Class</h2>
+          <div class="tabs" id="vTabs"><div class="tab active" data-k="high">High-Ca</div><div class="tab" data-k="low">Low-Ca</div></div>
+          <div class="control"><label><span class="label-text">&eta;<sub>carb</sub> (conversion efficiency)</span> <span class="val" id="vEta">0.25</span></label>
+            <input type="range" id="vEtaSlider" min="0.10" max="0.40" step="0.01" value="0.25">
+          </div>
+          <h2 class="section">Throughput</h2>
+          <div class="control"><label><span class="label-text">Red mud</span> <span class="val" id="vT">100,000 t/yr</span></label>
+            <input type="range" id="vTSlider" min="10000" max="500000" step="10000" value="100000">
+          </div>
+          <h2 class="section">Scandium</h2>
+          <div class="control"><label><span class="label-text">Sc content</span> <span class="val" id="vSc">100 ppm</span></label>
+            <input type="range" id="vScSlider" min="0" max="300" step="10" value="100">
+          </div>
+        </div>
+        <div>
+          <h2 class="section">Output</h2>
+          <div class="kpis">
+            <div class="kpi"><div class="label">CO&#8322; removed</div><div class="value" id="vCO2">&ndash;<span class="unit">t/yr</span></div></div>
+            <div class="kpi"><div class="label">Sc revenue</div><div class="value" id="vScRev">&ndash;<span class="unit">$/yr</span></div></div>
+            <div class="kpi"><div class="label">Liability avoided</div><div class="value" id="vLiab">&ndash;<span class="unit">$/yr</span></div></div>
+          </div>
+          <div class="note"><strong>Ajka reference rate:</strong> &euro;25.33/t red mud, from the 2010 Ajka disaster's &euro;38M damages / 1.5M t released &mdash; the most &eta;-independent value stream in the platform.</div>
+        </div>
+      </div>`;
+    let cls = "high";
+    function update() {
+      const fCao = cls === "high" ? 0.115 : 0.045;
+      const etaCarb = parseFloat(document.getElementById('vEtaSlider').value);
+      const t = parseFloat(document.getElementById('vTSlider').value);
+      const scPpm = parseFloat(document.getElementById('vScSlider').value);
+      document.getElementById('vEta').textContent = etaCarb.toFixed(2);
+      document.getElementById('vT').textContent = fmt(t) + " t/yr";
+      document.getElementById('vSc').textContent = fmt(scPpm) + " ppm";
+      [document.getElementById('vEtaSlider'), document.getElementById('vTSlider'), document.getElementById('vScSlider')].forEach(updateSliderFill);
+
+      const ccGKg = 0.786 * fCao * etaCarb * 1000;
+      const co2 = t * ccGKg / 1000;
+      setKpi('vCO2', fmt(co2) + '<span class="unit">t/yr</span>');
+
+      const scRev = t * (scPpm/1e6) * 0.75 * (137.9/(2*44.96)) * 855000;
+      setKpi('vScRev', fmtMoney(scRev) + '<span class="unit">/yr</span>');
+
+      const ajkaRate = 38000000 / (1000000*1.5);
+      const liab = t * ajkaRate;
+      setKpi('vLiab', "&euro;" + fmt(liab) + '<span class="unit">/yr</span>');
+    }
+    document.getElementById('vTabs').addEventListener('click', e => {
+      const tb = e.target.closest('.tab'); if (!tb) return;
+      document.querySelectorAll('#vTabs .tab').forEach(x=>x.classList.remove('active'));
+      tb.classList.add('active'); cls = tb.dataset.k; update();
+    });
+    ["vEtaSlider","vTSlider","vScSlider"].forEach(id => document.getElementById(id).addEventListener('input', update));
+    update();
+  }
+});
+
+// ---- Extension VI (flagship: chart restored) ----
+EXTENSIONS.push({
+  id: "VI", name: "VI &mdash; Enhanced Weathering", short: "Olivine, Serpentine, Basalt &mdash; the one Noah's read",
+  desc: "Reactor-accelerated silicate mineral carbonation. Practical (post-&eta;<sub>EW</sub>) yields, not theoretical ceiling.",
+  badge: "11/11 checks",
+  render(host) {
+    const SUBSTRATES = {
+      olivine: { name: "Olivine (high-purity dunite)", yieldLo: 0.25, yieldHi: 0.41,
+        margins: [{label:"Co-located", lo:-5, hi:475},{label:"No co-location", lo:-40, hi:400}] },
+      basaltG: { name: "Basalt, Class G", yieldLo: 0.06, yieldHi: 0.10,
+        margins: [{label:"Co-located", lo:125, hi:475},{label:"No co-location", lo:125, hi:475}] },
+      basaltC: { name: "Basalt, Class C", yieldLo: 0.04, yieldHi: 0.10,
+        margins: [{label:"Co-located", lo:105, hi:445},{label:"No co-location", lo:105, hi:445}] },
+    };
+    let current = "olivine";
+    host.innerHTML = `
+      <div class="content-grid">
+        <div>
+          <h2 class="section">Substrate</h2>
+          <div class="tabs" id="viTabs"><div class="tab active" data-k="olivine">Olivine</div><div class="tab" data-k="basaltG">Basalt G</div><div class="tab" data-k="basaltC">Basalt C</div></div>
+          <h2 class="section">Deployment</h2>
+          <div class="control"><label><span class="label-text">Throughput</span> <span class="val" id="viT">10,000 t/yr</span></label>
+            <input type="range" id="viTSlider" min="1000" max="100000" step="1000" value="10000">
+          </div>
+          <div class="control"><label><span class="label-text">Margin scenario</span></label>
+            <div class="toggle-2" id="viMToggle">
+              <button class="toggle-opt active" data-i="0">Co-located</button>
+              <button class="toggle-opt" data-i="1">No co-location</button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2 class="section">Output</h2>
+          <div class="kpis">
+            <div class="kpi"><div class="label">CO&#8322; removed</div><div class="value" id="viCO2">&ndash;<span class="unit">t/yr</span></div></div>
+            <div class="kpi"><div class="label">Net benefit</div><div class="value" id="viBen">&ndash;<span class="unit">$/yr</span></div></div>
+          </div>
+          <h2 class="section">CO&#8322; removal vs. throughput</h2>
+          <div class="chart-area"><svg id="viChart" viewBox="0 0 620 260" style="width:100%; height:100%;"></svg></div>
+          <div class="note flag">Serpentine isn't selectable &mdash; the source paper gives no practical CO&#8322; yield for it (gated behind Experiment Olivine-1). Not invented here.</div>
+        </div>
+      </div>`;
+    function drawChart(s, curThroughput) {
+      const svg = document.getElementById('viChart');
+      const W = 620, H = 260, ML = 60, MR = 16, MT = 16, MB = 36;
+      const plotW = W - ML - MR, plotH = H - MT - MB;
+      const tMax = 100000, yMax = tMax * s.yieldHi * 1.08;
+      const xScale = t => ML + (t/tMax)*plotW, yScale = c => MT + plotH - (c/yMax)*plotH;
+
+      const pathHi = `M${xScale(0)},${yScale(0)} L${xScale(tMax)},${yScale(tMax*s.yieldHi)}`;
+      const pathLo = `M${xScale(0)},${yScale(0)} L${xScale(tMax)},${yScale(tMax*s.yieldLo)}`;
+      const bandPath = `${pathHi} L${xScale(tMax)},${yScale(tMax*s.yieldLo)} L${xScale(0)},${yScale(0)} Z`;
+
+      let grid = "";
+      for (let i=0;i<=5;i++){
+        const yv=yMax*i/5, y=yScale(yv);
+        grid += `<line x1="${ML}" y1="${y}" x2="${W-MR}" y2="${y}" stroke="#e3e7ee" stroke-width="1"/>`;
+        grid += `<text x="${ML-8}" y="${y+4}" font-size="10" fill="#5b6472" text-anchor="end">${fmt(yv)}</text>`;
+      }
+      for (let i=0;i<=5;i++){
+        const tv=tMax*i/5, x=xScale(tv);
+        grid += `<text x="${x}" y="${H-MB+18}" font-size="10" fill="#5b6472" text-anchor="middle">${fmt(tv/1000)}k</text>`;
+      }
+
+      const curX = xScale(curThroughput), curYLo = yScale(curThroughput*s.yieldLo), curYHi = yScale(curThroughput*s.yieldHi);
+
+      svg.innerHTML = `
+        ${grid}
+        <path d="${bandPath}" fill="#2f5fa3" opacity="0.10"/>
+        <path d="${pathHi}" fill="none" stroke="#17324f" stroke-width="2.25" stroke-linecap="round"/>
+        <path d="${pathLo}" fill="none" stroke="#17324f" stroke-width="1.25" stroke-dasharray="4,3" opacity="0.5" stroke-linecap="round"/>
+        <line x1="${curX}" y1="${MT}" x2="${curX}" y2="${MT+plotH}" stroke="#2f5fa3" stroke-width="1" stroke-dasharray="4,3"/>
+        <circle cx="${curX}" cy="${curYHi}" r="5" fill="#2f5fa3" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="${curX}" cy="${curYLo}" r="4" fill="#17324f" stroke="#fff" stroke-width="1.5"/>
+        <text x="${W/2}" y="${H-4}" font-size="10.5" fill="#12161c" text-anchor="middle">Annual throughput (thousand t/yr)</text>
+        <text x="14" y="${H/2}" font-size="10.5" fill="#12161c" text-anchor="middle" transform="rotate(-90 14 ${H/2})">CO&#8322; removed (t/yr)</text>
+      `;
+    }
+    function update() {
+      const s = SUBSTRATES[current];
+      const t = parseFloat(document.getElementById('viTSlider').value);
+      const mIdx = parseInt(document.querySelector('#viMToggle .toggle-opt.active').dataset.i);
+      const scenario = s.margins[mIdx];
+      document.getElementById('viT').textContent = fmt(t) + " t/yr";
+      updateSliderFill(document.getElementById('viTSlider'));
+      const co2Lo = t*s.yieldLo, co2Hi = t*s.yieldHi;
+      setKpi('viCO2', fmt(co2Lo) + "&ndash;" + fmt(co2Hi) + '<span class="unit">t/yr</span>');
+      const benLo = co2Lo*scenario.lo, benHi = co2Hi*scenario.hi;
+      setKpi('viBen', fmtMoney(benLo) + "&ndash;" + fmtMoney(benHi) + '<span class="unit">/yr</span>');
+      drawChart(s, t);
+    }
+    document.getElementById('viTabs').addEventListener('click', e => {
+      const t = e.target.closest('.tab'); if (!t) return;
+      document.querySelectorAll('#viTabs .tab').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active'); current = t.dataset.k;
+      document.querySelectorAll('#viMToggle .toggle-opt').forEach(x=>x.classList.remove('active'));
+      document.querySelector('#viMToggle .toggle-opt[data-i="0"]').classList.add('active');
+      update();
+    });
+    document.getElementById('viTSlider').addEventListener('input', update);
+    document.getElementById('viMToggle').addEventListener('click', e => {
+      const btn = e.target.closest('.toggle-opt'); if (!btn) return;
+      document.querySelectorAll('#viMToggle .toggle-opt').forEach(x=>x.classList.remove('active'));
+      btn.classList.add('active'); update();
+    });
+    update();
+  }
+});
+
+// ---- Extension VII ----
+EXTENSIONS.push({
+  id: "VII", name: "VII &mdash; Brine Electrochemical", short: "Geothermal Brine, Produced Water, Mine Dewatering",
+  desc: "No solid substrate, no acid consumption &mdash; electrochemical carbonation of pre-dissolved Ca&sup2;&#8314;, producing H&#8322; and Cl&#8322; as stoichiometric co-products.",
+  badge: "9/9 checks",
+  render(host) {
+    host.innerHTML = `
+      <div class="content-grid">
+        <div>
+          <h2 class="section">Brine</h2>
+          <div class="control"><label><span class="label-text">Ca&sup2;&#8314; concentration</span> <span class="val" id="viiCa">3.0 g/L</span></label>
+            <input type="range" id="viiCaSlider" min="0.5" max="27.4" step="0.5" value="3.0">
+          </div>
+          <div class="control"><label><span class="label-text">Flow rate</span> <span class="val" id="viiQ">1,000 m&sup3;/day</span></label>
+            <input type="range" id="viiQSlider" min="100" max="5000" step="100" value="1000">
+          </div>
+          <div class="control"><label><span class="label-text">&eta;<sub>Ca</sub></span> <span class="val" id="viiEta">0.60</span></label>
+            <input type="range" id="viiEtaSlider" min="0.40" max="0.85" step="0.01" value="0.60">
+          </div>
+        </div>
+        <div>
+          <h2 class="section">Output</h2>
+          <div class="kpis">
+            <div class="kpi"><div class="label">CO&#8322; mineralized</div><div class="value" id="viiCO2">&ndash;<span class="unit">t/yr</span></div></div>
+            <div class="kpi"><div class="label">H&#8322; co-product</div><div class="value" id="viiH2">&ndash;<span class="unit">t/yr</span></div></div>
+            <div class="kpi"><div class="label">Cl&#8322; co-product</div><div class="value" id="viiCl2">&ndash;<span class="unit">t/yr</span></div></div>
+            <div class="kpi"><div class="label">Cl&#8322; sale value</div><div class="value" id="viiClVal">&ndash;<span class="unit">$/yr</span></div></div>
+          </div>
+          <div class="note">Salton Sea geothermal brine reaches 27.4 g/L Ca&sup2;&#8314; &mdash; the highest of any brine type in this extension. Cl&#8322; priced at $435/t (bulk market midpoint).</div>
+        </div>
+      </div>`;
+    function update() {
+      const ca = parseFloat(document.getElementById('viiCaSlider').value);
+      const qDay = parseFloat(document.getElementById('viiQSlider').value);
+      const eta = parseFloat(document.getElementById('viiEtaSlider').value);
+      document.getElementById('viiCa').textContent = ca.toFixed(1) + " g/L";
+      document.getElementById('viiQ').textContent = fmt(qDay) + " m&sup3;/day";
+      document.getElementById('viiEta').textContent = eta.toFixed(2);
+      [document.getElementById('viiCaSlider'), document.getElementById('viiQSlider'), document.getElementById('viiEtaSlider')].forEach(updateSliderFill);
+
+      const qYr = qDay * 365;
+      const caMassTYr = ca * qYr / 1000;
+      const co2 = caMassTYr * (44.01/40.08) * eta;
+      setKpi('viiCO2', fmt(co2) + '<span class="unit">t/yr</span>');
+      const h2 = co2 * (2*1.008/44.01);
+      setKpi('viiH2', fmt(h2, 1) + '<span class="unit">t/yr</span>');
+      const cl2 = co2 * (70.90/44.01);
+      setKpi('viiCl2', fmt(cl2) + '<span class="unit">t/yr</span>');
+      setKpi('viiClVal', fmtMoney(cl2*435) + '<span class="unit">/yr</span>');
+    }
+    ["viiCaSlider","viiQSlider","viiEtaSlider"].forEach(id => document.getElementById(id).addEventListener('input', update));
+    update();
+  }
+});
+
+// ---- Extension VIII ----
+EXTENSIONS.push({
+  id: "VIII", name: "VIII &mdash; Acid Sulfate Wetlands", short: "Peat, Mangrove, Shrimp Ponds, Coastal Fen",
+  desc: "Most of this extension's real value (the ecosystem carbon benefit the reactor enables) is not reactor-computable. Only the cleanly stoichiometric pieces are modeled here.",
+  badge: "2/2 checks (deliberately scoped)",
+  render(host) {
+    host.innerHTML = `
+      <div class="content-grid">
+        <div>
+          <h2 class="section">Stream B (dissolved peat CO&#8322;)</h2>
+          <div class="control"><label><span class="label-text">Dissolved CO&#8322;</span> <span class="val" id="viiiCo2">120 mg/L</span></label>
+            <input type="range" id="viiiCo2Slider" min="0.012" max="0.12" step="0.006" value="0.12">
+            <div class="hint">Range: 12&ndash;120 mg/L (5,000&ndash;50,000 &micro;atm pCO&#8322;)</div>
+          </div>
+          <div class="control"><label><span class="label-text">Flow rate</span> <span class="val" id="viiiQ">5,000 m&sup3;/day</span></label>
+            <input type="range" id="viiiQSlider" min="500" max="20000" step="500" value="5000">
+          </div>
+        </div>
+        <div>
+          <h2 class="section">Output</h2>
+          <div class="kpis">
+            <div class="kpi"><div class="label">Zone 3 CaCO&#8323;</div><div class="value" id="viiiCaCO3">&ndash;<span class="unit">t/yr</span></div></div>
+          </div>
+          <div class="note flag">This is the reactor's <strong>direct</strong> mineral output only &mdash; the paper's own headline avoided-emissions number is orders of magnitude larger and not reactor-computable. Its exact net figure (after CH&#8324; correction) couldn't be reproduced from the paper's stated inputs and isn't shown here rather than guessed at.</div>
+        </div>
+      </div>`;
+    function update() {
+      const co2 = parseFloat(document.getElementById('viiiCo2Slider').value);
+      const qDay = parseFloat(document.getElementById('viiiQSlider').value);
+      document.getElementById('viiiCo2').textContent = (co2*1000).toFixed(0) + " mg/L";
+      document.getElementById('viiiQ').textContent = fmt(qDay) + " m&sup3;/day";
+      [document.getElementById('viiiCo2Slider'), document.getElementById('viiiQSlider')].forEach(updateSliderFill);
+      const kgDay = co2 * qDay * (100/44);
+      const tYr = kgDay * 365 / 1000;
+      setKpi('viiiCaCO3', fmt(tYr) + '<span class="unit">t/yr</span>');
+    }
+    ["viiiCo2Slider","viiiQSlider"].forEach(id => document.getElementById(id).addEventListener('input', update));
+    update();
+  }
+});
+
+// ---- Extension IX ----
+EXTENSIONS.push({
+  id: "IX", name: "IX &mdash; Marine Alkalinity", short: "Seawater OAE + Maritime Waste Exchange",
+  desc: "Extension VII's chemistry applied to variable, ship-traffic-dependent Ca&sup2;&#8314; &mdash; seawater baseline (420 mg/L) augmented by ship waste reception.",
+  badge: "5/5 checks",
+  render(host) {
+    host.innerHTML = `
+      <div class="content-grid">
+        <div>
+          <h2 class="section">Ship traffic</h2>
+          <div class="control"><label><span class="label-text">Ships/week (large cruise)</span> <span class="val" id="ixShips">0</span></label>
+            <input type="range" id="ixShipsSlider" min="0" max="100" step="5" value="0">
+            <div class="hint">Each large cruise ship contributes ~252 mg/L Ca&sup2;&#8314; via incinerator ash; cargo vessels contribute only 7&ndash;10 mg/L &mdash; a &gt;25&times; difference.</div>
+          </div>
+          <h2 class="section">Platform</h2>
+          <div class="control"><label><span class="label-text">Seawater throughput</span> <span class="val" id="ixQ">1,000 m&sup3;/day</span></label>
+            <input type="range" id="ixQSlider" min="100" max="5000" step="100" value="1000">
+          </div>
+          <div class="control"><label><span class="label-text">&eta;<sub>Ca</sub></span> <span class="val" id="ixEta">0.525</span></label>
+            <input type="range" id="ixEtaSlider" min="0.40" max="0.65" step="0.025" value="0.525">
+          </div>
+        </div>
+        <div>
+          <h2 class="section">Output</h2>
+          <div class="kpis">
+            <div class="kpi"><div class="label">Effective Ca&sup2;&#8314;</div><div class="value" id="ixCaEff">&ndash;<span class="unit">mg/L</span></div></div>
+            <div class="kpi"><div class="label">CO&#8322; removed</div><div class="value" id="ixCO2">&ndash;<span class="unit">t/yr</span></div></div>
+          </div>
+          <div class="note">At 50 ships/week, effective Ca&sup2;&#8314; reaches 13,020 mg/L &mdash; equivalent to lower-tier industrial brine. Section 7.3 of the paper flags that a realistic cargo-dominant global fleet would be 20&ndash;40&times; lower.</div>
+        </div>
+      </div>`;
+    function update() {
+      const ships = parseFloat(document.getElementById('ixShipsSlider').value);
+      const qDay = parseFloat(document.getElementById('ixQSlider').value);
+      const eta = parseFloat(document.getElementById('ixEtaSlider').value);
+      document.getElementById('ixShips').textContent = ships;
+      document.getElementById('ixQ').textContent = fmt(qDay) + " m&sup3;/day";
+      document.getElementById('ixEta').textContent = eta.toFixed(3);
+      [document.getElementById('ixShipsSlider'), document.getElementById('ixQSlider'), document.getElementById('ixEtaSlider')].forEach(updateSliderFill);
+
+      const caEff = 420 + 252*ships;
+      setKpi('ixCaEff', fmt(caEff) + '<span class="unit">mg/L</span>');
+      const qYr = qDay * 365;
+      const caMassTYr = (caEff/1000) * qYr / 1000;
+      const co2 = caMassTYr * (44/40) * eta;
+      setKpi('ixCO2', fmt(co2) + '<span class="unit">t/yr</span>');
+    }
+    ["ixShipsSlider","ixQSlider","ixEtaSlider"].forEach(id => document.getElementById(id).addEventListener('input', update));
+    update();
+  }
+});
+
+// ---- Extension X ----
+EXTENSIONS.push({
+  id: "X", name: "X &mdash; Biomass Acid Waste", short: "Pyrolysis, HTC, Vinasse, OMW, Landfill Leachate",
+  desc: "Weak organic acid streams &mdash; titratable acidity basis, not pH-derived [H&#8314;]. Two pathways: self-contained biochar/hydrochar, or co-located-substrate liquid streams.",
+  badge: "8/8 checks",
+  render(host) {
+    host.innerHTML = `
+      <div class="content-grid">
+        <div>
+          <h2 class="section">Pathway</h2>
+          <div class="tabs" id="xTabs"><div class="tab active" data-k="char">Biochar/HTC char</div><div class="tab" data-k="vinasse">Vinasse (liquid)</div></div>
+
+          <div id="xCharControls">
+            <h2 class="section">Whole-char alkalinity</h2>
+            <div class="control"><label><span class="label-text">Alkalinity</span> <span class="val" id="xAlk">1.00 mol H&#8314;/kg</span></label>
+              <input type="range" id="xAlkSlider" min="0.23" max="2.70" step="0.01" value="1.0">
+              <div class="hint">Directly measured range: 0.23&ndash;2.70 mol H&#8314;/kg &mdash; nearly two orders of magnitude, the largest proton-balance uncertainty in this extension.</div>
+            </div>
+            <div class="control"><label><span class="label-text">Global biochar production</span> <span class="val" id="xBiochar">0.80 Mt/yr</span></label>
+              <input type="range" id="xBiocharSlider" min="0.71" max="0.88" step="0.01" value="0.80">
+            </div>
+          </div>
+
+          <div id="xVinasseControls" style="display:none;">
+            <h2 class="section">Intrinsic Ca&sup2;&#8314;/Mg&sup2;&#8314;</h2>
+            <div class="control"><label><span class="label-text">Ca&sup2;&#8314;</span> <span class="val" id="xCa">1800 mg/L</span></label>
+              <input type="range" id="xCaSlider" min="527" max="3160" step="50" value="1800">
+            </div>
+            <div class="control"><label><span class="label-text">Mg&sup2;&#8314;</span> <span class="val" id="xMg">215 mg/L</span></label>
+              <input type="range" id="xMgSlider" min="162" max="269" step="5" value="215">
+            </div>
+            <div class="control"><label><span class="label-text">Global vinasse volume</span> <span class="val" id="xVol">600 billion L/yr</span></label>
+              <input type="range" id="xVolSlider" min="430" max="770" step="10" value="600">
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2 class="section">Output</h2>
+          <div class="kpis" id="xKpis">
+            <div class="kpi"><div class="label">CO&#8322; capacity</div><div class="value" id="xCap">&ndash;<span class="unit">g/kg</span></div></div>
+            <div class="kpi"><div class="label">Global ceiling</div><div class="value" id="xCeiling">&ndash;<span class="unit">t/yr</span></div></div>
+          </div>
+          <div class="note">Vinasse's mineral-carbonation pathway dominates this extension's realistic combined CO&#8322; ceiling. This tracks only intrinsic Ca&sup2;&#8314;/Mg&sup2;&#8314; content &mdash; additive to (not inclusive of) whatever a paired external amendment mineralizes, which the paper flags as currently unquantifiable.</div>
+        </div>
+      </div>`;
+    let pathway = "char";
+    function update() {
+      if (pathway === "char") {
+        const alk = parseFloat(document.getElementById('xAlkSlider').value);
+        const biochar = parseFloat(document.getElementById('xBiocharSlider').value);
+        document.getElementById('xAlk').textContent = alk.toFixed(2) + " mol H&#8314;/kg";
+        document.getElementById('xBiochar').textContent = biochar.toFixed(2) + " Mt/yr";
+        [document.getElementById('xAlkSlider'), document.getElementById('xBiocharSlider')].forEach(updateSliderFill);
+        const capGKg = (alk/2)*44.01;
+        setKpi('xCap', fmt(capGKg, 1) + '<span class="unit">g/kg</span>');
+        const ceiling = biochar*1e6 * capGKg / 1000;
+        setKpi('xCeiling', fmt(ceiling) + '<span class="unit">t/yr</span>');
+      } else {
+        const ca = parseFloat(document.getElementById('xCaSlider').value);
+        const mg = parseFloat(document.getElementById('xMgSlider').value);
+        const vol = parseFloat(document.getElementById('xVolSlider').value);
+        document.getElementById('xCa').textContent = fmt(ca) + " mg/L";
+        document.getElementById('xMg').textContent = fmt(mg) + " mg/L";
+        document.getElementById('xVol').textContent = fmt(vol) + " billion L/yr";
+        [document.getElementById('xCaSlider'), document.getElementById('xMgSlider'), document.getElementById('xVolSlider')].forEach(updateSliderFill);
+        const rateGL = ((ca/40.08)+(mg/24.3))*1e-3*44.01;
+        setKpi('xCap', fmt(rateGL, 2) + '<span class="unit">g/L</span>');
+        const ceiling = rateGL * vol * 1e9 / 1e6;
+        setKpi('xCeiling', fmt(ceiling) + '<span class="unit">t/yr</span>');
+      }
+    }
+    document.getElementById('xTabs').addEventListener('click', e => {
+      const t = e.target.closest('.tab'); if (!t) return;
+      document.querySelectorAll('#xTabs .tab').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active'); pathway = t.dataset.k;
+      document.getElementById('xCharControls').style.display = pathway === 'char' ? 'block' : 'none';
+      document.getElementById('xVinasseControls').style.display = pathway === 'vinasse' ? 'block' : 'none';
+      document.querySelector('#xKpis .kpi:first-child .label').textContent = pathway === 'char' ? 'CO₂ capacity' : 'Mineralization rate';
+      update();
+    });
+    ["xAlkSlider","xBiocharSlider","xCaSlider","xMgSlider","xVolSlider"].forEach(id => document.getElementById(id).addEventListener('input', update));
+    update();
+  }
+});
+
+// ===========================================================================
+// SHELL: nav + panel rendering
+// ===========================================================================
+const navList = document.getElementById('navList');
+const panelHost = document.getElementById('panelHost');
+
+EXTENSIONS.forEach((ext, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'nav-item' + (i === 0 ? ' active' : '');
+  btn.innerHTML = `<span class="num">${i+1}</span> ${ext.name}`;
+  btn.addEventListener('click', () => selectExtension(ext.id));
+  btn.dataset.id = ext.id;
+  navList.appendChild(btn);
+});
+
+function selectExtension(id) {
+  const ext = EXTENSIONS.find(e => e.id === id);
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.toggle('active', b.dataset.id === id));
+  panelHost.innerHTML = `
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">${ext.name.replace(/&mdash;/,'\u2014')}</div>
+        <div class="panel-desc">${ext.desc}</div>
+      </div>
+      <div id="extBody"></div>
+    </div>`;
+  ext.render(document.getElementById('extBody'));
+}
+
+// Deep-linkable panels: #VI, #I-slag, etc. Falls back to the first extension.
+const hashId = window.location.hash.replace('#', '');
+const initial = EXTENSIONS.find(e => e.id === hashId) ? hashId : EXTENSIONS[0].id;
+selectExtension(initial);
+window.addEventListener('hashchange', () => {
+  const id = window.location.hash.replace('#', '');
+  if (EXTENSIONS.find(e => e.id === id)) selectExtension(id);
+});
+navList.addEventListener('click', () => {
+  const activeId = document.querySelector('.nav-item.active')?.dataset.id;
+  if (activeId) history.replaceState(null, '', '#' + activeId);
+});
+</script>
+</body>
+</html>
