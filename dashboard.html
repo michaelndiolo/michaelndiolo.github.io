@@ -733,7 +733,7 @@ EXTENSIONS.push({
 // ---- Extension VI (flagship: chart restored) ----
 EXTENSIONS.push({
   id: "VI", name: "VI &mdash; Enhanced Weathering", short: "Olivine, Serpentine, Basalt &mdash; the one Noah's read",
-  desc: "Reactor-accelerated silicate mineral carbonation. Practical (post-&eta;<sub>EW</sub>) yields, not theoretical ceiling.",
+  desc: "Reactor-accelerated silicate dissolution and CO&#8322; capture &mdash; solid carbonate for calcium-richer basalt, verified ocean alkalinity (OAE) for magnesium-dominant olivine. Practical (post-&eta;<sub>EW</sub>) yields, not theoretical ceiling.",
   badge: "11/11 checks",
   render(host) {
     const SUBSTRATES = {
@@ -770,6 +770,7 @@ EXTENSIONS.push({
           <h2 class="section">CO&#8322; removal vs. throughput</h2>
           <div class="chart-area"><svg id="viChart" viewBox="0 0 620 260" style="width:100%; height:100%;"></svg></div>
           <div class="note flag">Serpentine isn't selectable &mdash; the source paper gives no practical CO&#8322; yield for it (gated behind Experiment Olivine-1). Not invented here.</div>
+          <div class="note flag">The yield range above (&eta;<sub>EW</sub> = 0.40&ndash;0.65) is a dissolution-efficiency assumption borrowed from other substrate classes in the literature, not yet a measured value for this chemistry &mdash; same caveat as the platform-wide number on the Dashboard overview. Gated on Experiment Olivine-1, not yet run. For Olivine specifically: the CO&#8322; counted here is removed as dissolved ocean alkalinity (OAE), not as a solid carbonate product &mdash; magnesium's own kinetic barrier blocks solid carbonate formation at ambient temperature.</div>
         </div>
       </div>`;
     function drawChart(s, curThroughput) {
