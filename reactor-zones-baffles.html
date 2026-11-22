@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261122c">
+<link rel="stylesheet" href="style.css?v=20261122d">
 <script data-goatcounter="https://michaelndiolo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body class="">
@@ -31,7 +31,7 @@
 <a class="" href="about.html">About</a>
 <a class="" href="olivair.html">OlivAir</a>
 <a class="has-sub active" href="reactor.html">Reactor</a>
-<div class="subnav-wrap open"><div class="subnav"><a class="" href="reactor-zone0.html">Zone 0</a><a class="active" href="reactor-zones-baffles.html">Zones 1&ndash;3 and baffles</a></div></div>
+<div class="subnav-wrap open"><div class="subnav"><a class="" href="reactor-zone0.html">Zone 0</a><a class="active" href="reactor-zones-baffles.html">Zones 1&ndash;3 and baffles<i class="nav-dot" aria-hidden="true"></i></a></div></div>
 <a class="" href="reactor-model.html">Model and tests</a>
 <a class="" href="engineering.html">Engineering</a>
 <a class="" href="figures.html">Figures</a>
@@ -47,25 +47,45 @@
 </aside>
 <!--rx--><script>
 (function(){
-  var w=document.querySelector('.subnav-wrap'),nav=document.getElementById('sidenav'); if(!w||!nav) return;
-  var target=w.classList.contains('open'),reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,prev=null;
-  try{prev=sessionStorage.getItem('rxOpen');}catch(e){}
-  if(!reduce&&prev!==null&&(prev==='1')!==target){
-    w.style.transition='none'; w.classList.toggle('open',prev==='1'); void w.offsetHeight; w.style.transition='';
-    requestAnimationFrame(function(){requestAnimationFrame(function(){w.classList.toggle('open',target);});});
+  var doc=document,w=doc.querySelector('.subnav-wrap'),nav=doc.getElementById('sidenav');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function get(k){try{return sessionStorage.getItem(k);}catch(e){return null;}}
+  function set(k,v){try{sessionStorage.setItem(k,v);}catch(e){}}
+  var dot=nav&&nav.querySelector('.nav-dot');
+  function center(el){var r=el.getBoundingClientRect();return {x:r.left+r.width/2,y:r.top+r.height/2};}
+  function saveDot(){ if(dot){var c=center(dot); set('rxDot',c.x.toFixed(1)+','+c.y.toFixed(1)); set('rxOpen',w&&w.classList.contains('open')?'1':'0');} }
+  if(w&&nav&&!reduce){
+    var target=w.classList.contains('open'),prev=get('rxOpen');
+    if(prev!==null&&(prev==='1')!==target){
+      w.style.transition='none'; w.classList.toggle('open',prev==='1'); void w.offsetHeight; w.style.transition='';
+      requestAnimationFrame(function(){requestAnimationFrame(function(){w.classList.toggle('open',target);});});
+    }
   }
-  try{sessionStorage.setItem('rxOpen',target?'1':'0');}catch(e){}
-  nav.addEventListener('click',function(e){
-    var a=e.target.closest&&e.target.closest('a'); if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
-    if(a.closest('.subnav-wrap')) return;
-    var toReactor=a.classList.contains('has-sub'); if(reduce||toReactor===target) return;
-    e.preventDefault(); w.classList.toggle('open',toReactor);
-    try{sessionStorage.setItem('rxOpen',toReactor?'1':'0');}catch(x){}
-    setTimeout(function(){location.href=a.href;},300);
+  if(dot&&!reduce){
+    var pd=get('rxDot');
+    if(pd){
+      var a=pd.split(','),c=center(dot),dx=parseFloat(a[0])-c.x,dy=parseFloat(a[1])-c.y;
+      if(isFinite(dx)&&isFinite(dy)&&(Math.abs(dx)>.5||Math.abs(dy)>.5)){
+        dot.style.transition='none'; dot.style.transform='translate('+dx+'px,'+dy+'px)'; void dot.offsetHeight; dot.style.transition='';
+        requestAnimationFrame(function(){requestAnimationFrame(function(){dot.style.transform='';});});
+      }
+    }
+  }
+  window.addEventListener('pagehide',saveDot);
+  doc.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href]'); if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
+    if(a.target&&a.target!=='_self') return; if(a.hasAttribute('download')) return;
+    var u; try{u=new URL(a.href,location.href);}catch(x){return;}
+    if(u.origin!==location.origin||!/\.html?$|\/$/.test(u.pathname)) return;
+    if(u.pathname===location.pathname&&u.search===location.search) return;
+    saveDot(); if(reduce) return;
+    var m=doc.querySelector('.main'); if(!m) return;
+    e.preventDefault(); m.classList.add('page-out');
+    setTimeout(function(){location.href=a.href;},190);
   });
+  window.addEventListener('pageshow',function(e){ if(e.persisted){var m=doc.querySelector('.main'); if(m) m.classList.remove('page-out');} });
 })();
 </script><!--/rx-->
-
 <div class="main">
   <div class="top-row">
     <details class="mnav"><summary>Menu</summary><div class="mnav-list"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="olivair.html">OlivAir</a><a class="active" href="reactor.html">Reactor</a><a class="" href="reactor-model.html">Model and tests</a><a class="" href="engineering.html">Engineering</a><a class="" href="figures.html">Figures</a><a class="" href="contact.html">Contact</a></div></details>
