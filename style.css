@@ -560,3 +560,32 @@ footer { padding: 26px 48px; display: flex; justify-content: space-between; font
 .panels3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
 .flow-step .tile-k { margin-bottom:6px; }
 @media (max-width:860px) { .panels3 { grid-template-columns:1fr; } .duo { grid-template-columns:1fr !important; } }
+
+/* Sidebar sub-navigation + mobile menu */
+.sidebar { overflow-y: auto; }
+.sidebar nav a.in-section { color: var(--text); }
+.subnav { display:flex; flex-direction:column; gap:11px; margin:-8px 0 0 16px; padding-left:14px; border-left:1px solid var(--border); }
+.sidebar nav .subnav a { font-size:13px; font-weight:500; }
+.sidebar nav .subnav a::before { left:-19px; }
+.mnav { display:none; }
+@media (max-width: 860px) {
+  .top-row { flex-wrap: wrap; gap: 10px; padding: 20px 20px 0; }
+  .mnav { display:block; width:100%; text-transform:none; letter-spacing:0; }
+  .mnav summary { list-style:none; cursor:pointer; display:inline-block; font-size:13px; font-weight:700; color:var(--text); border:1px solid var(--border); border-radius:8px; padding:7px 14px; background:var(--bg); }
+  .mnav summary::-webkit-details-marker { display:none; }
+  .mnav summary::after { content:" \25BE"; }
+  .mnav[open] summary::after { content:" \25B4"; }
+  .mnav-list { display:flex; flex-direction:column; gap:2px; margin-top:8px; border:1px solid var(--border); border-radius:10px; padding:8px 4px; background:var(--bg); }
+  .mnav-list a { font-size:14px; font-weight:600; color:var(--text-dim); padding:8px 14px; }
+  .mnav-list a.sub { font-size:13px; font-weight:500; padding-left:30px; }
+  .mnav-list a.active { color:var(--text); background:var(--accent-bg); border-radius:6px; }
+}
+.sidebar-bottom { padding-top: 18px; }
+@media (min-width: 861px) and (max-height: 820px) {
+  .sidebar { padding-top: 28px; padding-bottom: 24px; }
+  .sidebar .name { margin-bottom: 30px; }
+  .sidebar nav { gap: 13px; }
+  .subnav { gap: 9px; margin-top: -4px; }
+  .sidebar-cta { margin-top: 12px; }
+  .sidebar-link { margin-bottom: 4px; }
+}
