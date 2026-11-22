@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OlivAir — Michael Ndiolo</title>
-<meta name="description" content="OlivAir — an independent industrial decarbonization platform by Michael Ndiolo.">
+<meta name="description" content="OlivAir — an independent reactor platform for industrial CO&#8322; mineralization by Michael Ndiolo.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
 <link rel="apple-touch-icon" href="assets/favicon-180.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="OlivAir — Michael Ndiolo">
-<meta property="og:description" content="OlivAir — an independent industrial decarbonization platform by Michael Ndiolo.">
+<meta property="og:description" content="OlivAir — an independent reactor platform for industrial CO&#8322; mineralization by Michael Ndiolo.">
 <meta property="og:image" content="assets/olivair-logo.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OlivAir — Michael Ndiolo">
-<meta name="twitter:description" content="OlivAir — an independent industrial decarbonization platform by Michael Ndiolo.">
+<meta name="twitter:description" content="OlivAir — an independent reactor platform for industrial CO&#8322; mineralization by Michael Ndiolo.">
 <meta name="twitter:image" content="assets/olivair-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +30,7 @@
     <a class="" href="index.html">Home</a>
 <a class="" href="about.html">About</a>
 <a class="active" href="olivair.html">OlivAir</a>
+<a class="" href="reactor.html">Reactor</a>
 <a class="" href="engineering.html">Engineering</a>
 <a class="" href="dashboard.html">Dashboard</a>
 <a class="" href="figures.html">Figures</a>
@@ -54,14 +55,63 @@
   
 <header class="hero small reveal">
   <h1>OlivAir</h1>
-  <p class="lead">An independent reactor platform that turns industrial acid waste into a driver for mineral dissolution and verified carbon removal &mdash; solid carbonate or ocean alkalinity, depending on the rock &mdash; three mechanisms covered by a filed U.S. provisional patent application, and a ten-part paper series.</p>
+  <p class="lead">A reactor that uses CO&#8322; dissolved in water as the acid to dissolve calcium-rich waste such as steel slag, and controls how long each grain stays in it. Modeled so far, not yet built. Parts are covered by a filed U.S. provisional patent application.</p>
   <div class="hero-cta">
-    <a class="link-btn magnet" href="figures.html">See the diagrams &rarr;</a>
-    <a class="link-btn magnet" href="mailto:michaelndiolo@gmail.com?subject=OlivAir">Ask about the papers &rarr;</a>
+    <a class="link-btn magnet" href="reactor.html">Explore the reactor &rarr;</a>
+    <a class="link-btn magnet" href="mailto:michaelndiolo@gmail.com?subject=OlivAir">Ask about the project &rarr;</a>
   </div>
 </header>
 
 
+
+<section id="project">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">What OlivAir does</span><span class="sec-line"></span></div>
+    <p class="big-lede reveal">Steel plants make CO&#8322; and calcium-rich waste at the same site. <em>OlivAir uses one to treat the other.</em></p>
+
+    <div class="flow reveal">
+      <div class="flow-step"><div class="flow-n">1</div><h4>The CO&#8322; is the acid</h4><p>Exhaust CO&#8322; dissolves in water as carbonic acid. A strong acid would dissolve the same calcium but leave a neutral salt, so no CO&#8322; would be stored.</p></div>
+      <div class="flow-step"><div class="flow-n">2</div><h4>The acid dissolves the calcium</h4><p>It pulls calcium out of slag or kiln dust. Each calcium ion leaves carrying two CO&#8322; as two bicarbonate ions.</p></div>
+      <div class="flow-step"><div class="flow-n">3</div><h4>The CO&#8322; stays out of the air</h4><p>The bicarbonate leaves as dissolved alkalinity, or is precipitated as solid carbonate, depending on the route.</p></div>
+    </div>
+
+    <div class="newvessel reveal">
+      <div class="nv-img"><img src="assets/fig1-vessel-crop.jpg" alt="OlivAir reactor cutaway, vessel"></div>
+      <div>
+        <div class="nv-kicker">What is new</div>
+        <h3>The vessel</h3>
+        <p class="nv-lead">The chemistry is published (Shank et al., 2026; Ragipani et al., 2019). The problem is time: each grain needs a set time in the acid, and in an ordinary stirred tank every grain gets a different one.</p>
+        <div class="nv-list">
+          <div class="nv-item"><i>0</i><div><b>Zone 0 sorts the grains</b><span>Acid flows up through a bed at the base. Coarse, unreacted grains stay low, and finer, partly dissolved grains rise.</span></div></div>
+          <div class="nv-item"><i>&uarr;</i><div><b>The impeller lifts them</b><span>It carries the rising grains into the zones above, where the pH steps up from zone to zone.</span></div></div>
+          <div class="nv-item"><i>&#9707;</i><div><b>Hollow baffles catch the rest</b><span>Baffles along the wall are meant to catch fines and precipitating metals before the water is discharged.</span></div></div>
+        </div>
+        <a class="link-btn magnet" href="reactor.html" style="margin-top:22px">Walk through the reactor &rarr;</a>
+      </div>
+    </div>
+
+    <div class="aims reveal">
+      <div class="aim"><b>Less energy than a stirred tank</b><span class="st st-model">Modeled, not measured</span></div>
+      <div class="aim"><b>Coarser waste solids</b><span class="st st-model">Modeled, not measured</span></div>
+      <div class="aim"><b>Cleaner products</b><span class="st st-model">Modeled, not measured</span></div>
+    </div>
+    <p class="aims-note reveal">The bench tests that matter most are the dissolution rate of real slag in carbonic acid, and whether partly dissolved grains really do become lighter and rise.</p>
+
+    <div class="duo reveal">
+      <div class="panel">
+        <h4>What it is not</h4>
+        <div class="p-big">Storage, not air removal.</div>
+        <p>The CO&#8322; comes from an exhaust stack, so this stores captured point-source CO&#8322;. It does not remove CO&#8322; from the air, and I do not claim removal credits.</p>
+      </div>
+      <div class="panel dark">
+        <h4>Where it stands</h4>
+        <div class="p-big">TRL 2 of 9</div>
+        <div class="trl"><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <p>Analytically modeled, not yet built or tested. With no credit applied, the model puts the cost at about $175 to $560 per net tonne without a favorable host. That is above the $85 US tax credit for point-source capture, if the project even qualified. One steel-mill case comes in under it, on two prices that have no source.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="mark">
   <div class="wrap">
@@ -90,8 +140,8 @@
         </button>
       </div>
       <div class="mark-caption">
-        <p class="mc active" data-step="0">The recycling symbol is the most recognized environmental icon in the world &mdash; circulation, reuse, continuity. The OlivAir mark starts with that familiarity and breaks it: three arms begin exactly as a loop would, then bend inward instead of closing it. Three waste streams enter the system; what looks like circulation is termination &mdash; nothing returns.</p>
-        <p class="mc" data-step="1">Where the loop would close, the mark narrows to a downward point instead &mdash; the reactor, where acid, mineral, and CO&#8322; converge into durable carbon removal &mdash; stable carbonate minerals for calcium-rich feedstocks, verified dissolved alkalinity for magnesium-rich ones &mdash; that won't return to the atmosphere on any human timescale.</p>
+        <p class="mc active" data-step="0">The recycling symbol is the most recognized environmental icon in the world &mdash; circulation, reuse, continuity. The OlivAir mark starts with that familiarity and breaks it: three arms begin exactly as a loop would, then bend inward instead of closing it. Three streams enter the system: exhaust CO&#8322;, calcium-rich solids, and water. What looks like circulation is termination &mdash; the CO&#8322; is meant to stay locked away and not return to the air.</p>
+        <p class="mc" data-step="1">Where the loop would close, the mark narrows to a downward point instead &mdash; the reactor, where CO&#8322;, water, and mineral converge. The CO&#8322; leaves as dissolved bicarbonate alkalinity or as solid carbonate, depending on the route, in forms meant to stay out of the atmosphere on a human timescale.</p>
         <p class="mc" data-step="2">In the dark space the converging arms leave behind, a plant form emerges &mdash; not added as decoration, but carved by the geometry itself. <strong>I didn't invent the reaction. I just stopped wasting it.</strong></p>
       </div>
     </div>
@@ -100,48 +150,48 @@
 
 <section id="mechanisms">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-title">The mechanisms</span><span class="sec-line"></span></div>
-    <p class="reveal" style="color:var(--text-dim); max-width:680px; margin-bottom:8px;">A single reactor platform built around three mechanisms covered by a filed U.S. provisional patent application (No. 64/124,248), documented across a ten-part paper series.</p>
+    <div class="sec-head reveal"><span class="sec-title">The reactor</span><span class="sec-line"></span></div>
+    <p class="reveal" style="color:var(--text-dim); max-width:680px; margin-bottom:8px;">One vertical vessel with four functional zones. Parts of it are covered by a filed U.S. provisional patent application (No. 64/124,248).</p>
 
     <div class="card-grid reveal" style="margin-top:36px">
       <div class="proj-card">
         <div class="proj-visual">
-          <img src="assets/fig1-reactor-cutaway.jpg" alt="Reactor cutaway showing four functional zones">
+          <img src="assets/fig1-reactor-cutaway-v2.jpg" alt="Reactor cutaway showing four functional zones" style="object-fit:contain;background:#fff">
         </div>
         <div class="proj-body">
           <div class="k">Platform architecture</div>
-          <h3>OlivAir reactor platform</h3>
-          <p>A shared reactor architecture coupling acid neutralization with mineral carbonation, documented across a ten-part paper series.</p>
+          <h3>OlivAir reactor</h3>
+          <p>Acid enters at the base, so the pH is lowest at the bottom and rises toward the top, and each zone has its own residence time.</p>
         </div>
       </div>
       <div class="proj-card">
         <div class="proj-visual">
-          <img src="assets/fig4-anode-assembly.jpg" alt="Rod anode assembly and gas-capture sleeve detail">
-        </div>
-        <div class="proj-body">
-          <div class="k">Patent filed</div>
-          <h3>Protected-electrode chamber</h3>
-          <p>An isolated chamber design that protects active electrode surfaces from fouling within the reactor body.</p>
-        </div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-visual">
-          <img src="assets/fig3-baffle-wall.jpg" alt="Modular electrochemical baffle wall detail">
-        </div>
-        <div class="proj-body">
-          <div class="k">Patent filed</div>
-          <h3>Multi-function baffle wall</h3>
-          <p>A single structure that combines flow control and reaction staging, reducing the reactor's part count.</p>
-        </div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-visual">
-          <img src="assets/fig6-classification.jpg" alt="Hydrodynamic classification diagram">
+          <img src="assets/fig6-zone0-classification.jpg" alt="Zone 0 hydrodynamic classification diagram" style="object-fit:contain;background:#fff">
         </div>
         <div class="proj-body">
           <div class="k">Patent filed</div>
           <h3>Hydrodynamic classification chamber</h3>
-          <p>Sorts particles by settling behavior at reactor entry, before mineral dissolution begins.</p>
+          <p>Zone 0 holds coarse, unreacted grains low and carries partly dissolved fines upward to the impeller, so each grain gets the time it needs in the acid.</p>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-visual">
+          <img src="assets/fig5-zone0-acid-delivery.jpg" alt="Zone 0 floor and wall acid delivery, plan view" style="object-fit:contain;background:#fff">
+        </div>
+        <div class="proj-body">
+          <div class="k">Patent filed</div>
+          <h3>Zone 0 floor and wall acid delivery</h3>
+          <p>A floor manifold pointing straight up and five rows of wall nozzles angled up and inward combine into one net upward velocity across Zone 0.</p>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-visual">
+          <img src="assets/fig4-baffle-plan-flow.jpg" alt="Hollow baffle unit, plan view" style="object-fit:contain;background:#fff">
+        </div>
+        <div class="proj-body">
+          <div class="k">Platform architecture</div>
+          <h3>Hollow baffle</h3>
+          <p>Two walls of different length joined by a slanted, louvered front face, mounted against the vessel wall. The liquid circling the vessel has to meet the shorter Wall 2 first. The baffles are meant to catch fines and precipitating metals.</p>
         </div>
       </div>
     </div>
@@ -153,7 +203,6 @@
         <div class="pb-label">Filed</div><div class="pb-value">August 2, 2026</div>
         <div class="pb-label">First named inventor</div><div class="pb-value">Michael Obinwanne Ndiolo</div>
       </div>
-      <div class="pb-title">&ldquo;Electrochemical Reactor with Isolated-Electrolyte Protected Electrode Chamber, Integrated Multi-Function Baffle Wall, and Dual-Mode Hydrodynamic Classification Zone&rdquo;</div>
     </div>
   </div>
 </section>
@@ -163,13 +212,49 @@
     <div class="sec-head reveal"><span class="sec-title">By the numbers</span><span class="sec-line"></span></div>
     <div class="stat-strip reveal">
       <div class="stat"><div class="stat-num">TRL 2</div><div class="stat-label">Analytically modeled, not yet built</div></div>
-      <div class="stat"><div class="stat-num" data-count="10">0</div><div class="stat-label">Platform documents</div></div>
-      <div class="stat"><div class="stat-num" data-count="3">0</div><div class="stat-label">Mechanisms in filed patent</div></div>
-      <div class="stat"><div class="stat-num" data-count="5">0</div><div class="stat-label">Independent value streams</div></div>
+      <div class="stat"><div class="stat-num" data-count="131">0</div><div class="stat-label">Cost-model scenarios, every input cited or flagged</div></div>
+      <div class="stat"><div class="stat-num" data-count="0">0</div><div class="stat-label">Bench measurements so far</div></div>
+      <div class="stat"><div class="stat-num" data-count="1">0</div><div class="stat-label">Provisional patent application filed</div></div>
     </div>
-    <p class="reveal" style="color:var(--text-dim); max-width:680px; margin-top:18px; font-size:14px;">Carbon credits are one piece, not the whole case: eliminating hazardous-waste disposal costs, avoiding purchased reagent, and selling the solid carbonate byproduct as aggregate each stand on their own &mdash; with coastal alkalinity enhancement as a further, more prospective co-benefit.</p>
+    <p class="reveal" style="color:var(--text-dim); max-width:680px; margin-top:18px; font-size:14px;">The cost model is a desk model: every input comes from a cited source or is flagged as an assumption, and none of it has been checked against bench data. It applies no carbon credit. Most cases give the byproducts no value; the best case assumes a carbonate product sold at $18.5 a tonne and a residue sold at $5 a tonne, and neither price has a source. <a href="reactor-model.html" style="border-bottom:1px solid var(--accent); color:var(--accent-dark)">See the results</a>.</p>
   </div>
 </section>
+
+<section id="figures-cta" class="alt-bg">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">The reactor in detail</span><span class="sec-line"></span></div>
+    <div class="callout reveal">
+      <div>
+        <h4>Walk through the reactor, zone by zone.</h4>
+        <p>Zone 0, the impeller, the hollow baffles, and what is still untested, each with its own page.</p>
+      </div>
+      <a class="link-btn magnet" href="reactor.html">Explore the reactor &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<div class="statement reveal">
+  <div class="eq-bg">
+    <span>CO&#8322;&nbsp;+&nbsp;H&#8322;O&nbsp;&#8652;&nbsp;H&#8314;&nbsp;+&nbsp;HCO&#8323;&#8315;</span>
+    <span>CaO&nbsp;+&nbsp;2H&#8314;&nbsp;&rarr;&nbsp;Ca&sup2;&#8314;&nbsp;+&nbsp;H&#8322;O</span>
+    <span>Ca&sup2;&#8314;&nbsp;+&nbsp;2HCO&#8323;&#8315;&nbsp;&rarr;&nbsp;dissolved&nbsp;alkalinity</span>
+  </div>
+  <p>The chemistry is published. The <span class="hi">vessel</span> is what's new.</p>
+</div>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">Questions, answered</span><span class="sec-line"></span></div>
+    <div class="reveal">
+      <div class="faq-item"><div class="faq-q"><span>What is OlivAir?</span><span class="faq-plus">+</span></div><div class="faq-a">An independent research project to design a reactor for industrial CO&#8322; mineralization. It uses CO&#8322; dissolved in water as the acid to dissolve calcium-rich solids such as slag, and the CO&#8322; ends up as dissolved bicarbonate or solid carbonate. It stores CO&#8322; from point sources; it does not remove CO&#8322; from the air. It is modeled, not built.</div></div>
+      <div class="faq-item"><div class="faq-q"><span>Are you looking for research opportunities?</span><span class="faq-plus">+</span></div><div class="faq-a">Yes &mdash; I'm always open to conversations about carbon removal, industrial chemistry, or reactor engineering research.</div></div>
+      <div class="faq-item"><div class="faq-q"><span>Are the cost figures measured?</span><span class="faq-plus">+</span></div><div class="faq-a">No. They come from a desk model. Inputs are cited or flagged as assumptions, and bench measurements are still to come.</div></div>
+      <div class="faq-item"><div class="faq-q"><span>Do you build as well as write the chemistry?</span><span class="faq-plus">+</span></div><div class="faq-a">So far OlivAir is analytically modeled (TRL 2), not yet built. I've laid out a lab-scale experimental roadmap and that's the next step.</div></div>
+      <div class="faq-item"><div class="faq-q"><span>What's your availability?</span><span class="faq-plus">+</span></div><div class="faq-a">Currently a full-time student at Hamilton College, open to research collaboration alongside coursework and athletics.</div></div>
+    </div>
+  </div>
+</section>
+
 
 <section id="timeline">
   <div class="wrap">
@@ -179,91 +264,38 @@
         <span class="tl-dot"></span>
         <div class="tl-when">2023</div>
         <div class="tl-title">Frost Science STEM Challenge &mdash; 2nd place</div>
-        <div class="tl-body">The first version of OlivAir &mdash; a passive, solar-driven olivine-weathering device &mdash; placed 2nd in a team engineering-design competition on climate change hosted by the Frost Museum of Science, Miami.</div>
+        <div class="tl-body">The first version of OlivAir was a passive, self-powered olivine-weathering device: solar-driven convective airflow, a photocatalytic TiO&#8322;/zeolite coating, and an electret-based moisture system, with no electrochemistry or industrial input. It placed 2nd in a team engineering-design competition on climate change hosted by the Phillip and Patricia Frost Museum of Science in Miami.</div>
       </div>
       <div class="tl-item">
         <span class="tl-dot"></span>
         <div class="tl-when">2023 &ndash; 2026</div>
-        <div class="tl-title">Ten-part paper series</div>
-        <div class="tl-body">The platform was reworked from a passive weathering device into a multi-mechanism industrial reactor, documented end to end across ten papers.</div>
+        <div class="tl-title">Platform paper and application extensions</div>
+        <div class="tl-body">The project was reworked from a passive weathering device into an industrial reactor, first written up as a platform paper and ten application extensions. The design has changed several times since, and the current vessel uses CO&#8322; dissolved in water as the acid. The current version is in a November 2026 design overview.</div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-dot"></span>
+        <div class="tl-when">2026</div>
+        <div class="tl-title">Steel-slag iteration, shared with Yale researchers</div>
+        <div class="tl-body">A later steel-slag version led to early-stage correspondence with researchers at Yale University, sharing the platform paper as it developed.</div>
       </div>
       <div class="tl-item">
         <span class="tl-dot"></span>
         <div class="tl-when">Aug 2, 2026</div>
         <div class="tl-title">U.S. provisional patent filed</div>
-        <div class="tl-body">Application No. 64/124,248 filed, covering three of the platform's mechanisms &mdash; the protected-electrode chamber, the multi-function baffle wall, and the hydrodynamic classification zone.</div>
+        <div class="tl-body">Application No. 64/124,248 filed, covering parts of the reactor design.</div>
       </div>
       <div class="tl-item">
         <span class="tl-dot"></span>
-        <div class="tl-when">Ongoing</div>
-        <div class="tl-title">Early technical dialogue with Yale</div>
-        <div class="tl-body">In early-stage correspondence with researchers at Yale University, sharing papers back and forth as the platform develops.</div>
+        <div class="tl-when">Nov 2026</div>
+        <div class="tl-title">Techno-economic model</div>
+        <div class="tl-body">Built a desk cost model of 131 scenarios with sourced inputs, flagged assumptions, and a verification log. It is a model, not a measurement: the next step is bench data to test it.</div>
       </div>
       <div class="tl-item current">
         <span class="tl-dot"></span>
         <div class="tl-when">Ongoing</div>
         <div class="tl-title">Advised by Dr. Mike McCormick (Hamilton Biology &amp; Environmental Engineering)</div>
-        <div class="tl-body">Weekly meetings since mid-September 2026. Next assigned step: replicate Montserrat et al. (2017)'s olivine dissolution study in his lab, testing whether a siderophore-producing microbe closes the dissolution gap that study found. Not yet started &mdash; pending Hamilton's lab safety training.</div>
+        <div class="tl-body">Weekly meetings since mid-September 2026. Lab safety training is complete; bench work has not started. The first planned experiment replicates Montserrat et al. (2017)'s olivine dissolution study, testing whether a siderophore-producing microbe closes the dissolution gap that study found.</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="dashboard-teaser" class="alt-bg">
-  <div class="wrap">
-    <div class="callout reveal">
-      <div>
-        <h4>An interactive dashboard, for all ten extensions.</h4>
-        <p>Adjust the inputs on any extension and watch CO&#8322; removal and economics update live &mdash; each one worked out against the platform paper's own examples.</p>
-      </div>
-      <a class="link-btn magnet" href="dashboard.html">Open the dashboard &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<section id="origin">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-title">How it started</span><span class="sec-line"></span></div>
-    <div class="body-copy reveal">
-      <p>Industrial plants generate two things usually treated as separate costs: acidic waste streams that require neutralization, and alkaline mineral byproducts that get landfilled. <strong>OlivAir couples them</strong> &mdash; using waste acidity as the thermodynamic driver for mineral dissolution and CO&#8322; absorption within a single reactor, producing solid carbonate for calcium-rich feedstocks, and verified ocean alkalinity for magnesium-rich ones like olivine, as durable carbon storage.</p>
-      <p>The first version of OlivAir was a passive, self-powered device that accelerated natural olivine weathering for carbon mineralization in tropical and coastal environments &mdash; solar-driven convective airflow, a photocatalytic TiO&#8322;/zeolite coating, and an electret-based moisture system, with no electrochemistry or industrial input required. Entered as a team project into the <strong>Frost Science STEM Challenge</strong>, an engineering design competition on climate change hosted by the Phillip and Patricia Frost Museum of Science in Miami, it placed <strong>2nd</strong>.</p>
-      <p>A later steel-slag-substrate iteration led to early technical dialogue with researchers at Yale University, and the project has since evolved into the multi-mechanism industrial platform above, with a filed U.S. provisional patent application (No. 64/124,248, filed August 2026) covering three of its mechanisms.</p>
-      <p>The platform is upfront about where it stands: <strong>TRL 2</strong> &mdash; analytically modeled and internally consistent, not yet physically built or tested. I've laid out a defined lab-scale experimental path to close that gap, and I'm in early technical dialogue with researchers at Yale University about the work.</p>
-    </div>
-    <a class="link-btn magnet reveal" href="mailto:michaelndiolo@gmail.com?subject=OlivAir">Ask about the papers &rarr;</a>
-  </div>
-</section>
-
-<section id="figures-cta" class="alt-bg">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-title">The reactor in detail</span><span class="sec-line"></span></div>
-    <div class="callout reveal">
-      <div>
-        <h4>Six figures, from full reactor cutaway down to individual baffle geometry.</h4>
-        <p>Every mechanism above traces back to a labeled diagram &mdash; reactor cutaway, hardware variants, baffle wall detail, electrode assembly, and zone-level hydrodynamics.</p>
-      </div>
-      <a class="link-btn magnet" href="figures.html">View the figures &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<div class="statement reveal">
-  <div class="eq-bg">
-    <span>Mg&#8322;SiO&#8324;&nbsp;+&nbsp;4H&#8314;&nbsp;&rarr;&nbsp;2Mg&sup2;&#8314;&nbsp;+&nbsp;H&#8324;SiO&#8324;</span>
-    <span>CO&#8322;&nbsp;+&nbsp;H&#8322;O&nbsp;&#8652;&nbsp;H&#8314;&nbsp;+&nbsp;HCO&#8323;&#8315;</span>
-    <span>Mg&sup2;&#8314;&nbsp;+&nbsp;2HCO&#8323;&#8315;&nbsp;&rarr;&nbsp;dissolved&nbsp;alkalinity</span>
-  </div>
-  <p>Most systems treat acidity as a liability to be neutralized. I treat it as the <span class="hi">driver</span>.</p>
-</div>
-
-<section id="faq">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-title">Questions, answered</span><span class="sec-line"></span></div>
-    <div class="reveal">
-      <div class="faq-item"><div class="faq-q"><span>What is OlivAir?</span><span class="faq-plus">+</span></div><div class="faq-a">An independent research platform that uses industrial acid waste as the driver for mineral dissolution and CO&#8322; capture, producing solid carbonate for calcium-rich feedstocks and verified ocean alkalinity for magnesium-rich ones like olivine, instead of a lime-neutralized sludge.</div></div>
-      <div class="faq-item"><div class="faq-q"><span>Are you looking for research opportunities?</span><span class="faq-plus">+</span></div><div class="faq-a">Yes &mdash; I'm always open to conversations about carbon removal, industrial chemistry, or reactor engineering research.</div></div>
-      <div class="faq-item"><div class="faq-q"><span>Do you build as well as write the chemistry?</span><span class="faq-plus">+</span></div><div class="faq-a">So far OlivAir is analytically modeled (TRL 2), not yet built. I've laid out a lab-scale experimental roadmap and that's the next step.</div></div>
-      <div class="faq-item"><div class="faq-q"><span>What's your availability?</span><span class="faq-plus">+</span></div><div class="faq-a">Currently a full-time student at Hamilton College, open to research collaboration alongside coursework and athletics.</div></div>
     </div>
   </div>
 </section>
