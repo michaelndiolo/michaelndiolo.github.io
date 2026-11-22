@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261122b">
+<link rel="stylesheet" href="style.css?v=20261122c">
 <script data-goatcounter="https://michaelndiolo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body class="">
@@ -30,7 +30,8 @@
 <a class="" href="index.html">Home</a>
 <a class="" href="about.html">About</a>
 <a class="" href="olivair.html">OlivAir</a>
-<a class="" href="reactor.html">Reactor</a>
+<a class="has-sub " href="reactor.html">Reactor</a>
+<div class="subnav-wrap"><div class="subnav"><a class="" href="reactor-zone0.html">Zone 0</a><a class="" href="reactor-zones-baffles.html">Zones 1&ndash;3 and baffles</a></div></div>
 <a class="" href="reactor-model.html">Model and tests</a>
 <a class="" href="engineering.html">Engineering</a>
 <a class="" href="figures.html">Figures</a>
@@ -44,6 +45,26 @@
     <a class="social" href="https://www.linkedin.com/in/michael-ndiolo-245876327" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
   </div>
 </aside>
+<!--rx--><script>
+(function(){
+  var w=document.querySelector('.subnav-wrap'),nav=document.getElementById('sidenav'); if(!w||!nav) return;
+  var target=w.classList.contains('open'),reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,prev=null;
+  try{prev=sessionStorage.getItem('rxOpen');}catch(e){}
+  if(!reduce&&prev!==null&&(prev==='1')!==target){
+    w.style.transition='none'; w.classList.toggle('open',prev==='1'); void w.offsetHeight; w.style.transition='';
+    requestAnimationFrame(function(){requestAnimationFrame(function(){w.classList.toggle('open',target);});});
+  }
+  try{sessionStorage.setItem('rxOpen',target?'1':'0');}catch(e){}
+  nav.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a'); if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
+    if(a.closest('.subnav-wrap')) return;
+    var toReactor=a.classList.contains('has-sub'); if(reduce||toReactor===target) return;
+    e.preventDefault(); w.classList.toggle('open',toReactor);
+    try{sessionStorage.setItem('rxOpen',toReactor?'1':'0');}catch(x){}
+    setTimeout(function(){location.href=a.href;},300);
+  });
+})();
+</script><!--/rx-->
 
 <div class="main">
   <div class="top-row">
