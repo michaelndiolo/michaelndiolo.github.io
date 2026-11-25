@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The fines lung - Michael Ndiolo</title>
+<meta name="description" content="Path 1 of the OlivAir study: a covered bay and cooled stack gas that age fresh steel-slag fines in days. Modeled, not built.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The fines lung - Michael Ndiolo">
+<meta property="og:description" content="Path 1 of the OlivAir study: a covered bay and cooled stack gas that age fresh steel-slag fines in days. Modeled, not built.">
+<meta property="og:image" content="assets/olivair-logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The fines lung - Michael Ndiolo">
+<meta name="twitter:description" content="Path 1 of the OlivAir study: a covered bay and cooled stack gas that age fresh steel-slag fines in days. Modeled, not built.">
+<meta name="twitter:image" content="assets/olivair-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20261125b">
+<script data-goatcounter="https://michaelndiolo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="">
+
+<aside class="sidebar">
+  <div class="name"><a href="index.html">Michael Ndiolo</a></div>
+  <nav id="sidenav">
+<a class="" href="index.html">Home</a>
+<a class="" href="about.html">About</a>
+<a class="" href="olivair.html">OlivAir</a>
+<a class="active" href="fines-lung.html">Fines lung<i class="nav-dot" aria-hidden="true"></i></a>
+<a class="" href="reactor.html">Reactor</a>
+<a class="" href="models.html">3D models</a>
+<a class="" href="engineering.html">Engineering</a>
+<a class="" href="contact.html">Contact</a>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="status-pill"><span class="dot"></span>Open to research collaboration</div>
+    <a class="sidebar-link" href="olivair.html">View OlivAir &rarr;</a>
+    <a class="sidebar-link" href="assets/michael-ndiolo-resume.pdf" target="_blank" rel="noopener">Download resume &rarr;</a>
+    <div class="sidebar-cta">Have a project in mind?<strong>Let's talk</strong></div>
+    <a class="social" href="https://www.linkedin.com/in/michael-ndiolo-245876327" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+  </div>
+</aside>
+<!--rx--><script>
+(function(){
+  var doc=document,w=doc.querySelector('.subnav-wrap'),nav=doc.getElementById('sidenav');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function get(k){try{return sessionStorage.getItem(k);}catch(e){return null;}}
+  function set(k,v){try{sessionStorage.setItem(k,v);}catch(e){}}
+  var dot=nav&&nav.querySelector('.nav-dot');
+  function center(el){var r=el.getBoundingClientRect();return {x:r.left+r.width/2,y:r.top+r.height/2};}
+  function saveDot(){ if(dot){var c=center(dot); set('rxDot',c.x.toFixed(1)+','+c.y.toFixed(1)); set('rxOpen',w&&w.classList.contains('open')?'1':'0');} }
+  if(w&&nav&&!reduce){
+    var target=w.classList.contains('open'),prev=get('rxOpen');
+    if(prev!==null&&(prev==='1')!==target){
+      w.style.transition='none'; w.classList.toggle('open',prev==='1'); void w.offsetHeight; w.style.transition='';
+      requestAnimationFrame(function(){requestAnimationFrame(function(){w.classList.toggle('open',target);});});
+    }
+  }
+  if(dot&&!reduce){
+    var pd=get('rxDot');
+    if(pd){
+      var a=pd.split(','),c=center(dot),dx=parseFloat(a[0])-c.x,dy=parseFloat(a[1])-c.y;
+      if(isFinite(dx)&&isFinite(dy)&&(Math.abs(dx)>.5||Math.abs(dy)>.5)){
+        dot.style.transition='none'; dot.style.transform='translate('+dx+'px,'+dy+'px)'; void dot.offsetHeight; dot.style.transition='';
+        requestAnimationFrame(function(){requestAnimationFrame(function(){dot.style.transform='';});});
+      }
+    }
+  }
+  window.addEventListener('pagehide',saveDot);
+  doc.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href]'); if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
+    if(a.target&&a.target!=='_self') return; if(a.hasAttribute('download')) return;
+    var u; try{u=new URL(a.href,location.href);}catch(x){return;}
+    if(u.origin!==location.origin||!/\.html?$|\/$/.test(u.pathname)) return;
+    if(u.pathname===location.pathname&&u.search===location.search) return;
+    saveDot(); if(reduce) return;
+    var m=doc.querySelector('.main'); if(!m) return;
+    e.preventDefault(); m.classList.add('page-out');
+    setTimeout(function(){location.href=a.href;},190);
+  });
+  window.addEventListener('pageshow',function(e){ if(e.persisted){var m=doc.querySelector('.main'); if(m) m.classList.remove('page-out');} });
+})();
+</script><!--/rx-->
+<div class="main">
+  <div class="top-row">
+    <details class="mnav"><summary>Menu</summary><div class="mnav-list"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="olivair.html">OlivAir</a><a class="active" href="fines-lung.html">Fines lung</a><a class="" href="reactor.html">Reactor</a><a class="" href="models.html">3D models</a><a class="" href="engineering.html">Engineering</a><a class="" href="contact.html">Contact</a></div></details>
+    <span>Chemical Engineering &middot; Hamilton College</span>
+    <span class="status"><span class="dot"></span>Available for research work</span>
+  </div>
+
+
+<header class="hero small reveal">
+  <div class="eyebrow">Path 1 &middot; at the steel mill</div>
+  <h1>The fines lung</h1>
+  <p class="lead">Fresh steel-slag fines swell when they get wet, so the fine sizes cannot go into roads or concrete. A covered bay and cooled stack gas can age them in days, not months. Modeled on paper: nothing is built and nothing is measured.</p>
+  <div class="hero-cta"><a class="link-btn magnet" href="olivair.html">Back to OlivAir &rarr;</a><a class="link-btn magnet" href="reactor.html">Path 2: the reactor &rarr;</a></div>
+</header>
+
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">The idea</span><span class="sec-line"></span></div>
+    <p class="big-lede reveal">Free lime is what makes fresh slag swell. <em>Stack gas turns it into calcium carbonate, which does not.</em></p>
+    <div class="facts reveal">
+      <div class="fact"><div class="v">16 &times; 10 m</div><div class="l">One bay, with a bed about 1.5 m deep</div></div>
+      <div class="fact"><div class="v">1&ndash;4 mm</div><div class="l">Fines that go into the bays</div></div>
+      <div class="fact"><div class="v">15&ndash;20 kg</div><div class="l">CO&#8322; stored per tonne of fines (model)</div></div>
+      <div class="fact"><div class="v">&le; 1%</div><div class="l">Target free lime when a cycle ends</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="bay" class="alt-bg">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">Inside a bay</span><span class="sec-line"></span></div>
+    <div class="diagram reveal">
+      <svg viewBox="0 0 720 330" role="img" aria-label="Cross-section of a covered bay: gas rises from floor trenches through a bed of fines under a cover">
+<defs><marker id="ah" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7 z" fill="#e07b39"/></marker>
+<marker id="ah2" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7 z" fill="#5b6472"/></marker></defs>
+<rect x="0" y="290" width="720" height="40" fill="#e6eaf0"/>
+<rect x="80" y="168" width="560" height="100" fill="#8d867c"/>
+<rect x="80" y="168" width="560" height="46" fill="#6d675f"/>
+<rect x="80" y="214" width="560" height="54" fill="#d5d0c4"/>
+<circle cx="90" cy="176" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="127" cy="195" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="164" cy="180" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="201" cy="199" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="238" cy="184" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="275" cy="203" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="312" cy="188" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="349" cy="207" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="386" cy="192" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="423" cy="177" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="460" cy="196" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="497" cy="181" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="534" cy="200" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="571" cy="185" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="608" cy="204" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="105" cy="189" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="142" cy="208" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="179" cy="193" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="216" cy="178" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="253" cy="197" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="290" cy="182" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="327" cy="201" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="364" cy="186" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="401" cy="205" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="438" cy="190" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="475" cy="209" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="512" cy="194" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="549" cy="179" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="586" cy="198" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="623" cy="183" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="120" cy="202" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="157" cy="187" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="194" cy="206" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="231" cy="191" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="268" cy="176" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="305" cy="195" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="342" cy="180" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="379" cy="199" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="416" cy="184" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="453" cy="203" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="490" cy="188" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="527" cy="207" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="564" cy="192" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="601" cy="177" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="98" cy="196" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="135" cy="181" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="172" cy="200" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="209" cy="185" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="246" cy="204" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="283" cy="189" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="320" cy="208" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="357" cy="193" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="394" cy="178" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="431" cy="197" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="468" cy="182" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="505" cy="201" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="542" cy="186" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="579" cy="205" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="616" cy="190" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="113" cy="209" r="2.2" fill="#4d4842" opacity=".55"/><circle cx="92" cy="222" r="2" fill="#a59f92" opacity=".7"/><circle cx="133" cy="251" r="2" fill="#a59f92" opacity=".7"/><circle cx="174" cy="240" r="2" fill="#a59f92" opacity=".7"/><circle cx="215" cy="229" r="2" fill="#a59f92" opacity=".7"/><circle cx="256" cy="258" r="2" fill="#a59f92" opacity=".7"/><circle cx="297" cy="247" r="2" fill="#a59f92" opacity=".7"/><circle cx="338" cy="236" r="2" fill="#a59f92" opacity=".7"/><circle cx="379" cy="225" r="2" fill="#a59f92" opacity=".7"/><circle cx="420" cy="254" r="2" fill="#a59f92" opacity=".7"/><circle cx="461" cy="243" r="2" fill="#a59f92" opacity=".7"/><circle cx="502" cy="232" r="2" fill="#a59f92" opacity=".7"/><circle cx="543" cy="261" r="2" fill="#a59f92" opacity=".7"/><circle cx="584" cy="250" r="2" fill="#a59f92" opacity=".7"/><circle cx="625" cy="239" r="2" fill="#a59f92" opacity=".7"/><circle cx="126" cy="228" r="2" fill="#a59f92" opacity=".7"/><circle cx="167" cy="257" r="2" fill="#a59f92" opacity=".7"/><circle cx="208" cy="246" r="2" fill="#a59f92" opacity=".7"/><circle cx="249" cy="235" r="2" fill="#a59f92" opacity=".7"/><circle cx="290" cy="224" r="2" fill="#a59f92" opacity=".7"/><circle cx="331" cy="253" r="2" fill="#a59f92" opacity=".7"/><circle cx="372" cy="242" r="2" fill="#a59f92" opacity=".7"/><circle cx="413" cy="231" r="2" fill="#a59f92" opacity=".7"/><circle cx="454" cy="260" r="2" fill="#a59f92" opacity=".7"/><circle cx="495" cy="249" r="2" fill="#a59f92" opacity=".7"/><circle cx="536" cy="238" r="2" fill="#a59f92" opacity=".7"/><circle cx="577" cy="227" r="2" fill="#a59f92" opacity=".7"/><circle cx="618" cy="256" r="2" fill="#a59f92" opacity=".7"/><circle cx="119" cy="245" r="2" fill="#a59f92" opacity=".7"/><circle cx="160" cy="234" r="2" fill="#a59f92" opacity=".7"/><circle cx="201" cy="223" r="2" fill="#a59f92" opacity=".7"/><circle cx="242" cy="252" r="2" fill="#a59f92" opacity=".7"/><circle cx="283" cy="241" r="2" fill="#a59f92" opacity=".7"/><circle cx="324" cy="230" r="2" fill="#a59f92" opacity=".7"/><circle cx="365" cy="259" r="2" fill="#a59f92" opacity=".7"/><circle cx="406" cy="248" r="2" fill="#a59f92" opacity=".7"/><circle cx="447" cy="237" r="2" fill="#a59f92" opacity=".7"/><circle cx="488" cy="226" r="2" fill="#a59f92" opacity=".7"/><circle cx="529" cy="255" r="2" fill="#a59f92" opacity=".7"/><circle cx="570" cy="244" r="2" fill="#a59f92" opacity=".7"/><circle cx="611" cy="233" r="2" fill="#a59f92" opacity=".7"/><circle cx="112" cy="222" r="2" fill="#a59f92" opacity=".7"/><circle cx="153" cy="251" r="2" fill="#a59f92" opacity=".7"/><circle cx="194" cy="240" r="2" fill="#a59f92" opacity=".7"/><circle cx="235" cy="229" r="2" fill="#a59f92" opacity=".7"/><circle cx="276" cy="258" r="2" fill="#a59f92" opacity=".7"/><circle cx="317" cy="247" r="2" fill="#a59f92" opacity=".7"/><circle cx="358" cy="236" r="2" fill="#a59f92" opacity=".7"/><circle cx="399" cy="225" r="2" fill="#a59f92" opacity=".7"/><circle cx="440" cy="254" r="2" fill="#a59f92" opacity=".7"/><circle cx="481" cy="243" r="2" fill="#a59f92" opacity=".7"/><circle cx="522" cy="232" r="2" fill="#a59f92" opacity=".7"/><circle cx="563" cy="261" r="2" fill="#a59f92" opacity=".7"/><circle cx="604" cy="250" r="2" fill="#a59f92" opacity=".7"/><circle cx="105" cy="239" r="2" fill="#a59f92" opacity=".7"/><circle cx="146" cy="228" r="2" fill="#a59f92" opacity=".7"/><circle cx="187" cy="257" r="2" fill="#a59f92" opacity=".7"/><circle cx="228" cy="246" r="2" fill="#a59f92" opacity=".7"/><circle cx="269" cy="235" r="2" fill="#a59f92" opacity=".7"/><circle cx="310" cy="224" r="2" fill="#a59f92" opacity=".7"/><circle cx="351" cy="253" r="2" fill="#a59f92" opacity=".7"/>
+<path d="M80 214 q35 -8 70 0 t70 0 t70 0 t70 0 t70 0 t70 0 t70 0 t70 0" fill="none" stroke="#17324f" stroke-width="1.6" stroke-dasharray="5 4"/>
+<rect x="70" y="150" width="10" height="118" fill="#5b6472"/><rect x="640" y="150" width="10" height="118" fill="#5b6472"/>
+<path d="M60 152 L360 72 L660 152" fill="rgba(47,95,163,.07)" stroke="#5b6472" stroke-width="3" stroke-linejoin="round"/>
+<rect x="352" y="40" width="16" height="34" fill="#5b6472"/>
+<rect x="340" y="22" width="40" height="20" rx="4" fill="#17324f"/><text x="360" y="36" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">FAN</text>
+<path d="M382 32 L430 32" stroke="#5b6472" stroke-width="2.4" marker-end="url(#ah2)"/>
+<path d="M100 164 L620 164" stroke="#3fa7e0" stroke-width="2" stroke-dasharray="6 5"/><path d="M130 166 q-3 5 0 8 q3 -3 0 -8" fill="#3fa7e0"/><path d="M230 166 q-3 5 0 8 q3 -3 0 -8" fill="#3fa7e0"/><path d="M330 166 q-3 5 0 8 q3 -3 0 -8" fill="#3fa7e0"/><path d="M430 166 q-3 5 0 8 q3 -3 0 -8" fill="#3fa7e0"/><path d="M530 166 q-3 5 0 8 q3 -3 0 -8" fill="#3fa7e0"/><path d="M610 166 q-3 5 0 8 q3 -3 0 -8" fill="#3fa7e0"/>
+<path d="M250 164 V256 M470 164 V256" stroke="#17324f" stroke-width="2"/>
+<circle cx="250" cy="190" r="4" fill="#17324f"/><circle cx="250" cy="224" r="4" fill="#17324f"/><circle cx="250" cy="250" r="4" fill="#17324f"/>
+<circle cx="470" cy="190" r="4" fill="#17324f"/><circle cx="470" cy="224" r="4" fill="#17324f"/><circle cx="470" cy="250" r="4" fill="#17324f"/>
+<path d="M150 258 L150 196" stroke="#e07b39" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ah)" opacity=".9"/><path d="M170 258 L170 196" stroke="#e07b39" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ah)" opacity=".9"/><path d="M190 258 L190 196" stroke="#e07b39" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ah)" opacity=".9"/><path d="M210 258 L210 196" stroke="#e07b39" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ah)" opacity=".9"/><path d="M330 258 L330 196" stroke="#e07b39" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ah)" opacity=".9"/><path d="M350 258 L350 196" stroke="#e07b39" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ah)" opacity=".9"/><path d="M370 258 L370 196" stroke="#e07b39" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ah)" opacity=".9"/><path d="M390 258 L390 196" stroke="#e07b39" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ah)" opacity=".9"/><path d="M510 258 L510 196" stroke="#e07b39" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ah)" opacity=".9"/><path d="M530 258 L530 196" stroke="#e07b39" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ah)" opacity=".9"/><path d="M550 258 L550 196" stroke="#e07b39" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ah)" opacity=".9"/><path d="M570 258 L570 196" stroke="#e07b39" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ah)" opacity=".9"/>
+<rect x="130" y="266" width="100" height="7" fill="#33383f"/><rect x="310" y="266" width="100" height="7" fill="#33383f"/><rect x="490" y="266" width="100" height="7" fill="#33383f"/>
+<path d="M10 281 H600" stroke="#e07b39" stroke-width="9" stroke-linecap="round" opacity=".92"/>
+<path d="M34 270 L52 281 L34 292 z" fill="#fff" opacity=".95"/>
+<text x="14" y="312" class="svgs">cooled, damp stack gas in</text>
+<g><circle cx="180" cy="297" r="11" fill="#17324f"/><text x="180" y="301" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">1</text></g><g><circle cx="110" cy="244" r="11" fill="#17324f"/><text x="110" y="248" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">2</text></g><g><circle cx="110" cy="188" r="11" fill="#17324f"/><text x="110" y="192" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">3</text></g><g><circle cx="615" cy="150" r="11" fill="#17324f"/><text x="615" y="154" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">4</text></g><g><circle cx="262" cy="174" r="11" fill="#17324f"/><text x="262" y="178" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">5</text></g><g><circle cx="425" cy="56" r="11" fill="#17324f"/><text x="425" y="60" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">6</text></g>
+</svg>
+      <ol style="list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:6px 28px; padding:6px 6px 14px; font-size:13.5px; color:var(--text-dim)"><li><b>1</b>Floor gas trenches: gas enters under the fines and rises through them.</li><li><b>2</b>Finished band: carbonated fines, light in colour. The front rises as the cycle runs.</li><li><b>3</b>Fresh fines still carrying free lime, 1 to 4 mm, about 1.5 m deep.</li><li><b>4</b>Drip lines add water only when the probes say the bed is drying.</li><li><b>5</b>Moisture and temperature probes at several depths.</li><li><b>6</b>Cover and ridge exhaust. An outlet CO₂ sensor tells when the lime is used up.</li></ol>
+    </div>
+    <style>.diagram ol li{display:grid;grid-template-columns:26px 1fr;gap:8px;align-items:start}.diagram ol li b{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--accent-dark);color:#fff;font-size:11px}@media(max-width:700px){.diagram ol{grid-template-columns:1fr !important}}</style>
+    <p class="reveal" style="color:var(--text-dim); max-width:640px; margin-top:16px; font-size:14px;">A sketch to explain the idea, not an engineering drawing. The bed is static: there is no mixer.</p>
+  </div>
+</section>
+
+<section id="cycle">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">How a cycle runs</span><span class="sec-line"></span></div>
+    <div class="steps reveal">
+      <div class="step"><h4>Screen the fines</h4><p>Fresh fines go over a screen. What falls through, under 1 mm, goes to the silo and is trucked to the mine (path 2). The 1 to 4 mm fraction goes to the bay stockpile.</p></div>
+      <div class="step"><h4>Cool and dry the gas</h4><p>A fan pulls a share of the mill's stack gas into a knockout tower. Chilled water sprays down, the gas cools, and its extra water drops out. The gas leaves 1 to 3 &deg;C below the bay's temperature, so the slag stays damp but nothing condenses on it.</p></div>
+      <div class="step"><h4>Blow it up through the bed</h4><p>Gas enters through floor trenches and rises through the fines. The bottom finishes first. Drip lines add water only when the probes ask.</p></div>
+      <div class="step"><h4>Stop when the gas stops being used</h4><p>When CO&#8322; at the outlet climbs to match the inlet, the free lime is spent. The valves swap: Bay 2 starts gassing while Bay 1 is emptied and refilled with the yard loader.</p></div>
+      <div class="step"><h4>Sell the fines</h4><p>With free lime at 1% or less, the fines no longer swell and can go to fill or road base. The main value is selling fines that cost money to landfill; the stored CO&#8322; is a small extra. Whether the processor pays to landfill them today is still to confirm.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="train" class="alt-bg">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">The gas path</span><span class="sec-line"></span></div>
+    <div class="diagram reveal"><svg viewBox="0 0 720 210" role="img" aria-label="Gas path: mill stack, fan, knockout tower, header, then Bay 1 gassing and Bay 2 refilling, with spent gas returning to the stack">
+<defs><marker id="a3" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#5b6472"/></marker></defs>
+<rect x="8" y="52" width="104" height="62" rx="10" fill="#fff" stroke="#c9d1dd"/><text x="60.0" y="80.0" text-anchor="middle" font-size="13" font-weight="700" fill="#12161c">Mill stack</text><text x="60.0" y="97.0" text-anchor="middle" font-size="10.5" font-weight="500" fill="#5b6472">10 to 20% CO₂</text>
+<rect x="160" y="32" width="140" height="102" rx="10" fill="#17324f" stroke="#c9d1dd"/><text x="230.0" y="80.0" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Knockout tower</text><text x="230.0" y="97.0" text-anchor="middle" font-size="10.5" font-weight="500" fill="#b9c9dc">cools and dries the gas</text>
+<rect x="176" y="150" width="108" height="40" rx="10" fill="#fff" stroke="#c9d1dd"/><text x="230.0" y="167.0" text-anchor="middle" font-size="13" font-weight="700" fill="#12161c">Chiller</text><text x="230.0" y="184.0" text-anchor="middle" font-size="10.5" font-weight="500" fill="#5b6472">cold water to spray</text>
+<rect x="340" y="64" width="86" height="42" rx="10" fill="#fff" stroke="#c9d1dd"/><text x="383.0" y="89.0" text-anchor="middle" font-size="13" font-weight="700" fill="#12161c">Gas header</text>
+<rect x="480" y="14" width="190" height="56" rx="10" fill="#fff" stroke="#c9d1dd"/><text x="575.0" y="39.0" text-anchor="middle" font-size="13" font-weight="700" fill="#12161c">Bay 1: gassing</text><text x="575.0" y="56.0" text-anchor="middle" font-size="10.5" font-weight="500" fill="#5b6472">gas up through the fines</text>
+<rect x="480" y="92" width="190" height="56" rx="10" fill="#fff" stroke="#17324f" stroke-dasharray="5 4"/><text x="575.0" y="117.0" text-anchor="middle" font-size="13" font-weight="700" fill="#12161c">Bay 2: empty and refill</text><text x="575.0" y="134.0" text-anchor="middle" font-size="10.5" font-weight="500" fill="#5b6472">valve shut, loader at work</text>
+<path d="M112 83 H156" stroke="#5b6472" stroke-width="2.2" marker-end="url(#a3)"/><text x="134" y="74" text-anchor="middle" font-size="10" fill="#5b6472">fan</text>
+<path d="M300 85 H336" stroke="#5b6472" stroke-width="2.2" marker-end="url(#a3)"/>
+<path d="M426 85 H452 V42 H476" fill="none" stroke="#5b6472" stroke-width="2.2" marker-end="url(#a3)"/>
+<path d="M452 85 V120 H476" fill="none" stroke="#c9d1dd" stroke-width="2.2" stroke-dasharray="4 4"/>
+<path d="M230 134 V148 M230 150 V136" stroke="#5b6472" stroke-width="2.2" marker-end="url(#a3)"/>
+<path d="M670 42 H700 V198 H60 V118" fill="none" stroke="#e07b39" stroke-width="2.2" stroke-dasharray="6 5" marker-end="url(#a3)"/>
+<text x="400" y="192" text-anchor="middle" class="svgs">spent gas goes back to the stack</text>
+</svg><div class="cap">Gas comes off the mill's own stack, is cooled and dried, passes through whichever bay is gassing, and goes back to the stack.</div></div>
+  </div>
+</section>
+
+<section id="next">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">What is mine, and what is next</span><span class="sec-line"></span></div>
+    <div class="duo reveal">
+      <div class="panel"><h4>What is mine</h4><div class="p-big">The design around the chemistry.</div><p>The carbonation chemistry is Nippon Steel's published work (2008). My part is the design: cooling the gas to a controlled dew point so water does not soak the bed, and two bays that take turns so the gas never has to stop.</p></div>
+      <div class="panel dark"><h4>Planned experiment</h4><div class="p-big">Test F5</div><p>Free lime and swelling of carbonated fines in a covered bed, aiming to beat Nippon's 1.88% free lime. It follows the work Dr. McCormick sets. A leach test of the finished fines comes with it. None of it has been run yet.</p></div>
+    </div>
+  </div>
+</section>
+
+  <section id="contact">
+    <div class="wrap" style="max-width:100%">
+      <div class="sec-head reveal"><span class="sec-title">Let's build together</span><span class="sec-line"></span></div>
+      <div class="contact-inner reveal">
+        <div>
+          <h2>Let's talk.</h2>
+          <p style="color:#9fadbd;max-width:380px;margin-top:8px">I'm always glad to talk chemistry, slag, mine water, or anything OlivAir related.</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:michaelndiolo@gmail.com">michaelndiolo@gmail.com</a>
+          <a href="https://www.linkedin.com/in/michael-ndiolo-245876327" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+          <a href="assets/michael-ndiolo-resume.pdf" target="_blank" rel="noopener">Resume &#8599;</a>
+          <span style="font-size:13px;color:#7c8b9c;font-weight:500">Miami, FL / Clinton County, NY</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Michael Ndiolo &copy; 2026</span>
+    <span>TRL 2 &middot; still reacting</span>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -3,33 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Engineering — Michael Ndiolo</title>
-<meta name="description" content="Engineering portfolio: how the OlivAir design is being checked, with a lean cost model, 3D models and a test plan.">
+<title>Engineering - Michael Ndiolo</title>
+<meta name="description" content="What is designed, what is checked on paper, and what is waiting for the bench in the OlivAir study. Modeled at TRL 2.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
 <link rel="apple-touch-icon" href="assets/favicon-180.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Engineering — Michael Ndiolo">
-<meta property="og:description" content="Engineering portfolio: how the OlivAir design is being checked, with a lean cost model, 3D models and a test plan.">
+<meta property="og:title" content="Engineering - Michael Ndiolo">
+<meta property="og:description" content="What is designed, what is checked on paper, and what is waiting for the bench in the OlivAir study. Modeled at TRL 2.">
 <meta property="og:image" content="assets/olivair-logo.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Engineering — Michael Ndiolo">
-<meta name="twitter:description" content="Engineering portfolio: how the OlivAir design is being checked, with a lean cost model, 3D models and a test plan.">
+<meta name="twitter:title" content="Engineering - Michael Ndiolo">
+<meta name="twitter:description" content="What is designed, what is checked on paper, and what is waiting for the bench in the OlivAir study. Modeled at TRL 2.">
 <meta name="twitter:image" content="assets/olivair-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261125a">
+<link rel="stylesheet" href="style.css?v=20261125b">
 <script data-goatcounter="https://michaelndiolo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
-<body>
+<body class="">
 
 <aside class="sidebar">
   <div class="name"><a href="index.html">Michael Ndiolo</a></div>
   <nav id="sidenav">
 <a class="" href="index.html">Home</a>
 <a class="" href="about.html">About</a>
-<a class="" href="olivair.html">OlivAir</a><a class="" href="reactor.html">Reactor</a>
+<a class="" href="olivair.html">OlivAir</a>
+<a class="" href="fines-lung.html">Fines lung</a>
+<a class="" href="reactor.html">Reactor</a>
 <a class="" href="models.html">3D models</a>
 <a class="active" href="engineering.html">Engineering<i class="nav-dot" aria-hidden="true"></i></a>
 <a class="" href="contact.html">Contact</a>
@@ -85,74 +87,96 @@
 </script><!--/rx-->
 <div class="main">
   <div class="top-row">
-    <details class="mnav"><summary>Menu</summary><div class="mnav-list"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="olivair.html">OlivAir</a><a class="" href="reactor.html">Reactor</a><a class="" href="models.html">3D models</a><a class="active" href="engineering.html">Engineering</a><a class="" href="contact.html">Contact</a></div></details>
+    <details class="mnav"><summary>Menu</summary><div class="mnav-list"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="olivair.html">OlivAir</a><a class="" href="fines-lung.html">Fines lung</a><a class="" href="reactor.html">Reactor</a><a class="" href="models.html">3D models</a><a class="active" href="engineering.html">Engineering</a><a class="" href="contact.html">Contact</a></div></details>
     <span>Chemical Engineering &middot; Hamilton College</span>
     <span class="status"><span class="dot"></span>Available for research work</span>
   </div>
 
-  <header class="hero small reveal">
-    <h1>Engineering portfolio</h1>
-    <p class="lead">How the OlivAir design is being checked: a lean cost model, 3D models, and a test plan that puts bench data and a vendor quote ahead of more modeling.</p>
-    <div class="hero-cta">
-      <a class="link-btn magnet" href="olivair.html">See the project overview &rarr;</a>
-      <a class="link-btn magnet" href="models.html">View the 3D models &rarr;</a>
-    </div>
-  </header>
 
-  <section id="mechanisms">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-title">What is being designed</span><span class="sec-line"></span></div>
-    <p class="reveal" style="color:var(--text-dim); max-width:680px; margin-bottom:8px;">Two plants, both on paper. The mine drainage reactor is the part that is specific to OlivAir.</p>
-    <div class="patent-grid reveal" style="margin-top: 32px; grid-template-columns: 1fr 1fr;">
-      <div class="patent-card">
-        <div class="patent-num">01</div>
-        <h3>Fines plant (the fines lung)</h3>
-        <p>Screen fresh slag fines, send the finest under 1 mm to a mine, and carbonate the 1 to 4 mm fraction in a covered bay with conditioned stack gas, two bays taking turns, until the free lime is used up.</p>
+<header class="hero small reveal">
+  <div class="eyebrow">Status board</div>
+  <h1>Engineering</h1>
+  <p class="lead">What is designed, what has been checked on paper, and what is still waiting for the bench. Everything is at TRL 2: modeled, not built.</p>
+</header>
+
+<section id="board">
+  <div class="wrap wide">
+    <div class="sec-head reveal"><span class="sec-title">Where each piece stands</span><span class="sec-line"></span></div>
+    <div class="board reveal">
+      <div class="col c1"><div class="col-h"><span class="dotc"></span>Designed<span class="cnt">4</span></div>
+        <div class="bcard"><h5>Fines lung</h5><p>A covered bay for 1 to 4 mm fines, a gas cooling train with a dew point set point, and two bays that take turns.</p></div>
+        <div class="bcard"><h5>Pulsed bed reactor</h5><p>Two fluidized slag beds in series, slag moving against the water, pulsed to keep the grains clean.</p></div>
+        <div class="bcard"><h5>Ring, impeller and baffle units</h5><p>A 50 degree ring, a slow impeller, and four hollow baffle units with a dip that catches the inert grains.</p></div>
+        <div class="bcard"><h5>Plates and clarifier</h5><p>60 degree settling plates in the reactor, aeration between the stages, a clarifier for the iron floc.</p></div>
       </div>
-      <div class="patent-card">
-        <div class="patent-num">02</div>
-        <h3>Mine drainage reactor</h3>
-        <p>Two fluidized slag beds in series, pulsed to keep the grains clean, with the slag moving against the water, aeration between the stages, and a clarifier to catch the iron floc.</p>
+      <div class="col c2"><div class="col-h"><span class="dotc"></span>Checked on paper<span class="cnt">4</span></div>
+        <div class="bcard"><h5>Grain sorting sizes</h5><p>The bed lifts slag below about 90 &micro;m and dense inert grains below about 67 &micro;m at 9 mm/s. Worked out from settling speeds, to check against the bench.</p></div>
+        <div class="bcard"><h5>Published carbon-uptake data</h5><p>Figures from published lab work are re-derived from their stated conditions before they go into the model.</p></div>
+        <div class="bcard"><h5>Cost model</h5><p>A lean workbook for the three ideas. Every input is cited or flagged as a placeholder.</p></div>
+        <div class="bcard"><h5>Review rounds</h5><p>The design went through many rounds of review and was cut from a long list of ideas to three.</p></div>
+      </div>
+      <div class="col c3"><div class="col-h"><span class="dotc"></span>Waiting for the bench<span class="cnt">4</span></div>
+        <div class="bcard"><h5>Test F5</h5><p>Free lime and swelling of carbonated fines in a covered bed. Follows the work Dr. McCormick sets.</p></div>
+        <div class="bcard"><h5>Leach test</h5><p>Does the spent slag pass a swell test and a sulfate leach? It decides where it can go.</p></div>
+        <div class="bcard"><h5>Pulsed bed on real mine water</h5><p>A bench pulsed bed, to test the sorting and the slag use against the model.</p></div>
+        <div class="bcard"><h5>Real prices</h5><p>A vendor quote for equipment and a slag processor's figures, to replace the placeholders.</p></div>
+      </div>
+    </div>
+    <p class="reveal" style="color:var(--text-dim); max-width:680px; margin-top:18px; font-size:14px;">None of the planned tests has been run. They come after the work Dr. McCormick sets.</p>
+  </div>
+</section>
+
+<section id="cost" class="alt-bg">
+  <div class="wrap wide">
+    <div class="sec-head reveal"><span class="sec-title">What moves the answer</span><span class="sec-line"></span></div>
+    <div class="chartcard reveal">
+      <div>
+        <h3 style="font-size:22px; font-weight:800; letter-spacing:-.015em">Slag use decides whether it beats lime.</h3>
+        <p style="color:var(--text-dim); margin-top:10px; font-size:15px">In the model, the share of the slag that actually reacts matters most. Moving the slag against the water is meant to raise it from about 40% to about 70%, and that is the difference between a thin margin and a better one.</p>
+        <p style="color:var(--text-dim); margin-top:10px; font-size:14px">If the spent slag has to go to landfill instead of back to the processor, the model loses to lime either way. That is what the leach test is for.</p>
+      </div>
+      <div class="bars" role="img" aria-label="Model margin over lime after capital: about 120 dollars per day at 40 percent slag use and about 280 dollars per day at 70 percent">
+        <div class="barrow"><div class="bl"><span>40% slag use</span><span>~$120 / day</span></div><div class="bt"><div class="bf" style="width:43%"></div></div></div>
+        <div class="barrow b2"><div class="bl"><span>70% slag use</span><span>~$280 / day</span></div><div class="bt"><div class="bf" style="width:100%"></div></div></div>
+        <div style="font-size:12.5px; color:var(--text-faint)">Margin over lime after capital, 10,000 m&sup3;/day example site. Desk model with placeholder prices, not measured.</div>
       </div>
     </div>
   </div>
 </section>
 
-  <section id="checks" class="alt-bg">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-title">How the design is checked</span><span class="sec-line"></span></div>
-    <div class="skill-grid reveal" style="margin-top:8px">
-      <div class="skill-card"><h3>Cost model</h3><p>A lean workbook covering the three ideas: capital, energy, labor, hauling and disposal. Every input is cited or flagged as a placeholder, and the equipment prices stay placeholders until a real vendor quote replaces them.</p></div>
-      <div class="skill-card"><h3>Published data</h3><p>Figures taken from published lab work are re-derived from their stated conditions, for example the carbon uptake of tailings under a known gas flow, to see whether the numbers hold together before they go in the model.</p></div>
-      <div class="skill-card" style="grid-column: 1 / -1;"><h3>Planned experiments (none has been run yet)</h3><p>These follow the work Dr. McCormick sets. F5: free lime and swelling of carbonated fines in a covered bed. A leach test of the spent slag. A bench pulsed-bed test on real mine water. A processor's numbers for what fines cost them today, and a vendor quote to replace the placeholder equipment prices. <a href="olivair.html" style="border-bottom:1px solid var(--accent); color:var(--accent-dark)">Back to the overview</a>.</p></div>
+<section id="road">
+  <div class="wrap wide">
+    <div class="sec-head reveal"><span class="sec-title">The order of work</span><span class="sec-line"></span></div>
+    <div class="lane reveal">
+      <div class="lstep now"><i></i><b>Now</b><span>Modeled and costed. Design reviewed many times.</span></div>
+      <div class="lstep"><i></i><b>First bench work</b><span>Whatever Dr. McCormick sets, then test F5.</span></div>
+      <div class="lstep"><i></i><b>Spent slag and mine water</b><span>Leach test, then a bench pulsed bed.</span></div>
+      <div class="lstep"><i></i><b>Real numbers in</b><span>Vendor quote and processor figures replace the placeholders.</span></div>
     </div>
   </div>
 </section>
 
-  <section id="skills">
-  <div class="wrap">
+<section id="skills" class="alt-bg">
+  <div class="wrap wide">
     <div class="sec-head reveal"><span class="sec-title">Skills demonstrated</span><span class="sec-line"></span></div>
-    <div class="skill-grid reveal">
-      <div class="skill-card"><h3>Reactor & process design</h3><p>A two-stage pulsed fluidized-bed reactor and a covered-bay gas train, designed on paper from the chemistry up to equipment layout.</p></div>
-      <div class="skill-card"><h3>Techno-economic modeling</h3><p>A lean workbook with capital recovery, energy, labor and disposal, built so that a changed price flows through every case.</p></div>
-      <div class="skill-card"><h3>Reviewing my own work</h3><p>The design went through many review rounds and was cut from a long list of ideas to three, with the dropped ones written down and the reasons kept.</p></div>
-      <div class="skill-card"><h3>Technical writing</h3><p>A living design document, a test plan, and 3D models that explain the plants to people who are not engineers.</p></div>
+    <div class="skills2 reveal">
+      <div class="sk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 15h9"/></svg></div><div><h4>Reactor and process design</h4><p>A two-stage pulsed fluidized-bed reactor and a covered-bay gas train, designed on paper from the chemistry up to equipment layout.</p></div></div>
+      <div class="sk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16"/><path d="M8 16v-5M12 16V8M16 16v-8"/></svg></div><div><h4>Techno-economic modeling</h4><p>A lean workbook with capital recovery, energy, labor and disposal, built so that a changed price flows through every case.</p></div></div>
+      <div class="sk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/></svg></div><div><h4>Reviewing my own work</h4><p>Many review rounds cut a long list of ideas down to three, with the dropped ones written down and the reasons kept.</p></div></div>
+      <div class="sk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg></div><div><h4>Technical writing and 3D models</h4><p>A living design document, a test plan, and 3D models that explain both pathways to people who are not engineers.</p></div></div>
     </div>
   </div>
 </section>
 
-  <section id="whats-next" class="alt-bg">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-title">What's next</span><span class="sec-line"></span></div>
-      <div class="callout reveal">
-        <div>
-          <h4>Bench-scale validation.</h4>
-          <p>The design is modeled at TRL 2. My own experiments come after the work Dr. McCormick sets, starting with F5, then real mine-water chemistry, alongside a vendor quote.</p>
-        </div>
-        <a class="link-btn magnet" href="mailto:michaelndiolo@gmail.com?subject=OlivAir%20Engineering">Talk about the roadmap &rarr;</a>
-      </div>
+<section id="whats-next">
+  <div class="wrap wide">
+    <div class="sec-head reveal"><span class="sec-title">What's next</span><span class="sec-line"></span></div>
+    <div class="callout reveal">
+      <div><h4>Bench-scale validation.</h4><p>The design is modeled at TRL 2. My own experiments come after the work Dr. McCormick sets, starting with F5, then real mine-water chemistry, alongside a vendor quote.</p></div>
+      <a class="link-btn magnet" href="mailto:michaelndiolo@gmail.com?subject=OlivAir%20Engineering">Talk about the roadmap &rarr;</a>
     </div>
-  </section>
+  </div>
+</section>
 
   <section id="contact">
     <div class="wrap" style="max-width:100%">
@@ -165,6 +189,7 @@
         <div class="contact-links">
           <a href="mailto:michaelndiolo@gmail.com">michaelndiolo@gmail.com</a>
           <a href="https://www.linkedin.com/in/michael-ndiolo-245876327" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+          <a href="assets/michael-ndiolo-resume.pdf" target="_blank" rel="noopener">Resume &#8599;</a>
           <span style="font-size:13px;color:#7c8b9c;font-weight:500">Miami, FL / Clinton County, NY</span>
         </div>
       </div>

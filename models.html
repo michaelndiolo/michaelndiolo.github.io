@@ -4,22 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>3D models - Michael Ndiolo</title>
-<meta name="description" content="Interactive 3D models of the OlivAir mine drainage reactor and fines plant. An overview is open to anyone; the full version is shared on request.">
+<meta name="description" content="Interactive 3D models of the mine drainage reactor and the fines lung. Password protected; email to ask for access.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
 <link rel="apple-touch-icon" href="assets/favicon-180.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="3D models - Michael Ndiolo">
-<meta property="og:description" content="Interactive 3D models of the OlivAir mine drainage reactor and fines plant.">
+<meta property="og:description" content="Interactive 3D models of the mine drainage reactor and the fines lung. Password protected; email to ask for access.">
 <meta property="og:image" content="assets/olivair-logo.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3D models - Michael Ndiolo">
-<meta name="twitter:description" content="Interactive 3D models of the OlivAir mine drainage reactor and fines plant.">
+<meta name="twitter:description" content="Interactive 3D models of the mine drainage reactor and the fines lung. Password protected; email to ask for access.">
 <meta name="twitter:image" content="assets/olivair-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261125a">
+<link rel="stylesheet" href="style.css?v=20261125b">
 <script data-goatcounter="https://michaelndiolo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body class="">
@@ -29,7 +29,9 @@
   <nav id="sidenav">
 <a class="" href="index.html">Home</a>
 <a class="" href="about.html">About</a>
-<a class="" href="olivair.html">OlivAir</a><a class="" href="reactor.html">Reactor</a>
+<a class="" href="olivair.html">OlivAir</a>
+<a class="" href="fines-lung.html">Fines lung</a>
+<a class="" href="reactor.html">Reactor</a>
 <a class="active" href="models.html">3D models<i class="nav-dot" aria-hidden="true"></i></a>
 <a class="" href="engineering.html">Engineering</a>
 <a class="" href="contact.html">Contact</a>
@@ -85,50 +87,72 @@
 </script><!--/rx-->
 <div class="main">
   <div class="top-row">
-    <details class="mnav"><summary>Menu</summary><div class="mnav-list"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="olivair.html">OlivAir</a><a class="" href="reactor.html">Reactor</a><a class="active" href="models.html">3D models</a><a class="" href="engineering.html">Engineering</a><a class="" href="contact.html">Contact</a></div></details>
+    <details class="mnav"><summary>Menu</summary><div class="mnav-list"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="olivair.html">OlivAir</a><a class="" href="fines-lung.html">Fines lung</a><a class="" href="reactor.html">Reactor</a><a class="active" href="models.html">3D models</a><a class="" href="engineering.html">Engineering</a><a class="" href="contact.html">Contact</a></div></details>
     <span>Chemical Engineering &middot; Hamilton College</span>
     <span class="status"><span class="dot"></span>Available for research work</span>
   </div>
 
-  
 
-  <header class="hero small reveal">
-    <h1>3D models</h1>
-    <p class="lead">Interactive 3D drawings of the two OlivAir plants: the mine drainage reactor and the steel-mill fines plant. Drag to turn, scroll to zoom, click any part to read about it.</p>
-  </header>
+<header class="hero small reveal">
+  <div class="eyebrow">By request</div>
+  <h1>3D models</h1>
+  <p class="lead">Interactive models of both pathways, with every part labeled and a guided tour. I share them with people I am talking to.</p>
+</header>
 
-  <section id="overview">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-title">Overview (open to anyone)</span><span class="sec-line"></span></div>
-      <a href="https://claude.ai/artifact/TYMbCptFu5CL8BjvTjjGFs" target="_blank" rel="noopener" style="display:block">
-        <div class="featured-card reveal">
-          <div class="featured-visual" style="padding:0">
-            <img src="assets/model-overview-reactor.jpg" alt="3D model of the mine drainage plant: two slag tanks, aeration, clarifier" style="position:absolute;inset:0;max-width:none;max-height:none;width:100%;height:100%;object-fit:cover;object-position:50% 40%">
-          </div>
-          <div class="featured-body">
-            <div class="k">Interactive &middot; modeled, not built</div>
-            <h3>How the plants fit together</h3>
-            <p>A guided tour of the whole mine drainage plant and the fines plant: where the water, slag and gas flow, and what each piece does. Opens in a new tab.</p>
-            <span class="link-btn">Open the overview &#8599;</span>
-          </div>
-        </div>
-      </a>
+<section id="gate-sec" style="padding-top:8px">
+  <div class="wrap wide" id="gwrap">
+    <div class="gate reveal" id="gate">
+      <div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+      <h2>Do you have access?</h2>
+      <p>Enter the password to open the models. If you do not have it yet, email me and tell me a little about why you are interested.</p>
+      <form id="gform" autocomplete="off">
+        <input type="password" id="gpw" placeholder="Password" aria-label="Password" autocomplete="off" spellcheck="false">
+        <button type="submit" id="gbtn">Unlock</button>
+      </form>
+      <div class="err" id="gerr" role="alert"></div>
+      <div class="ask">No password? <a href="mailto:michaelndiolo@gmail.com?subject=OlivAir%203D%20model%20access&body=Hi%20Michael%2C%20I%27d%20like%20to%20see%20the%203D%20models.%20A%20bit%20about%20me%3A%20">Email me to ask</a></div>
+      <div class="gate-in"><span>Mine drainage reactor</span><span>Fines lung</span></div>
     </div>
-  </section>
 
-  <section id="full" class="alt-bg">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-title">Full version (by request)</span><span class="sec-line"></span></div>
-      <div class="callout reveal">
-        <div>
-          <h4>Reactor internals and the test plan.</h4>
-          <p>The full model shows the inside of the reactor, the pulse and purge cycle, and the numbers behind the design. I share it with named people. Send me the email address you would like it shared with.</p>
-        </div>
-        <a class="link-btn magnet" href="mailto:michaelndiolo@gmail.com?subject=OlivAir%203D%20model%20access">Request access &rarr;</a>
-      </div>
-      <p class="reveal" style="color:var(--text-dim); max-width:680px; margin-top:18px; font-size:14px;">These are drawings for explaining the design, not engineering drawings. The designs are modeled, not built, and nothing in them has been measured.</p>
+    <div class="viewer" id="viewer">
+      <div class="vbar"><span>Drag to turn, scroll to zoom, click any part to read about it. Best on a laptop or larger screen.</span><span><button type="button" id="fs">Full screen</button> <button type="button" id="relock">Lock again</button></span></div>
+      <iframe id="vframe" title="OlivAir 3D models" sandbox="allow-scripts" loading="lazy"></iframe>
     </div>
-  </section>
+    <p class="reveal" style="color:var(--text-dim); max-width:680px; margin:22px auto 0; font-size:14px; text-align:center;">These are drawings to explain the design, not engineering drawings. Both designs are modeled, not built, and nothing in them has been measured.</p>
+  </div>
+</section>
+<script>
+(function(){
+  var gate=document.getElementById('gate'),viewer=document.getElementById('viewer'),frame=document.getElementById('vframe'),
+      form=document.getElementById('gform'),pw=document.getElementById('gpw'),err=document.getElementById('gerr'),btn=document.getElementById('gbtn');
+  function norm(s){return s.trim().toLowerCase().replace(/\s+/g,' ');}
+  function sget(){try{return sessionStorage.getItem('olx');}catch(e){return null;}}
+  function sset(v){try{ if(v===null) sessionStorage.removeItem('olx'); else sessionStorage.setItem('olx',v);}catch(e){}}
+  var cache=null;
+  async function decrypt(pass){
+    if(!window.crypto||!crypto.subtle) throw new Error('nocrypto');
+    if(!cache){ var r=await fetch('assets/models.enc?v=1'); if(!r.ok) throw new Error('fetch'); cache=(await r.text()).trim(); }
+    var bin=atob(cache),raw=new Uint8Array(bin.length); for(var i=0;i<bin.length;i++) raw[i]=bin.charCodeAt(i);
+    var salt=raw.slice(0,16),iv=raw.slice(16,28),ct=raw.slice(28);
+    var km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pass),'PBKDF2',false,['deriveKey']);
+    var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:salt,iterations:600000,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
+    var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:iv},key,ct);
+    return new TextDecoder().decode(pt);
+  }
+  function open(html,pass){ frame.srcdoc=html; gate.style.display='none'; viewer.classList.add('on'); document.getElementById('gwrap').classList.add('open'); sset(pass); }
+  async function attempt(raw,silent){
+    var pass=norm(raw); if(!pass){ err.textContent='Please enter the password.'; return; }
+    btn.disabled=true; btn.textContent='Checking...'; err.textContent='';
+    try{ var html=await decrypt(pass); open(html,pass); }
+    catch(e){ if(!silent){ err.textContent = (e&&e.message==='nocrypto') ? 'This browser cannot unlock the models. Please try a current Chrome, Safari or Firefox.' : (e&&e.message==='fetch') ? 'Could not load the models. Please try again.' : 'That is not the password. Try again, or email me to ask.'; } sset(null); }
+    btn.disabled=false; btn.textContent='Unlock';
+  }
+  form.addEventListener('submit',function(e){e.preventDefault();attempt(pw.value,false);});
+  document.getElementById('relock').addEventListener('click',function(){ sset(null); frame.srcdoc=''; viewer.classList.remove('on'); document.getElementById('gwrap').classList.remove('open'); gate.style.display=''; pw.value=''; pw.focus(); });
+  document.getElementById('fs').addEventListener('click',function(){ try{ (frame.requestFullscreen||frame.webkitRequestFullscreen).call(frame); }catch(e){} });
+  var s=sget(); if(s) attempt(s,true);
+})();
+</script>
 
   <section id="contact">
     <div class="wrap" style="max-width:100%">
