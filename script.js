@@ -107,6 +107,16 @@
     btn.addEventListener('mouseleave', function(){ btn.style.transform = 'translate(0,0)'; });
   });
 
+  document.addEventListener('click', function(e){
+    var t = e.target.closest && e.target.closest('.ftabs button, .fnext');
+    if (!t) return;
+    var g = t.closest('.fgal'); if (!g) return;
+    var i = parseInt(t.getAttribute(t.classList.contains('fnext') ? 'data-go' : 'data-i'), 10);
+    g.querySelectorAll('.ftabs button').forEach(function(b, k){ b.classList.toggle('on', k === i); });
+    g.querySelectorAll('.fstage img').forEach(function(b, k){ b.classList.toggle('on', k === i); });
+    g.querySelectorAll('.fc').forEach(function(b, k){ b.classList.toggle('on', k === i); });
+    if (t.classList.contains('fnext')) { var tb = g.querySelector('.ftabs'); if (tb && tb.getBoundingClientRect().top < 0) tb.scrollIntoView({block:'center', behavior:'smooth'}); }
+  });
   var lb = null, lbImg, lbCap, figImgs = [], current = 0;
   function buildLb(){
     lb = document.createElement('div');
