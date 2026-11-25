@@ -632,3 +632,6 @@ footer { padding: 26px 48px; display: flex; justify-content: space-between; font
   .mnav-list a { font-size:14px; font-weight:600; color:var(--text-dim); padding:8px 14px; }
   .mnav-list a.active { color:var(--text); background:var(--accent-bg); border-radius:6px; }
 }
+
+/* figure pages: flip layout must collapse on small screens */
+@media (max-width: 860px) { .figure-block.flip { grid-template-columns: 1fr; } }

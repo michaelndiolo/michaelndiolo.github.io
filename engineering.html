@@ -4,22 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Engineering — Michael Ndiolo</title>
-<meta name="description" content="Engineering portfolio: the two mechanisms I'm looking to patent in the OlivAir reactor, and how the design is being checked.">
+<meta name="description" content="Engineering portfolio: how the OlivAir design is being checked, with a lean cost model, 3D models and a test plan.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
 <link rel="apple-touch-icon" href="assets/favicon-180.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Engineering — Michael Ndiolo">
-<meta property="og:description" content="Engineering portfolio: the two mechanisms I'm looking to patent in the OlivAir reactor, and how the design is being checked.">
+<meta property="og:description" content="Engineering portfolio: how the OlivAir design is being checked, with a lean cost model, 3D models and a test plan.">
 <meta property="og:image" content="assets/olivair-logo.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Engineering — Michael Ndiolo">
-<meta name="twitter:description" content="Engineering portfolio: the two mechanisms I'm looking to patent in the OlivAir reactor, and how the design is being checked.">
+<meta name="twitter:description" content="Engineering portfolio: how the OlivAir design is being checked, with a lean cost model, 3D models and a test plan.">
 <meta name="twitter:image" content="assets/olivair-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261122d">
+<link rel="stylesheet" href="style.css?v=20261125a">
 <script data-goatcounter="https://michaelndiolo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
@@ -29,12 +29,9 @@
   <nav id="sidenav">
 <a class="" href="index.html">Home</a>
 <a class="" href="about.html">About</a>
-<a class="" href="olivair.html">OlivAir</a>
-<a class="has-sub " href="reactor.html">Reactor</a>
-<div class="subnav-wrap"><div class="subnav"><a class="" href="reactor-zone0.html">Zone 0</a><a class="" href="reactor-zones-baffles.html">Zones 1&ndash;3 and baffles</a></div></div>
-<a class="" href="reactor-model.html">Model and tests</a>
+<a class="" href="olivair.html">OlivAir</a><a class="" href="reactor.html">Reactor</a>
+<a class="" href="models.html">3D models</a>
 <a class="active" href="engineering.html">Engineering<i class="nav-dot" aria-hidden="true"></i></a>
-<a class="" href="figures.html">Figures</a>
 <a class="" href="contact.html">Contact</a>
   </nav>
   <div class="sidebar-bottom">
@@ -88,61 +85,61 @@
 </script><!--/rx-->
 <div class="main">
   <div class="top-row">
-    <details class="mnav"><summary>Menu</summary><div class="mnav-list"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="olivair.html">OlivAir</a><a class="" href="reactor.html">Reactor</a><a class="" href="reactor-model.html">Model and tests</a><a class="active" href="engineering.html">Engineering</a><a class="" href="figures.html">Figures</a><a class="" href="contact.html">Contact</a></div></details>
+    <details class="mnav"><summary>Menu</summary><div class="mnav-list"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="olivair.html">OlivAir</a><a class="" href="reactor.html">Reactor</a><a class="" href="models.html">3D models</a><a class="active" href="engineering.html">Engineering</a><a class="" href="contact.html">Contact</a></div></details>
     <span>Chemical Engineering &middot; Hamilton College</span>
     <span class="status"><span class="dot"></span>Available for research work</span>
   </div>
 
   <header class="hero small reveal">
     <h1>Engineering portfolio</h1>
-    <p class="lead">The two mechanisms behind the OlivAir reactor that I'm looking to patent, and how the design is being checked.</p>
+    <p class="lead">How the OlivAir design is being checked: a lean cost model, 3D models, and a test plan that puts bench data and a vendor quote ahead of more modeling.</p>
     <div class="hero-cta">
-      <a class="link-btn magnet" href="olivair.html">See the platform overview &rarr;</a>
-      <a class="link-btn magnet" href="figures.html">View the diagrams &rarr;</a>
+      <a class="link-btn magnet" href="olivair.html">See the project overview &rarr;</a>
+      <a class="link-btn magnet" href="models.html">View the 3D models &rarr;</a>
     </div>
   </header>
 
   <section id="mechanisms">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-title">Mechanisms I'm looking to patent</span><span class="sec-line"></span></div>
-      <p class="reveal" style="color:var(--text-dim); max-width:680px; margin-bottom:8px;">Two mechanisms in the reactor are the ones I'm looking toward patenting.</p>
-      <div class="patent-grid reveal" style="margin-top: 32px; grid-template-columns: 1fr 1fr;">
-        <div class="patent-card">
-          <div class="patent-num">01</div>
-          <h3>Zone 0 hydrodynamic classification chamber</h3>
-          <p>Acid enters from a floor manifold and from nozzles in a confinement wall, adding into one net upward velocity. Coarse, unreacted grains stay low and finer, partly dissolved grains rise to an impeller, so each grain gets the time it needs in the acid.</p>
-        </div>
-        <div class="patent-card">
-          <div class="patent-num">02</div>
-          <h3>Hollow baffle wall</h3>
-          <p>A hollow unit on the vessel wall with two walls of different length and a slanted, louvered front face. The liquid circling the vessel meets the shorter wall first. The unit is meant to hold liquid longer and catch fines and precipitating metals.</p>
-        </div>
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">What is being designed</span><span class="sec-line"></span></div>
+    <p class="reveal" style="color:var(--text-dim); max-width:680px; margin-bottom:8px;">Two plants, both on paper. The mine drainage reactor is the part that is specific to OlivAir.</p>
+    <div class="patent-grid reveal" style="margin-top: 32px; grid-template-columns: 1fr 1fr;">
+      <div class="patent-card">
+        <div class="patent-num">01</div>
+        <h3>Fines plant (the fines lung)</h3>
+        <p>Screen fresh slag fines, send the finest under 1 mm to a mine, and carbonate the 1 to 4 mm fraction in a covered bay with conditioned stack gas, two bays taking turns, until the free lime is used up.</p>
+      </div>
+      <div class="patent-card">
+        <div class="patent-num">02</div>
+        <h3>Mine drainage reactor</h3>
+        <p>Two fluidized slag beds in series, pulsed to keep the grains clean, with the slag moving against the water, aeration between the stages, and a clarifier to catch the iron floc.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <section id="checks" class="alt-bg">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-title">How the design is checked</span><span class="sec-line"></span></div>
-      <div class="skill-grid reveal" style="margin-top:8px">
-        <div class="skill-card"><h3>Cost model</h3><p>A workbook of 10 sheets and 131 scenarios, set up per tonne of CO&#8322; and applying no credit. Every input is cited or flagged as an assumption, and a verification log records what was checked. <a href="reactor-model.html" style="border-bottom:1px solid var(--accent); color:var(--accent-dark)">See the results</a>.</p></div>
-        <div class="skill-card"><h3>Chemistry</h3><p>Dissolution and carbonate chemistry from the published work, including a calculated pH of about 3.6 for CO&#8322; at 5 bar in pure water. These are calculations, not measurements.</p></div>
-        <div class="skill-card" style="grid-column: 1 / -1;"><h3>Bench tests</h3><p>None has been run. The tests that matter most are the dissolution rate of real slag in carbonic acid and whether partly dissolved grains become lighter and rise. <a href="reactor-model.html" style="border-bottom:1px solid var(--accent); color:var(--accent-dark)">See the full list</a>.</p></div>
-      </div>
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">How the design is checked</span><span class="sec-line"></span></div>
+    <div class="skill-grid reveal" style="margin-top:8px">
+      <div class="skill-card"><h3>Cost model</h3><p>A lean workbook covering the three ideas: capital, energy, labor, hauling and disposal. Every input is cited or flagged as a placeholder, and the equipment prices stay placeholders until a real vendor quote replaces them.</p></div>
+      <div class="skill-card"><h3>Published data</h3><p>Figures taken from published lab work are re-derived from their stated conditions, for example the carbon uptake of tailings under a known gas flow, to see whether the numbers hold together before they go in the model.</p></div>
+      <div class="skill-card" style="grid-column: 1 / -1;"><h3>Planned experiments (none has been run yet)</h3><p>These follow the work Dr. McCormick sets. F5: free lime and swelling of carbonated fines in a covered bed. A leach test of the spent slag. A bench pulsed-bed test on real mine water. A processor's numbers for what fines cost them today, and a vendor quote to replace the placeholder equipment prices. <a href="olivair.html" style="border-bottom:1px solid var(--accent); color:var(--accent-dark)">Back to the overview</a>.</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
   <section id="skills">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-title">Skills demonstrated</span><span class="sec-line"></span></div>
-      <div class="skill-grid reveal">
-        <div class="skill-card"><h3>Reactor & process design</h3><p>A four-zone reactor designed from the dissolution chemistry up to the vessel geometry.</p></div>
-        <div class="skill-card"><h3>Prior-art analysis</h3><p>Reviewed published patents and papers on related electrochemical and mineral-carbonation processes while working toward a patent.</p></div>
-        <div class="skill-card"><h3>Quantitative validation</h3><p>A 131-scenario cost model in which every input is cited or flagged as an assumption, with a verification log.</p></div>
-        <div class="skill-card"><h3>Technical writing</h3><p>Written design documents covering the chemistry, the vessel and the cost model.</p></div>
-              </div>
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">Skills demonstrated</span><span class="sec-line"></span></div>
+    <div class="skill-grid reveal">
+      <div class="skill-card"><h3>Reactor & process design</h3><p>A two-stage pulsed fluidized-bed reactor and a covered-bay gas train, designed on paper from the chemistry up to equipment layout.</p></div>
+      <div class="skill-card"><h3>Techno-economic modeling</h3><p>A lean workbook with capital recovery, energy, labor and disposal, built so that a changed price flows through every case.</p></div>
+      <div class="skill-card"><h3>Reviewing my own work</h3><p>The design went through many review rounds and was cut from a long list of ideas to three, with the dropped ones written down and the reasons kept.</p></div>
+      <div class="skill-card"><h3>Technical writing</h3><p>A living design document, a test plan, and 3D models that explain the plants to people who are not engineers.</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
   <section id="whats-next" class="alt-bg">
     <div class="wrap">
@@ -150,7 +147,7 @@
       <div class="callout reveal">
         <div>
           <h4>Bench-scale validation.</h4>
-          <p>The design is analytically modeled at TRL 2. The next step is bench work on real slag in carbonic acid.</p>
+          <p>The design is modeled at TRL 2. My own experiments come after the work Dr. McCormick sets, starting with F5, then real mine-water chemistry, alongside a vendor quote.</p>
         </div>
         <a class="link-btn magnet" href="mailto:michaelndiolo@gmail.com?subject=OlivAir%20Engineering">Talk about the roadmap &rarr;</a>
       </div>
@@ -163,7 +160,7 @@
       <div class="contact-inner reveal">
         <div>
           <h2>Let's talk.</h2>
-          <p style="color:#9fadbd;max-width:380px;margin-top:8px">I'm always glad to talk chemistry, carbon removal, or anything OlivAir related.</p>
+          <p style="color:#9fadbd;max-width:380px;margin-top:8px">I'm always glad to talk chemistry, slag, mine water, or anything OlivAir related.</p>
         </div>
         <div class="contact-links">
           <a href="mailto:michaelndiolo@gmail.com">michaelndiolo@gmail.com</a>
