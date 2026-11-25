@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The mine drainage reactor - Michael Ndiolo</title>
+<meta name="description" content="Project 02 of the OlivAir study: steel-slag fines in place of quicklime in a two-stage pulsed bed. Modeled, not built.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The mine drainage reactor - Michael Ndiolo">
+<meta property="og:description" content="Project 02 of the OlivAir study: steel-slag fines in place of quicklime in a two-stage pulsed bed. Modeled, not built.">
+<meta property="og:image" content="assets/olivair-logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The mine drainage reactor - Michael Ndiolo">
+<meta name="twitter:description" content="Project 02 of the OlivAir study: steel-slag fines in place of quicklime in a two-stage pulsed bed. Modeled, not built.">
+<meta name="twitter:image" content="assets/olivair-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20261125c">
+<script data-goatcounter="https://michaelndiolo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="">
+
+<aside class="sidebar">
+  <div class="name"><a href="index.html">Michael Ndiolo</a></div>
+  <nav id="sidenav">
+<a class="" href="index.html">Home</a>
+<a class="" href="about.html">About</a>
+<a class="parent" href="olivair.html">OlivAir</a>
+<div class="subnav"><a class="" href="fines-lung.html">Fines lung</a><a class="active" href="mine-drainage.html">Mine drainage<i class="nav-dot" aria-hidden="true"></i></a><a class="" href="models.html">3D models</a></div>
+<a class="" href="engineering.html">Engineering</a>
+<a class="" href="contact.html">Contact</a>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="status-pill"><span class="dot"></span>Open to research collaboration</div>
+    <a class="sidebar-link" href="olivair.html">View OlivAir &rarr;</a>
+    <a class="sidebar-link" href="assets/michael-ndiolo-resume.pdf" target="_blank" rel="noopener">Download resume &rarr;</a>
+    <div class="sidebar-cta">Have a project in mind?<strong>Let's talk</strong></div>
+    <a class="social" href="https://www.linkedin.com/in/michael-ndiolo-245876327" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+  </div>
+</aside>
+<!--rx--><script>
+(function(){
+  var doc=document,w=doc.querySelector('.subnav-wrap'),nav=doc.getElementById('sidenav');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function get(k){try{return sessionStorage.getItem(k);}catch(e){return null;}}
+  function set(k,v){try{sessionStorage.setItem(k,v);}catch(e){}}
+  var dot=nav&&nav.querySelector('.nav-dot');
+  function center(el){var r=el.getBoundingClientRect();return {x:r.left+r.width/2,y:r.top+r.height/2};}
+  function saveDot(){ if(dot){var c=center(dot); set('rxDot',c.x.toFixed(1)+','+c.y.toFixed(1)); set('rxOpen',w&&w.classList.contains('open')?'1':'0');} }
+  if(w&&nav&&!reduce){
+    var target=w.classList.contains('open'),prev=get('rxOpen');
+    if(prev!==null&&(prev==='1')!==target){
+      w.style.transition='none'; w.classList.toggle('open',prev==='1'); void w.offsetHeight; w.style.transition='';
+      requestAnimationFrame(function(){requestAnimationFrame(function(){w.classList.toggle('open',target);});});
+    }
+  }
+  if(dot&&!reduce){
+    var pd=get('rxDot');
+    if(pd){
+      var a=pd.split(','),c=center(dot),dx=parseFloat(a[0])-c.x,dy=parseFloat(a[1])-c.y;
+      if(isFinite(dx)&&isFinite(dy)&&(Math.abs(dx)>.5||Math.abs(dy)>.5)){
+        dot.style.transition='none'; dot.style.transform='translate('+dx+'px,'+dy+'px)'; void dot.offsetHeight; dot.style.transition='';
+        requestAnimationFrame(function(){requestAnimationFrame(function(){dot.style.transform='';});});
+      }
+    }
+  }
+  window.addEventListener('pagehide',saveDot);
+  doc.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href]'); if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
+    if(a.target&&a.target!=='_self') return; if(a.hasAttribute('download')) return;
+    var u; try{u=new URL(a.href,location.href);}catch(x){return;}
+    if(u.origin!==location.origin||!/\.html?$|\/$/.test(u.pathname)) return;
+    if(u.pathname===location.pathname&&u.search===location.search) return;
+    saveDot(); if(reduce) return;
+    var m=doc.querySelector('.main'); if(!m) return;
+    e.preventDefault(); m.classList.add('page-out');
+    setTimeout(function(){location.href=a.href;},190);
+  });
+  window.addEventListener('pageshow',function(e){ if(e.persisted){var m=doc.querySelector('.main'); if(m) m.classList.remove('page-out');} });
+})();
+</script><!--/rx-->
+<div class="main">
+  <div class="top-row">
+    <details class="mnav"><summary>Menu</summary><div class="mnav-list"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="olivair.html">OlivAir</a><a class=" sub" href="fines-lung.html">Fines lung</a><a class="active sub" href="mine-drainage.html">Mine drainage</a><a class=" sub" href="models.html">3D models</a><a class="" href="engineering.html">Engineering</a><a class="" href="contact.html">Contact</a></div></details>
+    <span>Chemical Engineering &middot; Hamilton College</span>
+    <span class="status"><span class="dot"></span>Available for research work</span>
+  </div>
+
+
+<header class="hero small herogrid reveal"><div>
+  <div class="eyebrow">Project 02 &middot; at the mine</div>
+  <h1>The mine drainage reactor</h1>
+  <p class="lead">Steel-slag fines used in place of quicklime to neutralize acid mine water, in a two-stage pulsed slag bed. Modeled on paper: nothing is built and nothing is measured.</p>
+  <div class="hero-cta"><a class="link-btn magnet" href="olivair.html">&larr; OlivAir</a><a class="link-btn magnet" href="fines-lung.html">Also: the fines lung &rarr;</a></div></div><div class="hart"><svg viewBox="0 0 320 190" aria-hidden="true">
+<rect x="0" y="166" width="320" height="2" fill="#dfe4ec"/>
+<rect x="70" y="28" width="62" height="124" rx="6" fill="#a9cdf2" fill-opacity=".22" stroke="#17324f" stroke-width="2.6"/><rect x="190" y="28" width="62" height="124" rx="6" fill="#a9cdf2" fill-opacity=".22" stroke="#17324f" stroke-width="2.6"/>
+<rect x="72" y="104" width="58" height="46" rx="4" fill="#d9d4c8"/><circle cx="107" cy="127" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="90" cy="138" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="127" cy="107" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="110" cy="118" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="93" cy="129" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="76" cy="140" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="113" cy="109" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="96" cy="120" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="79" cy="131" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="116" cy="142" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="99" cy="111" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="82" cy="122" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="119" cy="133" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="102" cy="144" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="85" cy="113" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="122" cy="124" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="105" cy="135" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="88" cy="146" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="125" cy="115" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="108" cy="126" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="91" cy="137" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="74" cy="106" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="111" cy="117" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="94" cy="128" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="77" cy="139" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="114" cy="108" r="1.7" fill="#8d867c" opacity=".7"/>
+<rect x="192" y="116" width="58" height="34" rx="4" fill="#d9d4c8"/><circle cx="206" cy="130" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="243" cy="123" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="226" cy="146" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="209" cy="139" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="246" cy="132" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="229" cy="125" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="212" cy="118" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="195" cy="141" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="232" cy="134" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="215" cy="127" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="198" cy="120" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="235" cy="143" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="218" cy="136" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="201" cy="129" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="238" cy="122" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="221" cy="145" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="204" cy="138" r="1.7" fill="#8d867c" opacity=".7"/><circle cx="241" cy="131" r="1.7" fill="#8d867c" opacity=".7"/>
+<path d="M86 150 V89" stroke="#2f5fa3" stroke-width="2" stroke-linecap="round"/><path d="M82 91 L86 84 L90 91" fill="none" stroke="#2f5fa3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M110 150 V89" stroke="#2f5fa3" stroke-width="2" stroke-linecap="round"/><path d="M106 91 L110 84 L114 91" fill="none" stroke="#2f5fa3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M206 150 V103" stroke="#2f5fa3" stroke-width="2" stroke-linecap="round"/><path d="M202 105 L206 98 L210 105" fill="none" stroke="#2f5fa3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M230 150 V103" stroke="#2f5fa3" stroke-width="2" stroke-linecap="round"/><path d="M226 105 L230 98 L234 105" fill="none" stroke="#2f5fa3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M132 46 H162 V138 H188" fill="none" stroke="#17324f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M183 133 L189 138 L183 143" fill="none" stroke="#17324f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M14 150 H66" stroke="#2f5fa3" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+<path d="M252 50 H304" stroke="#a9cdf2" stroke-width="7" stroke-linecap="round"/>
+</svg></div>
+</header>
+
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">What the reactor does</span><span class="sec-line"></span></div>
+    <p class="big-lede reveal">Fine steel slag neutralizes acid mine water in place of quicklime. <em>The hard part is keeping the grains clean and getting the spent ones out.</em></p>
+    <div class="split reveal" style="margin-top:22px">
+      <p class="dim">Slag grains dissolve as they work, so the bed is a moving mix of fresh grains, shrinking grains and iron oxide that does not react at all. The reactor sorts them with the water itself, and catches the dead grains before they can foul the bed.</p>
+      <p class="dim">Aeration between the two stages and a clarifier at the end are ordinary equipment. What I designed is the part in between.</p>
+    </div>
+    <div class="facts reveal">
+      <div class="fact"><div class="v">2 stages</div><div class="l">Pulsed slag beds in series</div></div>
+      <div class="fact"><div class="v">&lt; 1 mm</div><div class="l">Slag fines used, the fraction the mill's bays do not take</div></div>
+      <div class="fact"><div class="v">pH 7&ndash;9</div><div class="l">Water leaving the second stage (model)</div></div>
+      <div class="fact"><div class="v">Thin</div><div class="l">Margin over lime in the model, so it needs real prices</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="locked" data-src="assets/x-mine.enc" data-kind="html">
+<section class="alt-bg">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">The drawings</span><span class="sec-line"></span></div>
+    <div class="lockbox reveal">
+      <div class="lb-l"><div class="lb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Six drawings of the reactor</h3><p>From the whole vessel cut open, down to one baffle unit and the settling plates. They show only the parts particular to this design.</p></div>
+      <form class="lb-f" autocomplete="off">
+        <label for="pw-x-mine">Password</label>
+        <div class="lb-row"><input type="password" id="pw-x-mine" autocomplete="off" spellcheck="false" placeholder="Enter password"><button type="submit">Unlock</button></div>
+        <div class="err" role="alert"></div>
+        <div class="ask">No password? <a href="#contact">Email me to ask</a>. One password opens every locked section on the site, and it stays unlocked as you move between pages.</div>
+      </form>
+    </div>
+  </div>
+</section>
+</div>
+
+<section id="more">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">Next</span><span class="sec-line"></span></div>
+    <div class="callout reveal">
+      <div>
+        <h4>Turn it around in 3D.</h4>
+        <p>The 3D models show the same parts as solid drawings you can rotate, along with the fines lung. They sit behind the same password as the drawings.</p>
+      </div>
+      <a class="link-btn magnet" href="models.html">Open the 3D models &rarr;</a>
+    </div>
+    <p class="reveal dim small" style="margin-top:18px">Modeled at TRL 2. The first bench tests come after the work Dr. McCormick sets. See <a href="engineering.html" class="ul">where each piece stands</a>.</p>
+  </div>
+</section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="sec-title">Let's build together</span><span class="sec-line"></span></div>
+      <div class="contact-inner reveal">
+        <div>
+          <h2>Let's talk.</h2>
+          <p style="color:#9fadbd;max-width:380px;margin-top:8px">I'm always glad to talk chemistry, slag, mine water, or anything OlivAir related.</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:michaelndiolo@gmail.com">michaelndiolo@gmail.com</a>
+          <a href="https://www.linkedin.com/in/michael-ndiolo-245876327" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+          <a href="assets/michael-ndiolo-resume.pdf" target="_blank" rel="noopener">Resume &#8599;</a>
+          <span style="font-size:13px;color:#7c8b9c;font-weight:500">Miami, FL / Clinton County, NY</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Michael Ndiolo &copy; 2026</span>
+    <span>TRL 2 &middot; still reacting</span>
+  </footer>
+</div>
+
+<script src="gate.js?v=20261125c"></script>
+<script src="script.js?v=20261125c"></script>
+
+</body>
+</html>

@@ -4,22 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>3D models - Michael Ndiolo</title>
-<meta name="description" content="Interactive 3D models of the mine drainage reactor and the fines lung. Password protected; email to ask for access.">
+<meta name="description" content="Interactive 3D models of the fines lung and the mine drainage reactor. Password protected.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
 <link rel="apple-touch-icon" href="assets/favicon-180.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="3D models - Michael Ndiolo">
-<meta property="og:description" content="Interactive 3D models of the mine drainage reactor and the fines lung. Password protected; email to ask for access.">
+<meta property="og:description" content="Interactive 3D models of the fines lung and the mine drainage reactor. Password protected.">
 <meta property="og:image" content="assets/olivair-logo.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3D models - Michael Ndiolo">
-<meta name="twitter:description" content="Interactive 3D models of the mine drainage reactor and the fines lung. Password protected; email to ask for access.">
+<meta name="twitter:description" content="Interactive 3D models of the fines lung and the mine drainage reactor. Password protected.">
 <meta name="twitter:image" content="assets/olivair-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261125b">
+<link rel="stylesheet" href="style.css?v=20261125c">
 <script data-goatcounter="https://michaelndiolo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body class="">
@@ -29,10 +29,8 @@
   <nav id="sidenav">
 <a class="" href="index.html">Home</a>
 <a class="" href="about.html">About</a>
-<a class="" href="olivair.html">OlivAir</a>
-<a class="" href="fines-lung.html">Fines lung</a>
-<a class="" href="reactor.html">Reactor</a>
-<a class="active" href="models.html">3D models<i class="nav-dot" aria-hidden="true"></i></a>
+<a class="parent" href="olivair.html">OlivAir</a>
+<div class="subnav"><a class="" href="fines-lung.html">Fines lung</a><a class="" href="mine-drainage.html">Mine drainage</a><a class="active" href="models.html">3D models<i class="nav-dot" aria-hidden="true"></i></a></div>
 <a class="" href="engineering.html">Engineering</a>
 <a class="" href="contact.html">Contact</a>
   </nav>
@@ -87,75 +85,43 @@
 </script><!--/rx-->
 <div class="main">
   <div class="top-row">
-    <details class="mnav"><summary>Menu</summary><div class="mnav-list"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="olivair.html">OlivAir</a><a class="" href="fines-lung.html">Fines lung</a><a class="" href="reactor.html">Reactor</a><a class="active" href="models.html">3D models</a><a class="" href="engineering.html">Engineering</a><a class="" href="contact.html">Contact</a></div></details>
+    <details class="mnav"><summary>Menu</summary><div class="mnav-list"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="olivair.html">OlivAir</a><a class=" sub" href="fines-lung.html">Fines lung</a><a class=" sub" href="mine-drainage.html">Mine drainage</a><a class="active sub" href="models.html">3D models</a><a class="" href="engineering.html">Engineering</a><a class="" href="contact.html">Contact</a></div></details>
     <span>Chemical Engineering &middot; Hamilton College</span>
     <span class="status"><span class="dot"></span>Available for research work</span>
   </div>
 
 
 <header class="hero small reveal">
-  <div class="eyebrow">By request</div>
+  <div class="eyebrow">By request &middot; same password as the other locked sections</div>
   <h1>3D models</h1>
-  <p class="lead">Interactive models of both pathways, with every part labeled and a guided tour. I share them with people I am talking to.</p>
+  <p class="lead">Interactive models of the fines lung and the mine drainage reactor, with every part labeled and a guided tour. I share them with people I am talking to.</p>
 </header>
 
-<section id="gate-sec" style="padding-top:8px">
-  <div class="wrap wide" id="gwrap">
-    <div class="gate reveal" id="gate">
-      <div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
-      <h2>Do you have access?</h2>
-      <p>Enter the password to open the models. If you do not have it yet, email me and tell me a little about why you are interested.</p>
-      <form id="gform" autocomplete="off">
-        <input type="password" id="gpw" placeholder="Password" aria-label="Password" autocomplete="off" spellcheck="false">
-        <button type="submit" id="gbtn">Unlock</button>
+<div class="locked" data-src="assets/x-3d.enc" data-kind="frame">
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">The models</span><span class="sec-line"></span></div>
+    <div class="lockbox reveal">
+      <div class="lb-l"><div class="lb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Interactive models of both projects</h3><p>Rotate, zoom and click any part to read about it. There is a guided tour for each, and every part is labeled.</p></div>
+      <form class="lb-f" autocomplete="off">
+        <label for="pw-x-3d">Password</label>
+        <div class="lb-row"><input type="password" id="pw-x-3d" autocomplete="off" spellcheck="false" placeholder="Enter password"><button type="submit">Unlock</button></div>
+        <div class="err" role="alert"></div>
+        <div class="ask">No password? <a href="#contact">Email me to ask</a>. One password opens every locked section on the site, and it stays unlocked as you move between pages.</div>
       </form>
-      <div class="err" id="gerr" role="alert"></div>
-      <div class="ask">No password? <a href="mailto:michaelndiolo@gmail.com?subject=OlivAir%203D%20model%20access&body=Hi%20Michael%2C%20I%27d%20like%20to%20see%20the%203D%20models.%20A%20bit%20about%20me%3A%20">Email me to ask</a></div>
-      <div class="gate-in"><span>Mine drainage reactor</span><span>Fines lung</span></div>
     </div>
-
-    <div class="viewer" id="viewer">
-      <div class="vbar"><span>Drag to turn, scroll to zoom, click any part to read about it. Best on a laptop or larger screen.</span><span><button type="button" id="fs">Full screen</button> <button type="button" id="relock">Lock again</button></span></div>
-      <iframe id="vframe" title="OlivAir 3D models" sandbox="allow-scripts" loading="lazy"></iframe>
-    </div>
-    <p class="reveal" style="color:var(--text-dim); max-width:680px; margin:22px auto 0; font-size:14px; text-align:center;">These are drawings to explain the design, not engineering drawings. Both designs are modeled, not built, and nothing in them has been measured.</p>
   </div>
 </section>
-<script>
-(function(){
-  var gate=document.getElementById('gate'),viewer=document.getElementById('viewer'),frame=document.getElementById('vframe'),
-      form=document.getElementById('gform'),pw=document.getElementById('gpw'),err=document.getElementById('gerr'),btn=document.getElementById('gbtn');
-  function norm(s){return s.trim().toLowerCase().replace(/\s+/g,' ');}
-  function sget(){try{return sessionStorage.getItem('olx');}catch(e){return null;}}
-  function sset(v){try{ if(v===null) sessionStorage.removeItem('olx'); else sessionStorage.setItem('olx',v);}catch(e){}}
-  var cache=null;
-  async function decrypt(pass){
-    if(!window.crypto||!crypto.subtle) throw new Error('nocrypto');
-    if(!cache){ var r=await fetch('assets/models.enc?v=1'); if(!r.ok) throw new Error('fetch'); cache=(await r.text()).trim(); }
-    var bin=atob(cache),raw=new Uint8Array(bin.length); for(var i=0;i<bin.length;i++) raw[i]=bin.charCodeAt(i);
-    var salt=raw.slice(0,16),iv=raw.slice(16,28),ct=raw.slice(28);
-    var km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pass),'PBKDF2',false,['deriveKey']);
-    var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:salt,iterations:600000,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
-    var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:iv},key,ct);
-    return new TextDecoder().decode(pt);
-  }
-  function open(html,pass){ frame.srcdoc=html; gate.style.display='none'; viewer.classList.add('on'); document.getElementById('gwrap').classList.add('open'); sset(pass); }
-  async function attempt(raw,silent){
-    var pass=norm(raw); if(!pass){ err.textContent='Please enter the password.'; return; }
-    btn.disabled=true; btn.textContent='Checking...'; err.textContent='';
-    try{ var html=await decrypt(pass); open(html,pass); }
-    catch(e){ if(!silent){ err.textContent = (e&&e.message==='nocrypto') ? 'This browser cannot unlock the models. Please try a current Chrome, Safari or Firefox.' : (e&&e.message==='fetch') ? 'Could not load the models. Please try again.' : 'That is not the password. Try again, or email me to ask.'; } sset(null); }
-    btn.disabled=false; btn.textContent='Unlock';
-  }
-  form.addEventListener('submit',function(e){e.preventDefault();attempt(pw.value,false);});
-  document.getElementById('relock').addEventListener('click',function(){ sset(null); frame.srcdoc=''; viewer.classList.remove('on'); document.getElementById('gwrap').classList.remove('open'); gate.style.display=''; pw.value=''; pw.focus(); });
-  document.getElementById('fs').addEventListener('click',function(){ try{ (frame.requestFullscreen||frame.webkitRequestFullscreen).call(frame); }catch(e){} });
-  var s=sget(); if(s) attempt(s,true);
-})();
-</script>
+</div>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="reveal dim small" style="max-width:720px">These are drawings to explain the designs, not engineering drawings. Both are modeled, not built, and nothing in them has been measured.</p>
+  </div>
+</section>
 
   <section id="contact">
-    <div class="wrap" style="max-width:100%">
+    <div class="wrap">
       <div class="sec-head reveal"><span class="sec-title">Let's build together</span><span class="sec-line"></span></div>
       <div class="contact-inner reveal">
         <div>
@@ -178,7 +144,8 @@
   </footer>
 </div>
 
-<script src="script.js"></script>
+<script src="gate.js?v=20261125c"></script>
+<script src="script.js?v=20261125c"></script>
 
 </body>
 </html>

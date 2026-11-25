@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261125b">
+<link rel="stylesheet" href="style.css?v=20261125c">
 <script data-goatcounter="https://michaelndiolo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body class="">
@@ -30,9 +30,7 @@
 <a class="" href="index.html">Home</a>
 <a class="" href="about.html">About</a>
 <a class="" href="olivair.html">OlivAir</a>
-<a class="" href="fines-lung.html">Fines lung</a>
-<a class="" href="reactor.html">Reactor</a>
-<a class="" href="models.html">3D models</a>
+<div class="subnav"><a class="" href="fines-lung.html">Fines lung</a><a class="" href="mine-drainage.html">Mine drainage</a><a class="" href="models.html">3D models</a></div>
 <a class="active" href="engineering.html">Engineering<i class="nav-dot" aria-hidden="true"></i></a>
 <a class="" href="contact.html">Contact</a>
   </nav>
@@ -87,65 +85,32 @@
 </script><!--/rx-->
 <div class="main">
   <div class="top-row">
-    <details class="mnav"><summary>Menu</summary><div class="mnav-list"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="olivair.html">OlivAir</a><a class="" href="fines-lung.html">Fines lung</a><a class="" href="reactor.html">Reactor</a><a class="" href="models.html">3D models</a><a class="active" href="engineering.html">Engineering</a><a class="" href="contact.html">Contact</a></div></details>
+    <details class="mnav"><summary>Menu</summary><div class="mnav-list"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="olivair.html">OlivAir</a><a class=" sub" href="fines-lung.html">Fines lung</a><a class=" sub" href="mine-drainage.html">Mine drainage</a><a class=" sub" href="models.html">3D models</a><a class="active" href="engineering.html">Engineering</a><a class="" href="contact.html">Contact</a></div></details>
     <span>Chemical Engineering &middot; Hamilton College</span>
     <span class="status"><span class="dot"></span>Available for research work</span>
   </div>
 
 
 <header class="hero small reveal">
-  <div class="eyebrow">Status board</div>
+  <div class="eyebrow">Status</div>
   <h1>Engineering</h1>
-  <p class="lead">What is designed, what has been checked on paper, and what is still waiting for the bench. Everything is at TRL 2: modeled, not built.</p>
+  <p class="lead">What is designed, what has been checked on paper, and what is still waiting for the bench. Every piece is at TRL 2: modeled, not built.</p>
 </header>
 
 <section id="board">
-  <div class="wrap wide">
+  <div class="wrap">
     <div class="sec-head reveal"><span class="sec-title">Where each piece stands</span><span class="sec-line"></span></div>
-    <div class="board reveal">
-      <div class="col c1"><div class="col-h"><span class="dotc"></span>Designed<span class="cnt">4</span></div>
-        <div class="bcard"><h5>Fines lung</h5><p>A covered bay for 1 to 4 mm fines, a gas cooling train with a dew point set point, and two bays that take turns.</p></div>
-        <div class="bcard"><h5>Pulsed bed reactor</h5><p>Two fluidized slag beds in series, slag moving against the water, pulsed to keep the grains clean.</p></div>
-        <div class="bcard"><h5>Ring, impeller and baffle units</h5><p>A 50 degree ring, a slow impeller, and four hollow baffle units with a dip that catches the inert grains.</p></div>
-        <div class="bcard"><h5>Plates and clarifier</h5><p>60 degree settling plates in the reactor, aeration between the stages, a clarifier for the iron floc.</p></div>
-      </div>
-      <div class="col c2"><div class="col-h"><span class="dotc"></span>Checked on paper<span class="cnt">4</span></div>
-        <div class="bcard"><h5>Grain sorting sizes</h5><p>The bed lifts slag below about 90 &micro;m and dense inert grains below about 67 &micro;m at 9 mm/s. Worked out from settling speeds, to check against the bench.</p></div>
-        <div class="bcard"><h5>Published carbon-uptake data</h5><p>Figures from published lab work are re-derived from their stated conditions before they go into the model.</p></div>
-        <div class="bcard"><h5>Cost model</h5><p>A lean workbook for the three ideas. Every input is cited or flagged as a placeholder.</p></div>
-        <div class="bcard"><h5>Review rounds</h5><p>The design went through many rounds of review and was cut from a long list of ideas to three.</p></div>
-      </div>
-      <div class="col c3"><div class="col-h"><span class="dotc"></span>Waiting for the bench<span class="cnt">4</span></div>
-        <div class="bcard"><h5>Test F5</h5><p>Free lime and swelling of carbonated fines in a covered bed. Follows the work Dr. McCormick sets.</p></div>
-        <div class="bcard"><h5>Leach test</h5><p>Does the spent slag pass a swell test and a sulfate leach? It decides where it can go.</p></div>
-        <div class="bcard"><h5>Pulsed bed on real mine water</h5><p>A bench pulsed bed, to test the sorting and the slag use against the model.</p></div>
-        <div class="bcard"><h5>Real prices</h5><p>A vendor quote for equipment and a slag processor's figures, to replace the placeholders.</p></div>
-      </div>
-    </div>
-    <p class="reveal" style="color:var(--text-dim); max-width:680px; margin-top:18px; font-size:14px;">None of the planned tests has been run. They come after the work Dr. McCormick sets.</p>
+    <div class="ladder reveal" role="table" aria-label="Where each piece stands">
+  <div class="lh lh0"></div><div class="lh">Designed</div><div class="lh">Checked on paper</div><div class="lh">Bench test</div><div class="lh">Real prices</div>
+  <div class="lname"><h4>The fines lung</h4><p>A covered bay for 1 to 4 mm fines, a gas cooling train, and two bays that take turns. Next: test F5.</p></div><div class="lc f link"><i class="d"></i><span class="lab">Designed</span></div><div class="lc f"><i class="d"></i><span class="lab">Checked on paper</span></div><div class="lc n"><i class="d"></i><span class="lab">Bench test</span></div><div class="lc n"><i class="d"></i><span class="lab">Real prices</span></div><div class="lname"><h4>The mine drainage reactor</h4><p>Two pulsed slag beds in series, a way to sort the grains with the water, and a way to catch the dead ones. Next: a bench bed on real mine water.</p></div><div class="lc f link"><i class="d"></i><span class="lab">Designed</span></div><div class="lc f"><i class="d"></i><span class="lab">Checked on paper</span></div><div class="lc n"><i class="d"></i><span class="lab">Bench test</span></div><div class="lc n"><i class="d"></i><span class="lab">Real prices</span></div><div class="lname"><h4>The dry-stack gas rule<em class="onhold">on hold</em></h4><p>Move the gas only when the front breaks through. The ceiling is worked out; nothing else waits on it.</p></div><div class="lc f link"><i class="d"></i><span class="lab">Designed</span></div><div class="lc h"><i class="d"></i><span class="lab">Checked on paper</span></div><div class="lc n"><i class="d"></i><span class="lab">Bench test</span></div><div class="lc n"><i class="d"></i><span class="lab">Real prices</span></div><div class="lname"><h4>The cost model</h4><p>One lean workbook for all three, with every input cited or flagged. Next: a vendor quote and a slag processor's figures.</p></div><div class="lc f link"><i class="d"></i><span class="lab">Designed</span></div><div class="lc f"><i class="d"></i><span class="lab">Checked on paper</span></div><div class="lc n"><i class="d"></i><span class="lab">Bench test</span></div><div class="lc h"><i class="d"></i><span class="lab">Real prices</span></div>
+</div>
+<div class="legend2 reveal"><span><i class="d f"></i>Done on paper</span><span><i class="d h"></i>Partly: placeholders in</span><span><i class="d n"></i>Not started</span></div>
+    <p class="reveal dim small" style="margin-top:22px">None of the planned tests has been run. They come after the work Dr. McCormick sets.</p>
   </div>
 </section>
 
-<section id="cost" class="alt-bg">
-  <div class="wrap wide">
-    <div class="sec-head reveal"><span class="sec-title">What moves the answer</span><span class="sec-line"></span></div>
-    <div class="chartcard reveal">
-      <div>
-        <h3 style="font-size:22px; font-weight:800; letter-spacing:-.015em">Slag use decides whether it beats lime.</h3>
-        <p style="color:var(--text-dim); margin-top:10px; font-size:15px">In the model, the share of the slag that actually reacts matters most. Moving the slag against the water is meant to raise it from about 40% to about 70%, and that is the difference between a thin margin and a better one.</p>
-        <p style="color:var(--text-dim); margin-top:10px; font-size:14px">If the spent slag has to go to landfill instead of back to the processor, the model loses to lime either way. That is what the leach test is for.</p>
-      </div>
-      <div class="bars" role="img" aria-label="Model margin over lime after capital: about 120 dollars per day at 40 percent slag use and about 280 dollars per day at 70 percent">
-        <div class="barrow"><div class="bl"><span>40% slag use</span><span>~$120 / day</span></div><div class="bt"><div class="bf" style="width:43%"></div></div></div>
-        <div class="barrow b2"><div class="bl"><span>70% slag use</span><span>~$280 / day</span></div><div class="bt"><div class="bf" style="width:100%"></div></div></div>
-        <div style="font-size:12.5px; color:var(--text-faint)">Margin over lime after capital, 10,000 m&sup3;/day example site. Desk model with placeholder prices, not measured.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="road">
-  <div class="wrap wide">
+<section id="road" class="alt-bg">
+  <div class="wrap">
     <div class="sec-head reveal"><span class="sec-title">The order of work</span><span class="sec-line"></span></div>
     <div class="lane reveal">
       <div class="lstep now"><i></i><b>Now</b><span>Modeled and costed. Design reviewed many times.</span></div>
@@ -156,8 +121,25 @@
   </div>
 </section>
 
-<section id="skills" class="alt-bg">
-  <div class="wrap wide">
+<div class="locked" data-src="assets/x-eng.enc" data-kind="html">
+<section class="alt-bg">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">What moves the answer</span><span class="sec-line"></span></div>
+    <div class="lockbox reveal">
+      <div class="lb-l"><div class="lb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>The cost model result</h3><p>The one chart that decides whether the mine drainage idea beats quicklime, and the sensitivity behind it.</p></div>
+      <form class="lb-f" autocomplete="off">
+        <label for="pw-x-eng">Password</label>
+        <div class="lb-row"><input type="password" id="pw-x-eng" autocomplete="off" spellcheck="false" placeholder="Enter password"><button type="submit">Unlock</button></div>
+        <div class="err" role="alert"></div>
+        <div class="ask">No password? <a href="#contact">Email me to ask</a>. One password opens every locked section on the site, and it stays unlocked as you move between pages.</div>
+      </form>
+    </div>
+  </div>
+</section>
+</div>
+
+<section id="skills">
+  <div class="wrap">
     <div class="sec-head reveal"><span class="sec-title">Skills demonstrated</span><span class="sec-line"></span></div>
     <div class="skills2 reveal">
       <div class="sk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 15h9"/></svg></div><div><h4>Reactor and process design</h4><p>A two-stage pulsed fluidized-bed reactor and a covered-bay gas train, designed on paper from the chemistry up to equipment layout.</p></div></div>
@@ -168,18 +150,19 @@
   </div>
 </section>
 
-<section id="whats-next">
-  <div class="wrap wide">
+
+<section id="whats-next" class="alt-bg">
+  <div class="wrap">
     <div class="sec-head reveal"><span class="sec-title">What's next</span><span class="sec-line"></span></div>
     <div class="callout reveal">
       <div><h4>Bench-scale validation.</h4><p>The design is modeled at TRL 2. My own experiments come after the work Dr. McCormick sets, starting with F5, then real mine-water chemistry, alongside a vendor quote.</p></div>
-      <a class="link-btn magnet" href="mailto:michaelndiolo@gmail.com?subject=OlivAir%20Engineering">Talk about the roadmap &rarr;</a>
+      <a class="link-btn magnet" href="#contact">Talk about the roadmap &rarr;</a>
     </div>
   </div>
 </section>
 
   <section id="contact">
-    <div class="wrap" style="max-width:100%">
+    <div class="wrap">
       <div class="sec-head reveal"><span class="sec-title">Let's build together</span><span class="sec-line"></span></div>
       <div class="contact-inner reveal">
         <div>
@@ -202,7 +185,8 @@
   </footer>
 </div>
 
-<script src="script.js"></script>
+<script src="gate.js?v=20261125c"></script>
+<script src="script.js?v=20261125c"></script>
 
 </body>
 </html>
