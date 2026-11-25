@@ -39,10 +39,14 @@
     var kind = el.getAttribute('data-kind') || 'html';
     if (kind === 'frame') {
       el.classList.add('open');
-      el.innerHTML = '<div class="viewer on"><div class="vbar"><span>Drag to turn, scroll to zoom, click any part to read about it. Best on a laptop or larger screen.</span>' +
+      var vhtml = '<div class="viewer on"><div class="vbar"><span>Drag to turn, scroll to zoom, click any part to read about it. Best on a laptop or larger screen.</span>' +
         '<span><button type="button" class="vfs">Full screen</button></span></div>' +
         '<iframe title="OlivAir 3D models" sandbox="allow-scripts"></iframe></div>';
+      var teaser = el.querySelector('.lb-quiet');
+      if (teaser) { teaser.outerHTML = vhtml; el.classList.add('inpage'); } else el.innerHTML = vhtml;
       var v = el.querySelector('.viewer'), f = el.querySelector('iframe'), btn = el.querySelector('.vfs');
+      var sc = el.getAttribute('data-scene');
+      if (sc) html = html.replace('<head>', '<head><script>window.OLSCENE=' + JSON.stringify(sc) + '</script>');
       f.srcdoc = html;
       function inFs() { return v.classList.contains('fs') || document.fullscreenElement === v || document.webkitFullscreenElement === v; }
       function setLabel() { btn.textContent = inFs() ? 'Exit full screen' : 'Full screen'; }
