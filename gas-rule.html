@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261125j">
+<link rel="stylesheet" href="style.css?v=20261125k">
 <script data-goatcounter="https://michaelndiolo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body class="">
@@ -147,6 +147,23 @@
 
 <section id="compare" class="vs alt-bg"><div class="wrap"><div class="sec-head reveal"><span class="sec-title">Does it beat what is done today?</span><span class="sec-line"></span></div><p class="big-lede reveal">Today the fan runs on after the block is full. <em>The rule stops it when the outlet says so.</em></p><article class="vs-card reveal"><div class="vs-routes"><div class="rt rt-today"><div class="rt-lab">Today</div><div class="rt-steps"><div class="rs "><b>Exhaust gas</b><span>10% CO&#8322;, about 80 &deg;C</span></div><div class="rs "><b>Pipes in a 2 m block</b><span>UBC's design</span></div><div class="rs slow"><b>Gas keeps running</b><span>Long after the block stops taking CO&#8322;</span></div><div class="rs "><b>Capture assumed</b><span>All injected CO&#8322; counted as stored</span></div></div><div class="rt-tot"><span>Fan energy per t CO&#8322;</span><b>89 kWh</b></div></div><div class="rt rt-ours"><div class="rt-lab">Ours</div><div class="rt-steps"><div class="rs "><b>Exhaust gas</b><span>Same gas</span></div><div class="rs "><b>Pipes plus an outlet sensor</b><span>One sensor per block</span></div><div class="rs new"><b>Move the gas on</b><span>When outlet CO&#8322; rises to match the inlet</span></div><div class="rs "><b>Capture measured</b><span>Fan runs only while CO&#8322; is taken up</span></div></div><div class="rt-tot"><span>Same, lab test</span><b>37 kWh</b></div></div></div><div class="vs-stat"><b>&minus;58%</b><span>fan energy per tonne of CO&#8322; stored, at 10 kPa. A lab ceiling. About $8&ndash;24 saved per tonne.</span></div><div class="vs-text"><div class="blk"><h4>What I changed</h4><p>UBC's design injects exhaust into blocks of tailings and assumes all the CO&#8322; is stored. The rule: watch the outlet CO&#8322;, and when it rises to match the inlet, move the gas to a fresh block, so the fan runs only while CO&#8322; is being taken up. It also measures the real capture instead of assuming it.</p></div><div class="vs-side"><div class="blk catch"><h4>The catch</h4><p>The 58% comes from one 14-day lab test on half a kilogram. In UBC's 6 m field pipe no CO&#8322; came out for 44 hours, so a field stack would save less, and each block stores only about 60% of its maximum. Test S1 is meant to find out how much.</p></div><div class="blk known"><h4>Already known</h4><p>Stopping at breakthrough is already published (Harrison, 2013). What I add is the energy ceiling for a dry stack.</p></div></div></div></article><p class="vs-foot reveal">Desk model with placeholder prices. Nothing here is measured yet. <a href="engineering.html" class="ul">See what has been checked on paper, and what has not.</a></p></div></section>
 
+<div class="locked" data-src="assets/x-3d.enc" data-kind="frame" data-scene="T">
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-title">3D model</span><span class="sec-line"></span></div>
+    <div class="lockbox reveal lb-3d">
+      <div class="lb-l"><div class="lb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>The gas rule, in 3D</h3><p>Turn it around, zoom in, and click any part to read what it does. There is a guided tour, and every part is labeled.</p></div>
+      <form class="lb-f" autocomplete="off">
+        <label for="pw-x-3d">Password</label>
+        <div class="lb-row"><input type="password" id="pw-x-3d" autocomplete="off" spellcheck="false" placeholder="Enter password"><button type="submit">Unlock</button></div>
+        <div class="err" role="alert"></div>
+        <div class="ask">No password? <a href="#contact">Email me to ask</a>. One password opens every locked section on the site, and it stays unlocked as you move between pages.</div>
+      </form>
+    </div>
+  </div>
+</section>
+</div>
+
 <section id="next">
   <div class="wrap">
     <div class="sec-head reveal"><span class="sec-title">What is mine, and what is next</span><span class="sec-line"></span></div>
@@ -154,7 +171,7 @@
       <div class="panel"><h4>What is mine</h4><div class="p-big">A control rule with a number.</div><p>The principle, that gas supply must not outrun what the tailings can take, is published (Harrison, 2013). What I add is the control: an outlet sensor on each block, the gas moved when capture falls, and the energy ceiling that follows. A second piece, cooling the gas so water does not wet the stack, matters only at warm sites or in warm seasons.</p></div>
       <div class="panel dark"><h4>Planned experiment</h4><div class="p-big">Test S1</div><p>One 2 m block with the outlet CO&#8322; logged, to see how early it breaks through and how much of the gas is really stored. None of it has been run yet.</p></div>
     </div>
-    <p class="reveal dim small" style="margin-top:18px">Modeled at TRL 2. There is no 3D model of this one yet. See <a href="engineering.html" class="ul">where each piece stands</a>.</p>
+    <p class="reveal dim small" style="margin-top:18px">Modeled at TRL 2. See <a href="engineering.html" class="ul">where each piece stands</a>.</p>
   </div>
 </section>
 
@@ -182,7 +199,8 @@
   </footer>
 </div>
 
-<script src="script.js"></script>
+<script src="gate.js?v=20261125k"></script>
+<script src="script.js?v=20261125k"></script>
 
 </body>
 </html>

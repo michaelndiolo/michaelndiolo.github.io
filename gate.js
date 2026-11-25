@@ -42,7 +42,7 @@
       var vhtml = '<div class="viewer on"><div class="vbar"><span>Drag to turn, scroll to zoom, click any part to read about it. Best on a laptop or larger screen.</span>' +
         '<span><button type="button" class="vfs">Full screen</button></span></div>' +
         '<iframe title="OlivAir 3D models" sandbox="allow-scripts"></iframe></div>';
-      var teaser = el.querySelector('.lb-quiet');
+      var teaser = el.querySelector('.lb-quiet, .lb-3d');
       if (teaser) { teaser.outerHTML = vhtml; el.classList.add('inpage'); } else el.innerHTML = vhtml;
       var v = el.querySelector('.viewer'), f = el.querySelector('iframe'), btn = el.querySelector('.vfs');
       var sc = el.getAttribute('data-scene');
