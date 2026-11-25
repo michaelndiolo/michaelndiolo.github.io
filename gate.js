@@ -42,8 +42,26 @@
       el.innerHTML = '<div class="viewer on"><div class="vbar"><span>Drag to turn, scroll to zoom, click any part to read about it. Best on a laptop or larger screen.</span>' +
         '<span><button type="button" class="vfs">Full screen</button></span></div>' +
         '<iframe title="OlivAir 3D models" sandbox="allow-scripts"></iframe></div>';
-      var f = el.querySelector('iframe'); f.srcdoc = html;
-      el.querySelector('.vfs').addEventListener('click', function () { try { (f.requestFullscreen || f.webkitRequestFullscreen).call(f); } catch (e) {} });
+      var v = el.querySelector('.viewer'), f = el.querySelector('iframe'), btn = el.querySelector('.vfs');
+      f.srcdoc = html;
+      function inFs() { return v.classList.contains('fs') || document.fullscreenElement === v || document.webkitFullscreenElement === v; }
+      function setLabel() { btn.textContent = inFs() ? 'Exit full screen' : 'Full screen'; }
+      function enter() {
+        var rq = v.requestFullscreen || v.webkitRequestFullscreen;
+        if (rq) { try { var r = rq.call(v); if (r && r.catch) r.catch(function () { v.classList.add('fs'); setLabel(); }); } catch (e) { v.classList.add('fs'); } }
+        else v.classList.add('fs');
+        setLabel();
+      }
+      function leave() {
+        v.classList.remove('fs');
+        var ex = document.exitFullscreen || document.webkitExitFullscreen;
+        if (ex && (document.fullscreenElement || document.webkitFullscreenElement)) { try { ex.call(document); } catch (e) {} }
+        setLabel();
+      }
+      btn.addEventListener('click', function () { if (inFs()) leave(); else enter(); });
+      document.addEventListener('fullscreenchange', setLabel);
+      document.addEventListener('webkitfullscreenchange', setLabel);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && v.classList.contains('fs')) leave(); });
     } else {
       el.classList.add('open');
       el.innerHTML = html;

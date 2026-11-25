@@ -944,3 +944,50 @@ a.ul { border-bottom: 1px solid var(--accent); color: var(--accent-dark); }
   .top-row { padding-left: 20px; padding-right: 20px; }
   .locked[data-kind="frame"].open { padding: 0 12px 16px; }
 }
+
+/* v20261125d: tighter diagrams, horizontal cycle steps, full-screen viewer, about experience */
+.dgrid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.dgrid .diagram { padding: 14px; }
+.dgrid .diagram svg { max-width: 720px; margin: 0 auto; }
+.diagram ol.legend.one { grid-template-columns: 1fr; gap: 12px; padding: 0; font-size: 14.5px; }
+.diagram ol.legend.one li { grid-template-columns: 28px 1fr; }
+ol.legend.one { list-style: none; display: grid; gap: 12px; font-size: 14.5px; color: var(--text-dim); }
+ol.legend.one li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; }
+ol.legend.one li b { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--accent-dark); color: #fff; font-size: 12px; }
+.gp dl { margin-top: 20px; display: grid; grid-template-columns: 130px 1fr; gap: 10px 20px; font-size: 14.5px; }
+.gp dt { font-weight: 800; } .gp dd { color: var(--text-dim); }
+.steps5 { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 32px; counter-reset: s; position: relative; }
+.steps5::before { content: ""; position: absolute; left: 15px; right: 0; top: 14px; height: 2px; background: var(--border); }
+.s5 { position: relative; counter-increment: s; padding-top: 48px; }
+.s5::before { content: counter(s); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--accent-dark); color: #fff; font-size: 13px; font-weight: 800; display: grid; place-items: center; }
+.s5 h4 { font-size: 16px; font-weight: 800; line-height: 1.3; }
+.s5 p { font-size: 14px; color: var(--text-dim); margin-top: 8px; line-height: 1.6; }
+@media (max-width: 1000px) { .steps5 { grid-template-columns: 1fr 1fr; gap: 28px 28px; } .steps5::before { display: none; } .dgrid { grid-template-columns: 1fr; gap: 28px; } }
+@media (max-width: 640px) { .steps5 { grid-template-columns: 1fr; } .gp dl { grid-template-columns: 1fr; gap: 2px; } .gp dd { margin-bottom: 10px; } }
+
+/* 3D viewer: our own full-screen with a visible exit */
+.locked .viewer { background: var(--bg); }
+.locked .viewer.fs { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; padding: 14px 18px 18px; }
+.locked .viewer.fs .vbar { margin-bottom: 10px; }
+.locked .viewer.fs iframe { flex: 1; height: auto; min-height: 0; border-radius: 10px; }
+.locked .viewer:fullscreen { display: flex; flex-direction: column; padding: 14px 18px 18px; background: #fff; }
+.locked .viewer:fullscreen iframe { flex: 1; height: auto; min-height: 0; }
+.locked .viewer .vfs { background: var(--accent-dark); color: #fff; border-color: var(--accent-dark); }
+
+/* about: research & experience */
+.xp-group { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 48px; padding: 44px 0; border-top: 1px solid var(--border); }
+.xp-group:last-child { border-bottom: 1px solid var(--border); }
+.xp-group > h3 { font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); font-weight: 700; padding-top: 4px; }
+.xp-item { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 32px; padding-bottom: 32px; }
+.xp-item:last-child { padding-bottom: 0; }
+.xp-when { font-size: 13px; font-weight: 700; color: var(--text-dim); padding-top: 4px; }
+.xp-item h4 { font-size: 18px; font-weight: 800; letter-spacing: -.01em; line-height: 1.3; }
+.xp-org { font-size: 14px; color: var(--text-dim); margin-top: 2px; }
+.xp-item p { font-size: 15px; color: var(--text-dim); margin-top: 8px; max-width: 720px; }
+@media (max-width: 860px) { .xp-group { grid-template-columns: 1fr; gap: 18px; padding: 34px 0; } .xp-item { grid-template-columns: 1fr; gap: 4px; } }
+
+/* home: portrait card */
+.featured-card.person { grid-template-columns: minmax(0, 380px) minmax(0, 1fr); }
+.featured-card.person .featured-visual { min-height: 0; aspect-ratio: 1 / 1; padding: 0; }
+.featured-card.person .featured-visual img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; object-position: 50% 28%; }
+@media (max-width: 860px) { .featured-card.person { grid-template-columns: 1fr; } .featured-card.person .featured-visual { max-height: 420px; aspect-ratio: 4 / 3; } }
