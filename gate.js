@@ -35,41 +35,75 @@
     }).then(function (pt) { return new TextDecoder().decode(pt); });
   }
 
+  function mountFrame(el, html) {
+    el.classList.add('open');
+    var vhtml = '<div class="viewer on"><div class="vbar"><span>Drag to turn, scroll to zoom, click any part to read about it. Best on a laptop or larger screen.</span>' +
+      '<span><button type="button" class="vfs">Full screen</button></span></div>' +
+      '<iframe title="OlivAir 3D models" sandbox="allow-scripts"></iframe></div>';
+    var teaser = el.querySelector('.lb-quiet, .lb-3d');
+    if (teaser) { teaser.outerHTML = vhtml; el.classList.add('inpage'); } else el.innerHTML = vhtml;
+    var v = el.querySelector('.viewer'), f = el.querySelector('iframe'), btn = el.querySelector('.vfs');
+    var sc = el.getAttribute('data-scene');
+    if (sc) html = html.replace('<head>', '<head><script>window.OLSCENE=' + JSON.stringify(sc) + '</script>');
+    f.srcdoc = html;
+    function inFs() { return v.classList.contains('fs') || document.fullscreenElement === v || document.webkitFullscreenElement === v; }
+    function setLabel() { btn.textContent = inFs() ? 'Exit full screen' : 'Full screen'; }
+    function enter() {
+      var rq = v.requestFullscreen || v.webkitRequestFullscreen;
+      if (rq) { try { var r = rq.call(v); if (r && r.catch) r.catch(function () { v.classList.add('fs'); setLabel(); }); } catch (e) { v.classList.add('fs'); } }
+      else v.classList.add('fs');
+      setLabel();
+    }
+    function leave() {
+      v.classList.remove('fs');
+      var ex = document.exitFullscreen || document.webkitExitFullscreen;
+      if (ex && (document.fullscreenElement || document.webkitFullscreenElement)) { try { ex.call(document); } catch (e) {} }
+      setLabel();
+    }
+    btn.addEventListener('click', function () { if (inFs()) leave(); else enter(); });
+    document.addEventListener('fullscreenchange', setLabel);
+    document.addEventListener('webkitfullscreenchange', setLabel);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && v.classList.contains('fs')) leave(); });
+  }
+
+  /* The unlocked design is one block: tabs, and a 2D / 3D switch that shares one space.
+     The 3D model is decrypted and started only when the visitor first asks for it,
+     because a 3D view started in a hidden tab has no size. */
+  var curKey = null;
+  function wire3d(el) {
+    Array.prototype.forEach.call(el.querySelectorAll('.d3d[data-scene]'), function (c) {
+      c._mount = function () {
+        if (c._done || !curKey) return; c._done = true;
+        c.innerHTML = '<p class="d3d-wait">Loading the 3D model...</p>';
+        decrypt(curKey, 'assets/x-3d.enc').then(function (h) { c.innerHTML = ''; mountFrame(c, h); })
+          .catch(function () { c._done = false; c.innerHTML = '<p class="d3d-wait">Could not load the 3D model. Please try again.</p>'; });
+      };
+    });
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest && e.target.closest('.dtabs button, .dmode button');
+    if (!t) return;
+    var root = t.closest('.locked'); if (!root) return;
+    var par = t.parentNode;
+    Array.prototype.forEach.call(par.children, function (b) { b.classList.toggle('on', b === t); });
+    if (par.classList.contains('dtabs')) {
+      var k = t.getAttribute('data-t');
+      Array.prototype.forEach.call(root.querySelectorAll('.dpanel'), function (p) { p.classList.toggle('on', p.getAttribute('data-p') === k); });
+    } else {
+      var m = t.getAttribute('data-m');
+      Array.prototype.forEach.call(root.querySelectorAll('.dview'), function (p) { p.classList.toggle('on', p.getAttribute('data-v') === m); });
+      if (m === '3d') { var c = root.querySelector('.d3d'); if (c && c._mount) c._mount(); }
+    }
+  });
+
   function fill(el, html) {
     var kind = el.getAttribute('data-kind') || 'html';
-    if (kind === 'frame') {
-      el.classList.add('open');
-      var vhtml = '<div class="viewer on"><div class="vbar"><span>Drag to turn, scroll to zoom, click any part to read about it. Best on a laptop or larger screen.</span>' +
-        '<span><button type="button" class="vfs">Full screen</button></span></div>' +
-        '<iframe title="OlivAir 3D models" sandbox="allow-scripts"></iframe></div>';
-      var teaser = el.querySelector('.lb-quiet, .lb-3d');
-      if (teaser) { teaser.outerHTML = vhtml; el.classList.add('inpage'); } else el.innerHTML = vhtml;
-      var v = el.querySelector('.viewer'), f = el.querySelector('iframe'), btn = el.querySelector('.vfs');
-      var sc = el.getAttribute('data-scene');
-      if (sc) html = html.replace('<head>', '<head><script>window.OLSCENE=' + JSON.stringify(sc) + '</script>');
-      f.srcdoc = html;
-      function inFs() { return v.classList.contains('fs') || document.fullscreenElement === v || document.webkitFullscreenElement === v; }
-      function setLabel() { btn.textContent = inFs() ? 'Exit full screen' : 'Full screen'; }
-      function enter() {
-        var rq = v.requestFullscreen || v.webkitRequestFullscreen;
-        if (rq) { try { var r = rq.call(v); if (r && r.catch) r.catch(function () { v.classList.add('fs'); setLabel(); }); } catch (e) { v.classList.add('fs'); } }
-        else v.classList.add('fs');
-        setLabel();
-      }
-      function leave() {
-        v.classList.remove('fs');
-        var ex = document.exitFullscreen || document.webkitExitFullscreen;
-        if (ex && (document.fullscreenElement || document.webkitFullscreenElement)) { try { ex.call(document); } catch (e) {} }
-        setLabel();
-      }
-      btn.addEventListener('click', function () { if (inFs()) leave(); else enter(); });
-      document.addEventListener('fullscreenchange', setLabel);
-      document.addEventListener('webkitfullscreenchange', setLabel);
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && v.classList.contains('fs')) leave(); });
-    } else {
+    if (kind === 'frame') mountFrame(el, html);
+    else {
       el.classList.add('open');
       el.innerHTML = html;
       Array.prototype.forEach.call(el.querySelectorAll('.reveal'), function (n) { n.classList.add('in'); });
+      wire3d(el);
     }
   }
 
@@ -90,6 +124,7 @@
     if (busy) return; busy = true;
     if (ui) { ui.btn.disabled = true; ui.btn.textContent = 'Checking...'; ui.err.textContent = ''; }
     deriveKey(pass).then(function (key) {
+      curKey = key;
       return Promise.all(blocks.map(function (b) { return decrypt(key, b.getAttribute('data-src')); }));
     }).then(function (htmls) {
       sset(pass);

@@ -1115,3 +1115,20 @@ ol.legend.one li b { display: inline-grid; place-items: center; width: 22px; hei
 .vs-first .vs-row + .vs-row { margin-top: 16px; }
 .vs-first + .vs-extra, .vs-first + .vs-stat { margin-top: 18px; }
 .vs-text.one { display: block; }
+
+/* one design block: tabs, and a 2D / 3D switch sharing one space */
+.dtabs { display: flex; flex-wrap: wrap; gap: 4px 30px; border-bottom: 1px solid var(--border); margin: 6px 0 34px; }
+.dtabs button { font: inherit; font-size: 15px; font-weight: 600; color: var(--text-dim); background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; padding: 10px 0 12px; cursor: pointer; transition: color .2s, border-color .2s; }
+.dtabs button:hover { color: var(--text); }
+.dtabs button.on { color: var(--text); border-bottom-color: var(--accent-dark); }
+.dpanel { display: none; }
+.dpanel.on { display: block; animation: fin .35s ease both; }
+.dmode { display: inline-flex; gap: 2px; padding: 3px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 26px; }
+.dmode button { font: inherit; font-size: 13.5px; font-weight: 700; color: var(--text-dim); background: none; border: 0; border-radius: 8px; padding: 8px 18px; cursor: pointer; transition: background .2s, color .2s; }
+.dmode button:hover { color: var(--text); }
+.dmode button.on { background: var(--accent-dark); color: #fff; }
+.dview { display: none; }
+.dview.on { display: block; animation: fin .35s ease both; }
+.d3d-wait { color: var(--text-dim); font-size: 14px; padding: 40px 0; }
+.dpanel .steps5 { margin-top: 26px; }
+@media (max-width: 640px) { .dtabs { gap: 2px 20px; } .dtabs button { font-size: 14px; } }
