@@ -1165,3 +1165,18 @@ ol.legend.one li b { display: inline-grid; place-items: center; width: 22px; hei
   .ab-glance { grid-template-columns: 1fr; }
   .ab-more .ab-list li { grid-template-columns: 1fr; gap: 2px; }
 }
+
+/* About v2: no bottom fade on this hero (it faded the text), jump bar, skills tied to evidence */
+.ab-hero { -webkit-mask-image: none; mask-image: none; background-image: none; }
+.ab-jump { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--border); font-size: 14px; }
+.ab-jump span { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); }
+.ab-jump a { font-weight: 600; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 2px; }
+.ab-jump a:hover { border-bottom-color: var(--accent-dark); }
+.ab-photo figcaption { color: var(--text-dim); }
+.ab-skills { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--text); }
+.ab-skills > div { padding: 24px 26px 4px 0; }
+.ab-skills h3 { font-size: 16px; font-weight: 800; letter-spacing: -.01em; margin-bottom: 8px; }
+.ab-skills p { font-size: 14px; line-height: 1.6; color: var(--text-dim); }
+.ab-skills span { display: block; margin-top: 12px; font-size: 12.5px; line-height: 1.5; color: var(--accent-dark); font-weight: 600; }
+@media (max-width: 1100px) { .ab-skills { grid-template-columns: 1fr 1fr; } .ab-skills > div { padding-bottom: 22px; } }
+@media (max-width: 560px) { .ab-skills { grid-template-columns: 1fr; } }
