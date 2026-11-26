@@ -1109,3 +1109,9 @@ ol.legend.one li b { display: inline-grid; place-items: center; width: 22px; hei
 .steps5.steps4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 1000px) { .steps5.steps4 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { .steps5.steps4 { grid-template-columns: 1fr; } }
+
+/* public numbers-only comparison */
+.vs-first { margin-top: 0; }
+.vs-first .vs-row + .vs-row { margin-top: 16px; }
+.vs-first + .vs-extra, .vs-first + .vs-stat { margin-top: 18px; }
+.vs-text.one { display: block; }
