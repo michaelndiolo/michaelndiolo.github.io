@@ -1132,3 +1132,36 @@ ol.legend.one li b { display: inline-grid; place-items: center; width: 22px; hei
 .d3d-wait { color: var(--text-dim); font-size: 14px; padding: 40px 0; }
 .dpanel .steps5 { margin-top: 26px; }
 @media (max-width: 640px) { .dtabs { gap: 2px 20px; } .dtabs button { font-size: 14px; } }
+
+/* About page: photo and quick facts up front, then a short experience list */
+.ab-hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 64px; align-items: center; }
+.ab-t h1 { max-width: 640px; }
+.ab-photo { margin: 0; }
+.ab-photo img { display: block; width: 100%; max-width: 440px; height: auto; margin-left: auto; border-radius: 18px; box-shadow: 0 18px 44px rgba(23, 50, 79, .16); }
+.ab-photo figcaption { max-width: 440px; margin: 10px 0 0 auto; font-size: 12.5px; color: var(--text-faint); }
+.ab-glance { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 30px; margin-top: 34px; padding-top: 26px; border-top: 1px solid var(--border); }
+.ab-glance b { display: block; font-size: 19px; font-weight: 800; letter-spacing: -.01em; color: var(--accent-dark); }
+.ab-glance span { display: block; font-size: 13px; line-height: 1.5; color: var(--text-dim); margin-top: 3px; }
+.ab-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.ab-more-link { display: inline-block; margin-top: 14px; font-size: 14px; font-weight: 600; }
+.ab-more { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; margin-top: 34px; }
+.ab-trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px; }
+.ab-trio h3 { font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 4px; }
+.ab-list { list-style: none; margin: 0; padding: 0; }
+.ab-list li { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding: 15px 0; border-top: 1px solid var(--border); }
+.ab-list li:first-child { border-top: 0; }
+.ab-more .ab-list li { grid-template-columns: 128px minmax(0, 1fr); gap: 20px; border-top: 1px solid var(--border); }
+.ab-more .ab-list li:first-child { border-top: 1px solid var(--border); }
+.ab-w { font-size: 12.5px; font-weight: 700; color: var(--text-dim); padding-top: 3px; }
+.ab-list b { display: block; font-size: 15px; font-weight: 700; line-height: 1.35; }
+.ab-list span { display: block; font-size: 13.5px; color: var(--text-dim); line-height: 1.55; margin-top: 2px; }
+@media (max-width: 960px) {
+  .ab-hero { grid-template-columns: 1fr; gap: 36px; }
+  .ab-photo img, .ab-photo figcaption { margin-left: 0; max-width: 420px; }
+  .ab-trio { grid-template-columns: 1fr; gap: 30px; }
+  .ab-feat, .ab-more { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .ab-glance { grid-template-columns: 1fr; }
+  .ab-more .ab-list li { grid-template-columns: 1fr; gap: 2px; }
+}
