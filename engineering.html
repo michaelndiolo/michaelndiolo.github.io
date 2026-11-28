@@ -101,32 +101,32 @@
   <div class="wrap">
     <div class="sec-head reveal"><span class="sec-title">Where each piece stands</span><span class="sec-line"></span></div>
     <style>
-.pgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.pcard{border:1px solid var(--border);border-radius:14px;background:#fff;padding:18px 20px 18px}
-.pcard .ph{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.pcard h4{font-size:19px;font-weight:800;letter-spacing:-.01em;margin:0}
-.pcard .cnt{font-size:14px;font-weight:700;color:#1f6b3a;white-space:nowrap}
-.pcard .bar{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin:10px 0 12px}
-.pcard .bar i{height:8px;border-radius:4px;background:#dde2ea}
-.pcard .bar i.f{background:#1f6b3a}
-.pcard .bar i.h{background:linear-gradient(90deg,#d9922b 50%,#dde2ea 50%)}
-.pcard p{font-size:15.5px;line-height:1.5;color:var(--text-dim);margin:0 0 12px}
-.steps{list-style:none;margin:0;padding:0;border:0;display:flex;flex-wrap:wrap;gap:8px}
-.steps li{border:0}
-.steps li{display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 6px;border-radius:999px;background:#f1f3f7;color:#5a6472;font-size:14.5px;font-weight:600;line-height:1.2}
-.steps .si{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800;line-height:1;background:#fff;border:2px solid #c9d0da;color:#7b8594;flex:none}
-.steps li.f{background:#e5f0e8;color:#17502c}
-.steps li.f .si{background:#1f6b3a;border-color:#1f6b3a;color:#fff}
-.steps li.h{background:#fbf1dc;color:#7a4c00}
-.steps li.h .si{background:#fff;border-color:#a96b00;color:#a96b00}
-.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-@media(max-width:860px){.pgrid{grid-template-columns:1fr;gap:12px}}
-@media(max-width:560px){.pcard{padding:14px 14px 14px}.pcard h4{font-size:18px}.pcard .cnt{font-size:13.5px}.pcard .bar{margin:8px 0 10px}.pcard p{font-size:15px;margin-bottom:10px}.steps{gap:6px}.steps li{font-size:14px;padding:4px 10px 4px 5px}}
+.pl{border:1px solid var(--border);border-radius:14px;background:var(--bg);overflow:hidden}
+.pr{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.5fr);gap:12px 28px;align-items:center;padding:22px 28px;border-top:1px solid var(--border)}
+.pr:first-child{border-top:0}
+.pr h4{font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--accent-dark);margin:0 0 4px}
+.pr p{font-size:15px;line-height:1.5;color:var(--text-dim);margin:0}
+.steps{list-style:none;margin:0;padding:0;border:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.steps li{border:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.steps .tk{display:block;height:8px;border-radius:4px;background:var(--border);margin-bottom:8px}
+.steps .sl{font-size:14px;font-weight:700;line-height:1.25;color:var(--text);white-space:nowrap}
+.steps .ss{font-size:14px;font-weight:600;color:var(--text-dim)}
+.steps li.f .tk{background:var(--accent-dark)}
+.steps li.f .ss{color:var(--accent-dark)}
+.steps li.h .tk{background:linear-gradient(90deg,var(--accent) 50%,var(--border) 50%)}
+.steps li.h .ss{color:var(--accent)}
+.pkey{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:16px;font-size:14px;color:var(--text-dim)}
+.pkey span{display:inline-flex;align-items:center;gap:9px}
+.pkey i{display:block;width:26px;height:8px;border-radius:4px;background:var(--border);flex:none}
+.pkey .f i{background:var(--accent-dark)}
+.pkey .h i{background:linear-gradient(90deg,var(--accent) 50%,var(--border) 50%)}
+.pkey b{color:var(--text);font-weight:700}
+@media(max-width:860px){.pr{grid-template-columns:1fr;gap:12px;padding:18px 18px}.steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px}.steps li{display:grid;grid-template-columns:5px 1fr;column-gap:11px;row-gap:0}.steps .tk{grid-row:1 / span 2;width:5px;height:auto;margin:0}.steps .sl{font-size:14.5px;white-space:normal;align-self:end}.steps .ss{font-size:14px;align-self:start}.steps li.h .tk{background:linear-gradient(180deg,var(--accent) 50%,var(--border) 50%)}}
 </style>
-<div class="pgrid reveal" role="list" aria-label="Where each piece stands">
-  <article class="pcard"><div class="ph"><h4>The fines lung</h4><span class="cnt">2 of 4 done</span></div><div class="bar" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="n"></i><i class="n"></i></div><p>Designed and costed on paper for 1 to 4 mm fines. Next: test F5.</p><ul class="steps"><li class="f"><span class="si" aria-hidden="true">✓</span>Designed<span class="vh">: Done</span></li><li class="f"><span class="si" aria-hidden="true">✓</span>Checked on paper<span class="vh">: Done</span></li><li class="n"><span class="si" aria-hidden="true">–</span>Bench test<span class="vh">: Not yet</span></li><li class="n"><span class="si" aria-hidden="true">–</span>Real prices<span class="vh">: Not yet</span></li></ul></article><article class="pcard"><div class="ph"><h4>The mine drainage reactor</h4><span class="cnt">2 of 4 done</span></div><div class="bar" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="n"></i><i class="n"></i></div><p>Designed and costed on paper, with a margin over lime that is still thin. Next: a bench test on real mine water.</p><ul class="steps"><li class="f"><span class="si" aria-hidden="true">✓</span>Designed<span class="vh">: Done</span></li><li class="f"><span class="si" aria-hidden="true">✓</span>Checked on paper<span class="vh">: Done</span></li><li class="n"><span class="si" aria-hidden="true">–</span>Bench test<span class="vh">: Not yet</span></li><li class="n"><span class="si" aria-hidden="true">–</span>Real prices<span class="vh">: Not yet</span></li></ul></article><article class="pcard"><div class="ph"><h4>The dry-stack gas rule</h4><span class="cnt">1 of 4 done, 1 partly</span></div><div class="bar" aria-hidden="true"><i class="f"></i><i class="h"></i><i class="n"></i><i class="n"></i></div><p>The energy ceiling is worked out from one lab test. Next: a written mechanism, then test S1.</p><ul class="steps"><li class="f"><span class="si" aria-hidden="true">✓</span>Designed<span class="vh">: Done</span></li><li class="h"><span class="si" aria-hidden="true">◐</span>Checked on paper (partly)<span class="vh">: Partly</span></li><li class="n"><span class="si" aria-hidden="true">–</span>Bench test<span class="vh">: Not yet</span></li><li class="n"><span class="si" aria-hidden="true">–</span>Real prices<span class="vh">: Not yet</span></li></ul></article><article class="pcard"><div class="ph"><h4>The cost model</h4><span class="cnt">2 of 4 done, 1 partly</span></div><div class="bar" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="n"></i><i class="h"></i></div><p>One lean workbook for all three, with every input cited or flagged. Next: a vendor quote and a slag processor's figures.</p><ul class="steps"><li class="f"><span class="si" aria-hidden="true">✓</span>Designed<span class="vh">: Done</span></li><li class="f"><span class="si" aria-hidden="true">✓</span>Checked on paper<span class="vh">: Done</span></li><li class="n"><span class="si" aria-hidden="true">–</span>Bench test<span class="vh">: Not yet</span></li><li class="h"><span class="si" aria-hidden="true">◐</span>Real prices (partly)<span class="vh">: Partly</span></li></ul></article>
+<div class="pl reveal" role="list" aria-label="Where each piece stands">
+  <article class="pr"><div class="pt"><h4>The fines lung</h4><p>Designed and costed on paper for 1 to 4 mm fines. Next: test F5.</p></div><ul class="steps"><li class="f"><i class="tk" aria-hidden="true"></i><span class="sl">Designed</span><span class="ss">Done</span></li><li class="f"><i class="tk" aria-hidden="true"></i><span class="sl">Checked on paper</span><span class="ss">Done</span></li><li class="n"><i class="tk" aria-hidden="true"></i><span class="sl">Bench test</span><span class="ss">Not yet</span></li><li class="n"><i class="tk" aria-hidden="true"></i><span class="sl">Real prices</span><span class="ss">Not yet</span></li></ul></article><article class="pr"><div class="pt"><h4>The mine drainage reactor</h4><p>Designed and costed on paper, with a margin over lime that is still thin. Next: a bench test on real mine water.</p></div><ul class="steps"><li class="f"><i class="tk" aria-hidden="true"></i><span class="sl">Designed</span><span class="ss">Done</span></li><li class="f"><i class="tk" aria-hidden="true"></i><span class="sl">Checked on paper</span><span class="ss">Done</span></li><li class="n"><i class="tk" aria-hidden="true"></i><span class="sl">Bench test</span><span class="ss">Not yet</span></li><li class="n"><i class="tk" aria-hidden="true"></i><span class="sl">Real prices</span><span class="ss">Not yet</span></li></ul></article><article class="pr"><div class="pt"><h4>The dry-stack gas rule</h4><p>The energy ceiling is worked out from one lab test. Next: a written mechanism, then test S1.</p></div><ul class="steps"><li class="f"><i class="tk" aria-hidden="true"></i><span class="sl">Designed</span><span class="ss">Done</span></li><li class="h"><i class="tk" aria-hidden="true"></i><span class="sl">Checked on paper</span><span class="ss">Partly</span></li><li class="n"><i class="tk" aria-hidden="true"></i><span class="sl">Bench test</span><span class="ss">Not yet</span></li><li class="n"><i class="tk" aria-hidden="true"></i><span class="sl">Real prices</span><span class="ss">Not yet</span></li></ul></article><article class="pr"><div class="pt"><h4>The cost model</h4><p>One lean workbook for all three, with every input cited or flagged. Next: a vendor quote and a slag processor's figures.</p></div><ul class="steps"><li class="f"><i class="tk" aria-hidden="true"></i><span class="sl">Designed</span><span class="ss">Done</span></li><li class="f"><i class="tk" aria-hidden="true"></i><span class="sl">Checked on paper</span><span class="ss">Done</span></li><li class="n"><i class="tk" aria-hidden="true"></i><span class="sl">Bench test</span><span class="ss">Not yet</span></li><li class="h"><i class="tk" aria-hidden="true"></i><span class="sl">Real prices</span><span class="ss">Partly</span></li></ul></article>
 </div>
-<p class="reveal dim small" style="margin-top:16px"><b>Done</b> means finished on paper. <b>Partly</b> means some numbers are placeholders. <b>Not yet</b> means not started.</p>
+<div class="pkey reveal"><span class="f"><i></i><b>Done</b> finished on paper</span><span class="h"><i></i><b>Partly</b> some numbers are placeholders</span><span><i></i><b>Not yet</b> not started</span></div>
     <p class="reveal dim small" style="margin-top:22px">None of the planned tests has been run. They come after the work Dr. McCormick sets.</p>
   </div>
 </section>
